@@ -50,15 +50,21 @@ a single content input. There are some quite practical and very useful applicati
 or annotations along with a "main" score; transposition, harmonic reductions, etc. There are some touchy issues there (producing socres for separate voices for instance
 complies to specific rules and cannot be obtained readily from the general score), but this seems a very exciting and potentially fruitful challenge.
 
-### In summary
+### In summary: the case for an info set, and its impact for linked data
 
-In a project 
+In a project that aims at producing "semantic" data in order to link this data with other sources (annotations), I think it is worth trying to 
+identify what is the meaningful content encoded is a score, and model this content. Meaning is necessarily related to applications, and to the set of information
+required by these applications. A bet is that there is a common info set that can serve as input to a range of applications, and that we can safely ignore 
+any other content embedded in the score which can then simplify considered as noise from the application viewpoint.
+
+### Examples 
+
+### Preliminary thoughts
 
 
-## Linked data and MCI
 
 
 ## References
 
-[1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204> (XML information set. W3C recommendation.)
+[1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204>(XML information set. W3C recommendation.)
 
