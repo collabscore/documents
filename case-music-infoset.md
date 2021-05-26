@@ -66,14 +66,14 @@ Practically speaking, a MEI file for instance would be the source of an instance
 A server would "publish" this instance which could be the source of annotations, transformations, or any process (musicological analysis for instance) thta requires
 as input a clean and well structured representation of music notational content. 
 
+## Examples 
 
-### Examples 
+### Example 1: from notation to performance and vice-versa
 
-## Example 1: from notation to performance and vice-versa
+### Example 2: styling score sheets
 
-## Example 2: styling score sheets
+## Preliminary thoughts
 
-### Preliminary thoughts
 
 
 
