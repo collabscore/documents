@@ -33,16 +33,28 @@ entropy would be greatly improved, with obvious advantages:
 ### Benefit 2 : less dependence on syntactic idiosyncrasies
 
 There exist many ways to encode a same scores. This does complicate parsing and interpretation of score content. Here, the MCI would act as an abstract level
-where encoding practices would disappear in favor of a more uniform representation.
+where encoding practices would disappear in favor of a more *canonical* representation.
 
 > This issue appeared in the early days of XML when it becames a "language" of choice for data storage and exchange. The W3C felt the need to define the
 > so-called "XML information set" [^1] that defines the content of an XML file independently from syntactic variants (e.g., entity dereferencing). The DOM
 > is XPath data model are somehow two implementations of the XML infoset, although slightly different.
 
-### Benefit 3: seperation of concerns leads to independent styling
+[hobbit-hole](https://en.wikipedia.org/wiki/Hobbit#Lifestyle "Hobbit lifestyles")
+
+### Benefit 3: separation of concerns leads to independent styling
 
 The relevant comparison here is with HTML documents and web layouts. Whereas in the early days (hopefully gone for everybody), HTML contained *both* content 
-(e.g., text) *and* presentation instructions, they can now be neatly separatated with core HTML + CSS. In a more general setting,  
+(e.g., text) *and* presentation instructions, they can now be neatly separatated with core HTML + CSS. In a more general setting,  the same can be said from XML + XSLT.
+
+In the context of music: ideally we could pair some MCI content with one *or many* 'score sheets' with the potentil ability to produce *many* layouts from 
+a single content input. There are some quite practical and very useful applications: displaying separately one or several voices ; displaying variants 
+or annotations along with a "main" score; transposition, harmonic reductions, etc. There are some touchy issues there (producing socres for separate voices for instance
+complies to specific rules and cannot be obtained readily from the general score), but this seems a very exciting and potentially fruitful challenge.
+
+### In summary
+
+In a project 
+
 
 ## Linked data and MCI
 
