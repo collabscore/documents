@@ -39,7 +39,6 @@ where encoding practices would disappear in favor of a more *canonical* represen
 > so-called [XML information set][1] that defines the content of an XML file independently from syntactic variants (e.g., entity dereferencing). The DOM
 > is XPath data model are somehow two implementations of the XML infoset, although slightly different.
 
-[XML-information-set][1] 
 
 ### Benefit 3: separation of concerns leads to independent styling
 
@@ -61,5 +60,5 @@ In a project
 
 ## References
 
-[1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204/> "XML information set. W3C recommendation."
+[1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204/> (XML information set. W3C recommendation.)
 
