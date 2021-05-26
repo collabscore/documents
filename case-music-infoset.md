@@ -36,7 +36,7 @@ There exist many ways to encode a same scores. This does complicate parsing and 
 where encoding practices would disappear in favor of a more *canonical* representation.
 
 > This issue appeared in the early days of XML when it becames a "language" of choice for data storage and exchange. The W3C felt the need to define the
-> so-called ["XML information set"][1] that defines the content of an XML file independently from syntactic variants (e.g., entity dereferencing). The DOM
+> so-called [XML information set][1] that defines the content of an XML file independently from syntactic variants (e.g., entity dereferencing). The DOM
 > is XPath data model are somehow two implementations of the XML infoset, although slightly different.
 
 ### Benefit 3: separation of concerns leads to independent styling
