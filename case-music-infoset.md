@@ -51,7 +51,10 @@ complies to specific rules and cannot be obtained readily from the general score
 
 ## Benefit 4: better semantics
 
-In principle, if we can
+In principle, if we can "view" a score content as an instance of a well-defined data model, nothing can prevent from defining operations of various kinds,
+at an abstrdat, ideally declarative level. This is the approach followed in [time series modelling][2] which proposes a query langugage, but can be declined 
+for other situations.
+
 ### In summary: the case for a music notation info set, and its impact for linked data
 
 In a project that aims at producing "semantic" data in order to link this data with other sources (annotations), I think it is worth trying to 
