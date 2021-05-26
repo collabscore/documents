@@ -28,15 +28,23 @@ entropy would be greatly improved, with obvious advantages:
 
   - less noise (and probably better quality)
   - clarification on the information really required by DMAPs 
-  - opportunity for better structures, and higher abstraction levels 
+  - opportunity for better structures, higher abstraction levels, possibly algebraic or logic-based manipulations, etc.
 
 ### Benefit 2 : less dependence on syntactic idiosyncrasies
 
-There exist many ways to encode a same scores. This does complicate parsing and interpretation of score content. Here,
+There exist many ways to encode a same scores. This does complicate parsing and interpretation of score content. Here, the MCI would act as an abstract level
+where encoding practices would disappear in favor of a more uniform representation.
 
 > This issue appeared in the early days of XML when it becames a "language" of choice for data storage and exchange. The W3C felt the need to define the
-> so-called "XML information set" [^1]
+> so-called "XML information set" [^1] that defines the content of an XML file independently from syntactic variants (e.g., entity dereferencing). The DOM
+> is XPath data model are somehow two implementations of the XML infoset, although slightly different.
 
+### Benefit 3: seperation of concerns leads to independent styling
+
+The relevant comparison here is with HTML documents and web layouts. Whereas in the early days (hopefully gone for everybody), HTML contained *both* content 
+(e.g., text) *and* presentation instructions, they can now be neatly separatated with core HTML + CSS. In a more general setting,  
+
+## Linked data and MCI
 
 
 ## References
