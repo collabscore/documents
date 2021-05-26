@@ -60,5 +60,5 @@ In a project
 
 ## References
 
-[1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204/> (XML information set. W3C recommendation.)
+[1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204> (XML information set. W3C recommendation.)
 
