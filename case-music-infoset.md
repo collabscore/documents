@@ -39,7 +39,6 @@ where encoding practices would disappear in favor of a more *canonical* represen
 > so-called [XML information set][1] that defines the content of an XML file independently from syntactic variants (e.g., entity dereferencing). The DOM
 > is XPath data model are somehow two implementations of the XML infoset, although slightly different.
 
-
 ### Benefit 3: separation of concerns leads to independent styling
 
 The relevant comparison here is with HTML documents and web layouts. Whereas in the early days (hopefully gone for everybody), HTML contained *both* content 
@@ -50,14 +49,26 @@ a single content input. There are some quite practical and very useful applicati
 or annotations along with a "main" score; transposition, harmonic reductions, etc. There are some touchy issues there (producing socres for separate voices for instance
 complies to specific rules and cannot be obtained readily from the general score), but this seems a very exciting and potentially fruitful challenge.
 
-### In summary: the case for an info set, and its impact for linked data
+## Benefit 4: better semantics
+
+In principle, if we can
+### In summary: the case for a music notation info set, and its impact for linked data
 
 In a project that aims at producing "semantic" data in order to link this data with other sources (annotations), I think it is worth trying to 
 identify what is the meaningful content encoded is a score, and model this content. Meaning is necessarily related to applications, and to the set of information
 required by these applications. A bet is that there is a common info set that can serve as input to a range of applications, and that we can safely ignore 
 any other content embedded in the score which can then simplify considered as noise from the application viewpoint.
 
+Practically speaking, a MEI file for instance would be the source of an instance of MCI, represented in whatever form is suitable (e.g., RDF, JSON-LD, Music21 classes, etc). 
+A server would "publish" this instance which could be the source of annotations, transformations, or any process (musicological analysis for instance) thta requires
+as input a clean and well structured representation of music notational content. 
+
+
 ### Examples 
+
+## Example 1: from notation to performance and vice-versa
+
+## Example 2: styling score sheets
 
 ### Preliminary thoughts
 
@@ -67,4 +78,4 @@ any other content embedded in the score which can then simplify considered as no
 ## References
 
 [1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204>(XML information set. W3C recommendation.)
-
+[2]: Fournier-S'niehotta, R.; Rigaux, P. and Travers, N. Modeling Music as Synchronized Time Series: Application to Music Score Collections. In Information Systems, 73: 35-49, 2018
