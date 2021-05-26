@@ -49,7 +49,7 @@ a single content input. There are some quite practical and very useful applicati
 or annotations along with a "main" score; transposition, harmonic reductions, etc. There are some touchy issues there (producing socres for separate voices for instance
 complies to specific rules and cannot be obtained readily from the general score), but this seems a very exciting and potentially fruitful challenge.
 
-## Benefit 4: better semantics
+### Benefit 4: better semantics
 
 In principle, if we can "view" a score content as an instance of a well-defined data model, nothing can prevent from defining operations of various kinds,
 at an abstrdat, ideally declarative level. This is the approach followed in [time series modelling][2] which proposes a query langugage, but can be declined 
