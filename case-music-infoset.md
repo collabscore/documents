@@ -125,9 +125,21 @@ From this MCI, the figure shows an additional step: styling. With a dedicated st
 from a same MCI. (To be developped).
 
 
-![Multiple engraving from a same MCI](figures/engraving.png)
+![Multiple scores from a same MCI](figures/engraving.jpg)
 
 ### Example 3: analysis and annotations
+
+An analytical process consumes some notation content (hypothetically, our MCI) and produces annotations. Referring to [IReMus study][5], 
+this introduces the following needs: 
+  - "The possibility to address arbitrary sets of MEI elements that do not necessarily follow the logical organization of the MEI 
+     XML file structure".
+  - "The possibility to address musical offsets for events not explicitly present in the score" (see [5] for an example)
+
+The latter illustrates an interesting features: the need to add to our MCI anchors (IRI) which are not explicitly present in the encoding. These anchors can be referred to in the annotations. The annotation space wold then be fully defined at the abstract level, with a materialisation of some events which not necessary in terms of strict notational content.
+
+
+
+![Annotations in the semzntic space](figures/annotation.png)
 
 ## References
 
@@ -138,3 +150,5 @@ from a same MCI. (To be developped).
 [3]: <https://hal.archives-ouvertes.fr/hal-02454536>(Cherfi, S. S-s.; Guillotel, C.; Hamdi, F. c.; Rigaux, P. and Travers, N. Ontology-Based Annotation of Music Scores. In Knowledge Capture Conference, pages 1-4, ACM Press, Austin, 2017.)
 
 [4]: <https://axelberndt.github.io/MPM/>(Music Performance Markup format - MPM)
+
+[5]: <https://github.com/Amleth/source-sherlockizer-service>(Some technical thoughts on processing MEI sources to facilitate their future scholarly semantic annotation)
