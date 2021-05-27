@@ -1,24 +1,28 @@
 # The case for the modeling of a music (content) infoset
-Philippe Rigaux (Cnam)
+Working draft - Philippe Rigaux (Cnam)
 
 ##  What do we find in music score encodings
 
 Current score encodings are based on traditional sheet scores, whose aim is to convey the notation
-to performers (or analysts) clearly, efficiently and consistently. Yet, many applications that
-use these scores as input are *not* concerned with details that pertains to (human) readibility. Page
+to performers (or analysts) clearly, efficiently and consistently. Yet, many digital applications that
+use these scores as input for other purposes are *not* concerned with details that pertain to (human) readibility. Page
 sizes, fonts, margins are useless for a digital performer or a digital analysts. The same can, IMO, be said
-to some aspects which seem more tightly related to music notation: allocation of parts to staves, and clef.
+for some other aspects, although they seem more tightly related to music notation: allocation of notes to staves, clef,
+positionning.
 
-Therefore, I think that digital encoding of scores mix severals concerns of distinct nature, and that it would
-really pay off to *separate* these concerns, with potential benefits for applications that to *not* aim at merely displaying
-music notation.
+Therefore, my point is the following: *by trying to capture all the eleme,ts that contribute to the final
+score layout, digital encodings of scores mix severals concerns of completely distinct nature*. It would
+really pay off to *separate these concerns*, with potential benefits for applications that to *not* aim at merely displaying
+music notation. More esily said than done, but the challenge is both quite interesting, and may lead to extremely useful achievement.
 
-> Let's call these applications 'digital music app' of DMAP (find better) from now on. Typical examples: a (digital) performer (e.g., MIDI performer, 
-> or hopefully a more sophisticated one) ; a (digtal) analyser (i.e., a tools that extract some high-level features from a score).
+> Let's call s 'digital music app' of DMAP (find better) from now on the application which are not oriented toward score rendering. 
+> Typical examples: a (digital) performer (e.g., MIDI performer, 
+> or hopefully a more sophisticated one) ; a (digtal) analyser (i.e., a tools that extract some high-level features from a score);
+> music transcription. Some further toughts on these applications are given later.
 
-In the following, I list some of these benefits, making the assumption that there is a subset of the data found in a score encoding that 
-contains the sufficient and necessary content for most (or all) DMAP. I will call this subset **music content infoset** (waiting for a better term), MCI
-for short.
+In the following, I list some of these benefits. Basically, we work on the assumption that there is a subset of the data 
+found in score encodings (I will mostly consider MEI)  that 
+contains the sufficient and necessary content for most (or all) DMAP. I will call this subset **music content infoset** (waiting for a better term), or MCI  for short.
 
 ### Benefit 1 : improve entropy
 
