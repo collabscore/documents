@@ -110,6 +110,11 @@ more realistic / pleasant, we ask the performer to take into account  additional
 slurs are also required. Performances instructions (dynamics) can be of interest. The precise list of features of the MCI is to 
 be determined.
 
+> The case of the *key signature* is interesting. In principle, knowing the alteration of each note is equivalent. However, the key
+> signature yields an implicit information on the global tonality of the music piece. Is this information useful for performance ? Can it 
+> be inferred without an explicit coding? In a knowledge-based approach, should'nt we represent it as a first-class concept rather
+> than as a set of alterations?
+
 Consider now the reverse processs: transcription. From an audio signal we aim at producing the score. Obviously, there is not enough
 information in the audio file to infer the presentation elements listed above: page layout, staves, clefs, etc. However, the transcription
 process should be able to produce the MCI as suggested above: voices, and articulation aspects. 
