@@ -107,10 +107,15 @@ the MIDI encoding extracted from the score. We get rid of
 
 Basically, the only remaining part are voices (channels in MIDI terms), i.e., sequences of pitches. Now, if we want something
 more realistic / pleasant, we ask the performer to take into account  additional information: metric is important from strong / weak beats,
-slurs are aso required. Performances instructions (dynamics) can be of interest. The precise list of features of the MCI is to 
+slurs are also required. Performances instructions (dynamics) can be of interest. The precise list of features of the MCI is to 
 be determined.
 
+Consider now the reverse processs: transcription. From an audio signal we aim at producing the score. Obviously, there is not enough
+information in the audio file to infer the presentation elements listed above: page layout, staves, clefs, etc. However, the transcription
+process should be able to produce the MCI as suggested above: voices, and articulation aspects. 
 
+From this MCI, the figure shows an additional step: styling. With a dedicated styling language, we could ideally enumerate all possible scores
+from a same MCI.
 
 ### Example 2: styling score sheets
 
