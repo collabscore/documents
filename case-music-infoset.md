@@ -124,6 +124,9 @@ process should be able to produce the MCI as suggested above: voices, and articu
 From this MCI, the figure shows an additional step: styling. With a dedicated styling language, we could ideally enumerate all possible scores
 from a same MCI. (To be developped).
 
+
+![Multiple engraving from a same MCI](figures/engraving.png)
+
 ### Example 3: analysis and annotations
 
 ## References
