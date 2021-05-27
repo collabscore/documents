@@ -90,13 +90,41 @@ as input a clean and well structured representation of music notational content.
 
 ### Example 1: from notation to performance and vice-versa
 
+Firs example: we consider the problem of producing an audio performance from some notation input, and conversely notation
+from audio input (called *transcription*). Illustrated by the following figure. It assume an ideal, digital performer, 
+basically a MIDI device, or something more sophisticated (e.g., equipped with a performance model, see [the MPM model][2].
+In all cases, the performer is apt at decoding its input 
+![Digital performance and transcription](figures/DigPerformer.png)
+
+First: obviously there exist a large class of score encodings for which the resulting performance will be the same. Thus they some common content which constitutes our MCI. From this MCI alone, it is
+possible to produce the performance. Said otherwise, the
+MCI is an invariant for this class of scores.  If the  performer is a MIDI device, then the invariant is simply 
+the MIDI encoding extracted from the score. We get rid of
+  - all page layout instructions
+  - all metadata
+  - all specifications related to staves and clefs
+  - all textual annotation
+
+Basically, the only remaining part are voices (channels in MIDI terms), i.e., sequences of pitches. Now, if we want something
+more realistic / pleasant, we ask the performer to take into account  additional information: metric is important from strong / weak beats,
+slurs are also required. Performances instructions (dynamics) can be of interest. The precise list of features of the MCI is to 
+be determined.
+
+> The case of the *key signature* is interesting. In principle, knowing the alteration of each note is equivalent. However, the key
+> signature yields an implicit information on the global tonality of the music piece. Is this information useful for performance ? Can it 
+> be inferred without an explicit coding? In a knowledge-based approach, should'nt we represent it as a first-class concept rather
+> than as a set of alterations?
+
+Consider now the reverse processs: transcription. From an audio signal we aim at producing the score. Obviously, there is not enough
+information in the audio file to infer the presentation elements listed above: page layout, staves, clefs, etc. However, the transcription
+process should be able to produce the MCI as suggested above: voices, and articulation aspects. 
+
 ### Example 2: styling score sheets
 
-## Preliminary thoughts
+From this MCI, the figure shows an additional step: styling. With a dedicated styling language, we could ideally enumerate all possible scores
+from a same MCI. (To be developped).
 
-
-
-
+### Example 3: analysis and annotations
 
 ## References
 
@@ -105,3 +133,5 @@ as input a clean and well structured representation of music notational content.
 [2]: <https://hal.archives-ouvertes.fr/hal-02454536>(Fournier-S'niehotta, R.; Rigaux, P. and Travers, N. Modeling Music as Synchronized Time Series: Application to Music Score Collections. In Information Systems, 73: 35-49, 2018)
 
 [3]: <https://hal.archives-ouvertes.fr/hal-02454536>(Cherfi, S. S-s.; Guillotel, C.; Hamdi, F. c.; Rigaux, P. and Travers, N. Ontology-Based Annotation of Music Scores. In Knowledge Capture Conference, pages 1-4, ACM Press, Austin, 2017.)
+
+[4]: <https://axelberndt.github.io/MPM/>(Music Performance Markup format - MPM)
