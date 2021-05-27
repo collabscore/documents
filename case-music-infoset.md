@@ -90,9 +90,13 @@ as input a clean and well structured representation of music notational content.
 
 ### Example 1: from notation to performance and vice-versa
 
-
+Firs example: we consider the problem of producing an audio performance from some notation input, and conversely notation
+from audio input (called *transcription*). Illustrated by the following figure. It assume an ideal, digital performer, 
+basically a MIDI device, or something more sophisticated (e.g., equipped with a performance model, see [the MPM model][2].
+In all cases, the performer is apt at decoding its input 
 ![Digital performance and transcription](figures/DigPerformer.png)
 
+First: obviously there exist a large class of score encodings from which the resulting 
 ### Example 2: styling score sheets
 
 ## Preliminary thoughts
@@ -108,3 +112,5 @@ as input a clean and well structured representation of music notational content.
 [2]: <https://hal.archives-ouvertes.fr/hal-02454536>(Fournier-S'niehotta, R.; Rigaux, P. and Travers, N. Modeling Music as Synchronized Time Series: Application to Music Score Collections. In Information Systems, 73: 35-49, 2018)
 
 [3]: <https://hal.archives-ouvertes.fr/hal-02454536>(Cherfi, S. S-s.; Guillotel, C.; Hamdi, F. c.; Rigaux, P. and Travers, N. Ontology-Based Annotation of Music Scores. In Knowledge Capture Conference, pages 1-4, ACM Press, Austin, 2017.)
+
+[4]: <https://axelberndt.github.io/MPM/>(Music Performance Markup format - MPM)
