@@ -10,14 +10,14 @@ sizes, fonts, margins are useless for a digital performer or a digital analysts.
 for some other aspects, although they seem more tightly related to music notation: allocation of notes to staves, clef,
 positionning.
 
-Therefore, my point is the following: *by trying to capture all the eleme,ts that contribute to the final
+Therefore, my point is the following: *by trying to capture all the elements that contribute to the final
 score layout, digital encodings of scores mix severals concerns of completely distinct nature*. It would
 really pay off to *separate these concerns*, with potential benefits for applications that to *not* aim at merely displaying
-music notation. More esily said than done, but the challenge is both quite interesting, and may lead to extremely useful achievement.
+music notation. More easily said than done, but the challenge is both quite interesting, and may lead to extremely useful achievement.
 
 > Let's call s 'digital music app' of DMAP (find better) from now on the application which are not oriented toward score rendering. 
 > Typical examples: a (digital) performer (e.g., MIDI performer, 
-> or hopefully a more sophisticated one) ; a (digtal) analyser (i.e., a tools that extract some high-level features from a score);
+> or hopefully a more sophisticated one) ; a (digital) analyser (i.e., a tools that extract some high-level features from a score);
 > music transcription. Some further toughts on these applications are given later.
 
 In the following, I list some of these benefits. Basically, we work on the assumption that there is a subset of the data 
@@ -28,7 +28,7 @@ contains the sufficient and necessary content for most (or all) DMAP. I will cal
 
 Music score file are often huge, and their structure is extremely complicated (probably because of 
 this aggregation of concerns mentioned above). When such files
-are used as input for a DMAP, the amount of noise is great, whereas the amount useful content is quite limited
+are used as input for a DMAP, the amount of noise is great, whereas the amount of useful content is quite limited
 with respect to the file size. If we could idenfify and extract the MCI and use it as input, the
 entropy would be greatly improved, with obvious advantages: 
 
