@@ -1,50 +1,63 @@
 # The case for the modeling of a music (content) infoset
-Philippe Rigaux (Cnam)
+Working draft - Philippe Rigaux (Cnam)
 
 ##  What do we find in music score encodings
 
 Current score encodings are based on traditional sheet scores, whose aim is to convey the notation
-to performers (or analysts) clearly, efficiently and consistently. Yet, many applications that
-use these scores as input are *not* concerned with details that pertains to (human) readibility. Page
+to performers (or analysts) clearly, efficiently and consistently. Yet, many digital applications that
+use these scores as input for other purposes are *not* concerned with details that pertain to (human) readibility. Page
 sizes, fonts, margins are useless for a digital performer or a digital analysts. The same can, IMO, be said
-to some aspects which seem more tightly related to music notation: allocation of parts to staves, and clef.
+for some other aspects, although they seem more tightly related to music notation: allocation of notes to staves, clef,
+positionning.
 
-Therefore, I think that digital encoding of scores mix severals concerns of distinct nature, and that it would
-really pay off to *separate* these concerns, with potential benefits for applications that to *not* aim at merely displaying
-music notation.
+Therefore, my point is the following: *by trying to capture all the eleme,ts that contribute to the final
+score layout, digital encodings of scores mix severals concerns of completely distinct nature*. It would
+really pay off to *separate these concerns*, with potential benefits for applications that to *not* aim at merely displaying
+music notation. More esily said than done, but the challenge is both quite interesting, and may lead to extremely useful achievement.
 
-> Let's call these applications 'digital music app' of DMAP (find better) from now on. Typical examples: a (digital) performer (e.g., MIDI performer, 
-> or hopefully a more sophisticated one) ; a (digtal) analyser (i.e., a tools that extract some high-level features from a score).
+> Let's call s 'digital music app' of DMAP (find better) from now on the application which are not oriented toward score rendering. 
+> Typical examples: a (digital) performer (e.g., MIDI performer, 
+> or hopefully a more sophisticated one) ; a (digtal) analyser (i.e., a tools that extract some high-level features from a score);
+> music transcription. Some further toughts on these applications are given later.
 
-In the following, I list some of these benefits, making the assumption that there is a subset of the data found in a score encoding that 
-contains the sufficient and necessary content for most (or all) DMAP. I will call this subset **music content infoset** (waiting for a better term), MCI
-for short.
+In the following, I list some of these benefits. Basically, we work on the assumption that there is a subset of the data 
+found in score encodings (I will mostly consider MEI)  that 
+contains the sufficient and necessary content for most (or all) DMAP. I will call this subset **music content infoset** (waiting for a better term), or MCI  for short.
 
 ### Benefit 1 : improve entropy
 
-Music score file are often huge, and their structure is extremely complicated (probably because this mix of concerns mentioned above). When such files
-are used as input for a DMAP, the amount of noise is great whereas useful content is quite limited. If we could idenfify the MCI and use it as input, the
+Music score file are often huge, and their structure is extremely complicated (probably because of 
+this aggregation of concerns mentioned above). When such files
+are used as input for a DMAP, the amount of noise is great, whereas the amount useful content is quite limited
+with respect to the file size. If we could idenfify and extract the MCI and use it as input, the
 entropy would be greatly improved, with obvious advantages: 
 
-  - less noise (and probably better quality)
+  - less noise, and probably better quality of the useful content
   - clarification on the information really required by DMAPs 
   - opportunity for better structures, higher abstraction levels, possibly algebraic or logic-based manipulations, etc.
 
 ### Benefit 2 : less dependence on syntactic idiosyncrasies
 
-There exist many ways to encode a same scores. This does complicate parsing and interpretation of score content. Here, the MCI would act as an abstract level
-where encoding practices would disappear in favor of a more *canonical* representation.
+There exist many ways to encode a same score. This does complicate parsing and interpretation of score content. 
+Here, the MCI would act as an abstract level where encoding practices would disappear in favor of a more *canonical* representation.
 
-> This issue appeared in the early days of XML when it becames a "language" of choice for data storage and exchange. The W3C felt the need to define the
-> so-called [XML information set][1] that defines the content of an XML file independently from syntactic variants (e.g., entity dereferencing). The DOM
-> is XPath data model are somehow two implementations of the XML infoset, although slightly different.
+> This issue appeared in the early days of XML when it becames a "language" of choice for data storage 
+> and exchange. The W3C felt the need, *after* the recommendation of XML syntax, to define the so-called 
+> [XML information set][1] that defines the content of an XML file independently from syntactic variants 
+> (e.g., entity dereferencing, blan nodes, etc.). The DOM
+> or the XPath data model are somehow two implementations of the XML infoset, although slightly different.
+
+I do think that we would feel much more comfortable with a well-structured data model, and we could much more easily leverage
+this model to achieve a true semantic layer to interact with music notation.
 
 ### Benefit 3: separation of concerns leads to independent styling
 
 The relevant comparison here is with HTML documents and web layouts. Whereas in the early days (hopefully gone for everybody), HTML contained *both* content 
-(e.g., text) *and* presentation instructions, they can now be neatly separatated with core HTML + CSS. In a more general setting,  the same can be said from XML + XSLT.
+(e.g., text) *and* presentation instructions, they are now neatly separatated with core HTML + CSS. In a more general setting,  
+the same holds for XML + XSLT.
 
-In the context of music: ideally we could pair some MCI content with one *or many* 'score sheets' with the potentil ability to produce *many* layouts from 
+In the context of music: ideally we could pair some MCI content with one *or many* 'score sheets' with the potential ability to 
+produce *many* layouts from 
 a single content input. There are some quite practical and very useful applications: displaying separately one or several voices ; displaying variants 
 or annotations along with a "main" score; transposition, harmonic reductions, etc. There are some touchy issues there (producing socres for separate voices for instance
 complies to specific rules and cannot be obtained readily from the general score), but this seems a very exciting and potentially fruitful challenge.
@@ -52,18 +65,25 @@ complies to specific rules and cannot be obtained readily from the general score
 ### Benefit 4: better semantics
 
 In principle, if we can "view" a score content as an instance of a well-defined data model, nothing can prevent from defining operations of various kinds,
-at an abstrdat, ideally declarative level. This is the approach followed in [time series modelling][2] which proposes a query langugage, but can be declined 
-for other situations.
+at an abstract, ideally declarative level. Moreover it becomes much easier to pair a model instance or parts of this 
+instance with other resources, at a consistent, high level of abstraction idependent from 
+storage, serialization or encoding issues. 
 
-### In summary: the case for a music notation info set, and its impact for linked data
+Note: this is the approach that we followed at Cnam in [time series modelling][2] which proposes a query langugage, but can be declined 
+for other situations. It gives a detailed example of the methodology.
+
+### Summary: the case for a music notation info set, and its impact for linked data
 
 In a project that aims at producing "semantic" data in order to link this data with other sources (annotations), I think it is worth trying to 
-identify what is the meaningful content encoded is a score, and model this content. Meaning is necessarily related to applications, and to the set of information
-required by these applications. A bet is that there is a common info set that can serve as input to a range of applications, and that we can safely ignore 
-any other content embedded in the score which can then simplify considered as noise from the application viewpoint.
+identify what is the meaningful content encoded is a score, and to model this content. 'Meaning' is necessarily 
+related to applications, and to the set of information required by these applications. The main assumption in this context
+is that there is a common info set that can serve as input to a range of applications, and that we can safely ignore 
+any other content embedded in the score which can then simply considered as "noise" from the application viewpoint.
 
-Practically speaking, a MEI file for instance would be the source of an instance of MCI, represented in whatever form is suitable (e.g., RDF, JSON-LD, Music21 classes, etc). 
-A server would "publish" this instance which could be the source of annotations, transformations, or any process (musicological analysis for instance) thta requires
+Practically speaking, a MEI file for instance would be the source from which one extracts an instance of 
+MCI, represented in whatever form is suitable (e.g., RDF, JSON-LD, Music21 classes, etc). 
+A server would "publish" this instance as a support for annotations, transformations, or any other 
+process (musicological analysis for instance) that requires
 as input a clean and well structured representation of music notational content. 
 
 ## Examples 
