@@ -90,6 +90,9 @@ as input a clean and well structured representation of music notational content.
 
 ### Example 1: from notation to performance and vice-versa
 
+
+![Digital performance and transcription](figures/DigPerformer.png)
+
 ### Example 2: styling score sheets
 
 ## Preliminary thoughts
