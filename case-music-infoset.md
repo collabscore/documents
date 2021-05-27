@@ -96,7 +96,22 @@ basically a MIDI device, or something more sophisticated (e.g., equipped with a 
 In all cases, the performer is apt at decoding its input 
 ![Digital performance and transcription](figures/DigPerformer.png)
 
-First: obviously there exist a large class of score encodings from which the resulting 
+First: obviously there exist a large class of score encodings for which the resulting performance will be the same. Thus they some common content which constitutes our MCI. From this MCI alone, it is
+possible to produce the performance. Said otherwise, the
+MCI is an invariant for this class of scores.  If the  performer is a MIDI device, then the invariant is simply 
+the MIDI encoding extracted from the score. We get rid of
+  - all page layout instructions
+  - all metadata
+  - all specifications related to staves and clefs
+  - all textual annotation
+
+Basically, the only remaining part are voices (channels in MIDI terms), i.e., sequences of pitches. Now, if we want something
+more realistic / pleasant, we ask the performer to take into account  additional information: metric is important from strong / weak beats,
+slurs are aso required. Performances instructions (dynamics) can be of interest. The precise list of features of the MCI is to 
+be determined.
+
+
+
 ### Example 2: styling score sheets
 
 ## Preliminary thoughts
