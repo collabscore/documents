@@ -18,11 +18,12 @@ music notation. More easily said than done, but the challenge is both quite inte
 > Let's call s 'digital music app' of DMAP (find better) from now on the application which are not oriented toward score rendering. 
 > Typical examples: a (digital) performer (e.g., MIDI performer, 
 > or hopefully a more sophisticated one) ; a (digital) analyser (i.e., a tools that extract some high-level features from a score);
-> music transcription. Some further toughts on these applications are given later.
+> music transcription; Optical Music Recognition (OMR). Some further toughts on these applications are given later.
 
 In the following, I list some of these benefits. Basically, we work on the assumption that there is a subset of the data 
 found in score encodings (I will mostly consider MEI)  that 
-contains the sufficient and necessary content for most (or all) DMAP. I will call this subset **music content infoset** (waiting for a better term), or MCI  for short.
+contains the sufficient and necessary content for most (or all) DMAP. I will call this subset **music content infoset** 
+(inspired by XML normalization efforts, see below - and waiting for a better term), or MCI  for short.
 
 ### Benefit 1 : improve entropy
 
@@ -39,7 +40,10 @@ entropy would be greatly improved, with obvious advantages:
 ### Benefit 2 : less dependence on syntactic idiosyncrasies
 
 There exist many ways to encode a same score. This does complicate parsing and interpretation of score content. 
-Here, the MCI would act as an abstract level where encoding practices would disappear in favor of a more *canonical* representation.
+Here, the MCI would act as an abstract level where encoding practices would disappear in favor of a more *canonical* representation. Several immediate practical impacts
+
+  - ability to *compare* scores much more easily
+  - versioning and evolution management
 
 > This issue appeared in the early days of XML when it becames a "language" of choice for data storage 
 > and exchange. The W3C felt the need, *after* the recommendation of XML syntax, to define the so-called 
@@ -66,7 +70,7 @@ complies to specific rules and cannot be obtained readily from the general score
 
 In principle, if we can "view" a score content as an instance of a well-defined data model, nothing can prevent from defining operations of various kinds,
 at an abstract, ideally declarative level. Moreover it becomes much easier to pair a model instance or parts of this 
-instance with other resources, at a consistent, high level of abstraction idependent from 
+instance with other resources, at a consistent, high level of abstraction independent from 
 storage, serialization or encoding issues. 
 
 Note: this is the approach that we followed at Cnam in [time series modelling][2] which proposes a query langugage, but can be declined 
