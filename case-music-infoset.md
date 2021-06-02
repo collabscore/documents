@@ -192,8 +192,8 @@ recursive divisions often occur, generating a hierarchy of pulses called metrica
     
 These rules can be expressing in a well-known formal language, namely *context-free grammar*s. Given that, at each step, several
 partitions are possible (with various probabilities), *weighted context-free grammars* are more adapted and have been used as the formal
-context in several MIR studies (add references).
-
+context in several MIR studies (add references). The following figure illustrates the notions of derivation trees, and their relationship
+with voices representations.
 
 ![A voice fragment and the underlying metric structure (from [7]](figures/soa_tree_models.png)
 
