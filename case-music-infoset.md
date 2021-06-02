@@ -194,6 +194,9 @@ These rules can be expressing in a well-known formal language, namely *context-f
 partitions are possible (with various probabilities), *weighted context-free grammars* are more adapted and have been used as the formal
 context in several MIR studies (add references).
 
+
+![A voice fragment and the underlying metric structure (from [7]](figures/soa_tree_models.png)
+
 There are some subtelties to take account of (partial measures, ties). But the important point is the following: by modeling a voice
 (sequence of events) as a metric structure, we
 
@@ -225,3 +228,5 @@ This has important *practical* consequences.
 [5]: <https://github.com/Amleth/source-sherlockizer-service>(Some technical thoughts on processing MEI sources to facilitate their future scholarly semantic annotation)
 
 [6]: <https://en.wikipedia.org/wiki/Invariant_(mathematics)>(Definition of invariant)
+
+[7]: The Musical Score: a challenging goal for automatic music transcription. Francesco Foscarin, PhD Thesis, Cnam, 2020
