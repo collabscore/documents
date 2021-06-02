@@ -157,8 +157,8 @@ The latter illustrates an interesting feature: the need to add to our MCI anchor
 ##  Revealing Structures from Music Notation 
 
 Music notation formats (MusicXML, MEI) are generally seen as as mean to organize, using a semi-structured language, the whole 
-data set that can be collected to describe a music score. Let's adopt another perspective: these XML files contain a serialization
-of one or several, mixed, data structures, and these structures are partly lost or hidden during the serialization process. Our goal
+set of data elements that can be collected to describe a music score. Let's adopt another perspective: these XML files contain a serialization
+of one or several (mixed) data structures, and these structures are partly lost or hidden during the serialization process. Our goal
 is to reconstruct them.
 
 Essentially, all the structures that we can identify are hierarchical.
@@ -166,20 +166,21 @@ Essentially, all the structures that we can identify are hierarchical.
 ### Structuring the score 
 
 The first hierarchy is almost explicit in all score encodings we are aware of. 
-A score is made of parts.  A group (of parts) consists of a set of subparts, and mostly serves
+A score is made of *parts*.  A group (of parts) consists of a set of subparts, and mostly serves
 the organizational aspect of the score. For instance, the orchestral material	of a concerto score typically 
-defines a group for wind instruments, another one for 	string instruments, etc.  A single encapsulates the music notation elements assigned
+defines a group for wind instruments, another one for 	string instruments, etc.  A single part encapsulates the music notation elements assigned
 to an individual performer (instrument or vocal). The following figure shows for instance
 a single part for the soloist (piano), another one for the violins, cellos, etc.
-A single part contains one or several voices.
+A single part contains one or several *voices*.
  
 ![Structure of a score: parts and voices](figures/ScoreStructure.png)
 
 ### Structuring musical flows: voices as serializations of rhythmic trees
 
 A voice is generally seen as a sequence of events. I believe that it is much more interesting to unveil the rhythmic organization
-of the temporal space that supports these events. To state it briefly: events cannot be assigned to any offset in a continuous temporal space.
-They rather fall  on a discrete 'grid' which itself is the result of a rule-based partition of temporal intervals. 
+of the temporal space that supports these events, and to use this organization as a reference to represent voices. 
+To state it briefly: events cannot be assigned to any offset in a continuous temporal space.
+They rather fall  on a discrete "grid" which itself is the result of a rule-based partition of temporal intervals. 
 The resulting rhythmic organization  is inherently hierarchical: beats are divided into equal units (i.e., sub-beats) or compounded
 into longer units (i.e., the measures). Further
 recursive divisions often occur, generating a hierarchy of pulses called metrical structure. For instance:
@@ -190,27 +191,27 @@ recursive divisions often occur, generating a hierarchy of pulses called metrica
     at each step, but less likely.
     
 These rules can be expressing in a well-known formal language, namely *context-free grammar*s. Given that, at each step, several
-partitions are possible (with various probabilities), *weighted context-free grammars* seem more adapted and have been used as the formal
+partitions are possible (with various probabilities), *weighted context-free grammars* are more adapted and have been used as the formal
 context in several MIR studies (add references).
 
-There are some subtelties to take account of (partial measures, ties). But the importantpoint is the following: by modeling a voice
+There are some subtelties to take account of (partial measures, ties). But the important point is the following: by modeling a voice
 (sequence of events) as a metric structure, we
 
   - unveil a fundamental music organization principle (al least notation-wise) which is completely hidden in notation encodings
   - we can enumerate the set of allowed offsets as a formal language (with probabilistic aspects), and refer to these
-    offsets in a formal context where each can be seen as a specific branch in a derivation tree.
+    offsets in a formal context where each offset corresponds to a specific branch in a derivation tree.
 
-This has important consequences. First we can rely on the full battery of tools and properties of formal languages theory, with applications
-in (non exhaustive list): model checking (is the notation accurate and complete), simplification / decomposition, links with higher level
-concepts (string beats, weak beats), comparisons, etc.
+This has important *practical* consequences. 
 
-Second, and referring again to [5]:  analytic processes can take advantage of this approach to associate *annotations* with an offset,
-*event though tis offset is not explicitly present in the notation itself*. Or, to state it differently: both events (from the score)
-and annotations (from the analytic process) can use as a common reference the metric space, without having to depend from one another.
+ - First we can rely on the full battery of tools and properties of formal languages theory, with applications
+   in (non exhaustive list): model checking (is the notation accurate and complete), simplification / decomposition, relationships with higher level
+   concepts (string beats, weak beats), score comparisons, etc.
+ - Second, and referring again to [5]:  analytic processes can take advantage of this approach to associate *annotations* with an offset,
+   *event though this offset is not explicitly present in the notation itself*. Or, to state it differently: both events (from the score)
+   and annotations (from the analytic process) can use as a common reference the metric space, without having to depend from one another.
 
 *Pending question*: is there an existing  ontology that could be (re)used as a bac kbone for representing voices and annotations?
 
- 
 ## References
 
 [1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204>(XML information set. W3C recommendation.)
