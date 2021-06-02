@@ -1,6 +1,12 @@
 # The case for the modeling of a music (content) infoset
 Working draft - Philippe Rigaux (Cnam)
 
+In this document:
+ 
+  - General ideas for modeling explicit and implicit data strutures fund in music notation, and expected benefits
+  - Examples: transcription, styling, analysis, annotations... 
+  - Technical aspects (preliminary)
+ 
 ##  What do we find in music score encodings
 
 Current score encodings are based on traditional sheet scores, whose aim is to convey the notation
@@ -146,9 +152,19 @@ this introduces the following needs:
 
 The latter illustrates an interesting feature: the need to add to our MCI anchors (IRI) which are not explicitly present in the encoding. These anchors can be referred to in the annotations. The annotation space wold then be fully defined at the abstract level, with a materialisation of some events which not necessary in terms of strict notational content.
 
+![Annotations in the semantic space](figures/annotation.png)
 
+##  Revealing Structures from Music Notation 
 
-![Annotations in the semzntic space](figures/annotation.png)
+Music notation formats (MusicXML, MEI) are generally seen as as mean to organize, using a semi-structured language, the whole 
+data set that can be collected to describe a music score. Let's adopt another perspective: these XML files contain a serialization
+of one or several, mixed, data structures, and these structures are partly lost or hidden during the serialization process. Our goal
+is to reconstruct them.
+
+### Structuring the score 
+
+![Strructure of a score: parts and voices](figures/ScoreStructure.png)
+
 
 ## References
 
