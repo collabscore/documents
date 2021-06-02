@@ -57,6 +57,34 @@ respectant l'adressage IIIF.
 Il serait sans doute très utile de récupérer des outils existants ([3],[4]) ou de collaborer avec des groupes qui ont déjà travaillé sur un
 sujet équivalent (cf. Dezrann, développé par AlgoMus [5]).
 
+
+### Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam)
+
+
+
+### Interface (UI) de synchronisation des sources (Cnam + BnF)
+
+Via la partition-pivot, il sera possible de mettre en correspondance deux sources quelconques. 
+
+   - une source-image et le pivot lui-même (affiché sous forme de partition)
+   - une source-image et un document audio (dont, cas particulier, un MIDI produit à partir du pivot)
+   - une source-image et une vidéo
+  
+(NB: cas  des sources littéraires à étudier)
+
+Une interface doit permettre une synchronisation de deux sources quelconques. Les scénarios:
+
+  - source image à gauche, partition-pivot à droite. Tout défilement ou action sur l'un (par exemple déclenchement
+    d'une écoute MIDI sur la partition pivot) entraîne un alignement avec l'autre (p.e. surlignage des mesures sur l'image).
+  - source image à gauche, audio à droite. L'écoute de l'audio entraîne le surlignage des mesures sur l'image
+  - même scénario avec un document vidéo à droite.
+
+### Le module OMR
+
+Question: obtiendra-t-on automatiquement les liens entre BB de la source-origine et les éléments-pivot ?
+
+
+
 # Références
 
 [1]: https://github.com/Amleth/source-sherlockizer-service(Some technical thoughts on processing MEI sources to facilitate their future scholarly semantic annotation)
