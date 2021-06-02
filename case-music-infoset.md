@@ -161,9 +161,19 @@ data set that can be collected to describe a music score. Let's adopt another pe
 of one or several, mixed, data structures, and these structures are partly lost or hidden during the serialization process. Our goal
 is to reconstruct them.
 
+Essentially, all the structures that we can identify are hierarchical.
+
 ### Structuring the score 
 
-![Strructure of a score: parts and voices](figures/ScoreStructure.png)
+The first hierarchy is almost explicit in all score encodings we are aware of. 
+A score is made of parts.  A group (of parts) consists of a set of subparts, and mostly serves
+the organizational aspect of the score. For instance, the orchestral material	of a concerto score typically 
+defines a group for wind instruments, another one for 	string instruments, etc.  A single encapsulates the music notation elements assigned
+to an individual performer (instrument or vocal). The following figure shows for instance
+a single part for the soloist (piano), another one for the violins, cellos, etc.
+A single part contains one or several voices.
+ 
+![Structure of a score: parts and voices](figures/ScoreStructure.png)
 
 
 ## References
