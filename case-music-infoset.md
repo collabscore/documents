@@ -175,7 +175,42 @@ A single part contains one or several voices.
  
 ![Structure of a score: parts and voices](figures/ScoreStructure.png)
 
+### Structuring musical flows: voices as serializations of rhythmic trees
 
+A voice is generally seen as a sequence of events. I believe that it is much more interesting to unveil the rhythmic organization
+of the temporal space that supports these events. To state it briefly: events cannot be assigned to any offset in a continuous temporal space.
+They rather fall  on a discrete 'grid' which itself is the result of a rule-based partition of temporal intervals. 
+The resulting rhythmic organization  is inherently hierarchical: beats are divided into equal units (i.e., sub-beats) or compounded
+into longer units (i.e., the measures). Further
+recursive divisions often occur, generating a hierarchy of pulses called metrical structure. For instance:
+
+  - The whole score is partitioned in measures
+  - A 4/4 measure is generally partitioned in 4 sub-intervals, or beats, (some other partitions are possible, although less likely)
+  - A beat is generally partitioned in two quavers, themselves (generally) partitioned in semi-quavers ; other partitions are possible
+    at each step, but less likely.
+    
+These rules can be expressing in a well-known formal language, namely *context-free grammar*s. Given that, at each step, several
+partitions are possible (with various probabilities), *weighted context-free grammars* seem more adapted and have been used as the formal
+context in several MIR studies (add references).
+
+There are some subtelties to take account of (partial measures, ties). But the importantpoint is the following: by modeling a voice
+(sequence of events) as a metric structure, we
+
+  - unveil a fundamental music organization principle (al least notation-wise) which is completely hidden in notation encodings
+  - we can enumerate the set of allowed offsets as a formal language (with probabilistic aspects), and refer to these
+    offsets in a formal context where each can be seen as a specific branch in a derivation tree.
+
+This has important consequences. First we can rely on the full battery of tools and properties of formal languages theory, with applications
+in (non exhaustive list): model checking (is the notation accurate and complete), simplification / decomposition, links with higher level
+concepts (string beats, weak beats), comparisons, etc.
+
+Second, and referring again to [5]:  analytic processes can take advantage of this approach to associate *annotations* with an offset,
+*event though tis offset is not explicitly present in the notation itself*. Or, to state it differently: both events (from the score)
+and annotations (from the analytic process) can use as a common reference the metric space, without having to depend from one another.
+
+*Pending question*: is there an existing  ontology that could be (re)used as a bac kbone for representing voices and annotations?
+
+ 
 ## References
 
 [1]:  <https://www.w3.org/TR/2004/REC-xml-infoset-20040204>(XML information set. W3C recommendation.)
