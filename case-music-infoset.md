@@ -100,7 +100,7 @@ as input a clean and well structured representation of music notational content.
 
 ### Example 1: from notation to performance and vice-versa
 
-Firs example: we consider the problem of producing an audio performance from some notation input, and conversely notation
+First example: we consider the problem of producing an audio performance from some notation input, and conversely notation
 from audio input (called *transcription*). Illustrated by the following figure. It assumes an ideal, digital performer, 
 basically a MIDI device, or something more sophisticated (e.g., equipped with a performance model, see [the MPM model][2].
 In all cases, the performer is apt at decoding its input 
@@ -130,7 +130,7 @@ be determined.
 > be inferred without an explicit coding? In a knowledge-based approach, should'nt we represent it as a first-class concept rather
 > than as a set of alterations?
 
-Consider now the reverse processs: transcription. From an audio signal we aim at producing the score. Obviously, there is not enough
+Consider now the reverse process: transcription. From an audio signal we aim at producing the score. Obviously, there is not enough
 information in the audio file to infer the presentation elements listed above: page layout, staves, clefs, etc. However, the transcription
 process should be able to produce the MCI as suggested above: voices, and articulation aspects. 
 
@@ -192,25 +192,26 @@ recursive divisions often occur, generating a hierarchy of pulses called metrica
     
 These rules can be expressing in a well-known formal language, namely *context-free grammar*s. Given that, at each step, several
 partitions are possible (with various probabilities), *weighted context-free grammars* are more adapted and have been used as the formal
-context in several MIR studies (add references).
+context in several MIR studies ([8]). Once a proper grammar is defined, we can use its rules to build a hierarchical structures that model a voice. The following figure shows examples of such hierarchical structures.
 
-There are some subtelties to take account of (partial measures, ties). But the important point is the following: by modeling a voice
-(sequence of events) as a metric structure, we
+![A voice fragment and the underlying metric structure (from [7]](figures/soa_tree_models.png)
 
-  - unveil a fundamental music organization principle (al least notation-wise) which is completely hidden in notation encodings
-  - we can enumerate the set of allowed offsets as a formal language (with probabilistic aspects), and refer to these
-    offsets in a formal context where each offset corresponds to a specific branch in a derivation tree.
+There are some subtleties to take account of (partial measures, ties). However, the important point is the following: by modeling a voice
+(sequence of events) with a hierarchical structure,
+
+  - we unveil a fundamental music organization principle (al least notation-wise) which is completely hidden in notation encodings
+  - we can enumerate the set of allowed offsets as a formal language (with probabilistic aspects), and refer to these offsets in a formal context where each offset corresponds to a specific branch in a tree.
 
 This has important *practical* consequences. 
 
- - First we can rely on the full battery of tools and properties of formal languages theory, with applications
+ - First, we can rely on the full battery of tools and properties of formal languages theory, with applications
    in (non exhaustive list): model checking (is the notation accurate and complete), simplification / decomposition, relationships with higher level
    concepts (string beats, weak beats), score comparisons, etc.
  - Second, and referring again to [5]:  analytic processes can take advantage of this approach to associate *annotations* with an offset,
    *event though this offset is not explicitly present in the notation itself*. Or, to state it differently: both events (from the score)
    and annotations (from the analytic process) can use as a common reference the metric space, without having to depend from one another.
 
-*Pending question*: is there an existing  ontology that could be (re)used as a bac kbone for representing voices and annotations?
+*Pending question*: is there an existing  ontology that could be (re)used as a backbone for representing voices and annotations?
 
 ## References
 
@@ -225,3 +226,7 @@ This has important *practical* consequences.
 [5]: <https://github.com/Amleth/source-sherlockizer-service>(Some technical thoughts on processing MEI sources to facilitate their future scholarly semantic annotation)
 
 [6]: <https://en.wikipedia.org/wiki/Invariant_(mathematics)>(Definition of invariant)
+
+[7]: The Musical Score: a challenging goal for automatic music transcription. Francesco Foscarin, PhD Thesis, Cnam, 2020
+
+[8]: <https://electro-music.com/forum/phpbb-files/grammarsrepresentationmusicroads_714.pdf>(Christopher Roads and Paul Wieneke, Grammars as representations for music, Computer Music Journal, 3(1):48–55, March 1979.)
