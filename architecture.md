@@ -92,7 +92,7 @@ pour l'adaptation selon les normes IIIF.
   - cas des sources littéraires à étudier
   - concertation avec la BnF sur les choix techniques
 
-### Le module OMR
+### Le module OMR (IRISA)
 
 Le module OMR est à peu orès entièrement à la charge de l'IRISA. Le principe de l'intégration au reste de 
 l'architecture est le suivant: le module OMR interroge le serveur CollabScore pour obtenir des partitions multimodales.
@@ -100,6 +100,10 @@ Pour chacune, l'image-origine peut être récupérée par URL, traitée par l'OM
 pivot (document MEI) et sans doute des annotations indiquant les parties à confirmer ou contrôler. 
 
 La partition pivot et les annotations sont transmises au serveur CollabScore via les services REST.
+
+### UI corretion collaborative (Cnam)
+
+Module à la charge du Cnam. A creuser.
 
 **TODO**:
   
