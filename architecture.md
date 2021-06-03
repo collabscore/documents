@@ -43,7 +43,7 @@ au format JSON-LD.
 
 ## Les modules
 
-### Interface (UI) d'alignement entre une partition-image et le pivot (IReMus)
+### Interface (UI) d'alignement entre une partition-image et le pivot (IReMus, fin 2021)
 
 Cette interface permettra de lier les boites englobantes (BB) des mesures sur une partition-image et la partition-pivot. Cette interface interrogera le serveur
 CollabScore pour obtenir la partition-pivot et l'URL d'une source-image, calculera l'ensemble des liens entre une BB de mesure et 
@@ -57,10 +57,14 @@ respectant l'adressage IIIF.
 Il serait sans doute très utile de récupérer des outils existants ([3],[4]) ou de collaborer avec des groupes qui ont déjà travaillé sur un
 sujet équivalent (cf. Dezrann, développé par AlgoMus [5]).
 
+**TODO**: concertation préalable avec l'IReMus. 
 
-### Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam)
+### Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
 
+L'idée est la même mais cette fois il faut associer à chaque mesure de la partition-pivot un fragment (période) d'un document audio ou d'une vidéo. Il
+est possible / probable qu'il existe déjà des procédures d'alignement automatique.
 
+**TODO**: essayer de reprendre contact avec Antescofo, sinon étudier l'état de l'art.
 
 ### Interface (UI) de synchronisation des sources (Cnam + BnF)
 
@@ -69,8 +73,6 @@ Via la partition-pivot, il sera possible de mettre en correspondance deux source
    - une source-image et le pivot lui-même (affiché sous forme de partition)
    - une source-image et un document audio (dont, cas particulier, un MIDI produit à partir du pivot)
    - une source-image et une vidéo
-  
-(NB: cas  des sources littéraires à étudier)
 
 Une interface doit permettre une synchronisation de deux sources quelconques. Les scénarios:
 
@@ -79,11 +81,31 @@ Une interface doit permettre une synchronisation de deux sources quelconques. Le
   - source image à gauche, audio à droite. L'écoute de l'audio entraîne le surlignage des mesures sur l'image
   - même scénario avec un document vidéo à droite.
 
+Le serveur CollabScore fournit la séquence des annotations appariées: pour chaque élément-pivot (mesure), le frament de la
+source A et le fragment de la source B. L'interface doit assurer visuellement l'alignement.
+
+Le Cnam doit réaliser cette interface, mais en vue d'une intégration facile dans Gallica. La BnF dispose d'un petit financement
+pour l'adaptation selon les normes IIIF.
+
+**TODO**: 
+
+  - cas des sources littéraires à étudier
+  - concertation avec la BnF sur les choix techniques
+
 ### Le module OMR
 
-Question: obtiendra-t-on automatiquement les liens entre BB de la source-origine et les éléments-pivot ?
+Le module OMR est à peu orès entièrement à la charge de l'IRISA. Le principe de l'intégration au reste de 
+l'architecture est le suivant: le module OMR interroge le serveur CollabScore pour obtenir des partitions multimodales.
+Pour chacune, l'image-origine peut être récupérée par URL, traitée par l'OMR, avec production d'une partition
+pivot (document MEI) et sans doute des annotations indiquant les parties à confirmer ou contrôler. 
 
+La partition pivot et les annotations sont transmises au serveur CollabScore via les services REST.
 
+**TODO**:
+  
+   - Proposition très générale, à vérifier dans le détail
+   - Question: obtiendra-t-on automatiquement les liens entre BB de la source-origine et les éléments-pivot ?
+   - Concertation avec l'IRISA sur les détails techniques
 
 # Références
 
