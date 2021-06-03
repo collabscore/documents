@@ -1,6 +1,6 @@
 # Architecture CollabScore
 
-Voici la spécification de l'architecture CollabScore, résumée globalement par la figure suivante qui décompose les fonctionnalités en modules. La couleur du cadre autour d'un module indique qu'il est sous la responsabilité du partenaire correspondant (cf légende).
+Voici une proposition pour l'architecture CollabScore, résumée globalement par la figure suivante qui décompose les fonctionnalités en modules. La couleur du cadre autour d'un module indique qu'il est sous la responsabilité du partenaire correspondant (cf. légende).
 
 ![Architecture CollabScore](/figures/architecture.png)
 
@@ -20,7 +20,9 @@ d'établir un canal de communication avec le serveur CollabScore via ses service
 
 La notion de partition multimodale est centrale dans le projet (figure ci-dessus). Elle est basée sur la *partition pivot*, un codage de
 la notation musicale décrivant le contenu d'une œuvre musicale (sous forme de notation) indépendamment des paramètres de présentation. 
-En première approche on peut considérer qu'il s'agit d'un document MEI dépouillé autant que faire se peut de toute instruction de rendu.
+En première approche on peut considérer qu'il s'agit d'un document MEI dépouillé autant que faire se peut de toute instruction de rendu. Le Cnam fournira
+une spécification précise prochainement.
+
 Dans ce document les éléments notationels (éléments-pivots) relatifs au contenu (mesures, notes, silences et accords, métrique, altérations, peut-être liaisons) 
 sont tous identifiables et donc référençables sous la forme d'IRI (cf. les propositions de l'IReMus [1]).
  
@@ -28,7 +30,7 @@ sont tous identifiables et donc référençables sous la forme d'IRI (cf. les pr
 
 Une partition-pivot est issue d'une *source originale* (une image, scénario principal de CollabScore, mais on pourrait en toute généralité aussi considérer 
 un document audio si on faisait de la transcription) à partir de laquelle son contenu est constitué par un processus de numérisation. 
-Pour CollabScore, la source est une image provenant de la BnF ou de la Fondation Royaumont, et le processus est une combinaison d'OMR 
+Pour CollabScore, la source originale est une image provenant de la BnF ou de la Fondation Royaumont, et le processus est une combinaison d'OMR 
 et de correction collaborative.
 
 ### Les annotations
@@ -40,24 +42,23 @@ corresponde à celle des éléments-pivot (en principe, la granularité sera la 
 Les annotations seront conformes au modèle du W3C. En particulier, les services REST de CollabScore permettront de déposer / récupérer les annotations
 au format JSON-LD.
 
-
 ## Les modules
 
 ### Interface (UI) d'alignement entre une partition-image et le pivot (IReMus, fin 2021)
 
-Cette interface permettra de lier les boites englobantes (BB) des mesures sur une partition-image et la partition-pivot. Cette interface interrogera le serveur
+Cette interface permettra de lier les boites englobantes (BB) des mesures sur une partition-image et la partition-pivot. Elle interrogera le serveur
 CollabScore pour obtenir la partition-pivot et l'URL d'une source-image, calculera l'ensemble des liens entre une BB de mesure et 
 l'élément correspondant dans la partition-pivot, et enverra l'ensemble de ces liens sous forme d'annotation au serveur CollabScore.
 
-Est-il nécessaire que la source-image soit accessible via un serveur IIIF ? À éclaircir. L'adressage des  BB devrait certainement être fait en 
-respectant l'adressage IIIF.
+**TODO**: 
 
-(TODO: donner un exemple d'annotation liant une BB et une mesure de la partition-pivot).
+ - Donner un exemple d'annotation liant une BB et une mesure de la partition-pivot).
+ - Est-il nécessaire que la source-image soit accessible via un serveur IIIF ? À éclaircir. L'adressage des  BB devrait certainement être fait en 
+   respectant l'adressage IIIF.
+ - Concertation préalable avec l'IReMus.
 
 Il serait sans doute très utile de récupérer des outils existants ([3],[4]) ou de collaborer avec des groupes qui ont déjà travaillé sur un
 sujet équivalent (cf. Dezrann, développé par AlgoMus [5]).
-
-**TODO**: concertation préalable avec l'IReMus. 
 
 ### Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
 
@@ -66,7 +67,7 @@ est possible / probable qu'il existe déjà des procédures d'alignement automat
 
 **TODO**: essayer de reprendre contact avec Antescofo, sinon étudier l'état de l'art.
 
-### Interface (UI) de synchronisation des sources (Cnam + BnF)
+### Interface (UI) de synchronisation des sources (Cnam + BnF, fin 2022)
 
 Via la partition-pivot, il sera possible de mettre en correspondance deux sources quelconques. 
 
@@ -81,7 +82,7 @@ Une interface doit permettre une synchronisation de deux sources quelconques. Le
   - source image à gauche, audio à droite. L'écoute de l'audio entraîne le surlignage des mesures sur l'image
   - même scénario avec un document vidéo à droite.
 
-Le serveur CollabScore fournit la séquence des annotations appariées: pour chaque élément-pivot (mesure), le frament de la
+Le serveur CollabScore fournit la séquence des annotations appariées: pour chaque élément-pivot (mesure), le fragment de la
 source A et le fragment de la source B. L'interface doit assurer visuellement l'alignement.
 
 Le Cnam doit réaliser cette interface, mais en vue d'une intégration facile dans Gallica. La BnF dispose d'un petit financement
@@ -92,24 +93,24 @@ pour l'adaptation selon les normes IIIF.
   - cas des sources littéraires à étudier
   - concertation avec la BnF sur les choix techniques
 
-### Le module OMR (IRISA)
+### Le module OMR (IRISA, toute la durée du projet)
 
-Le module OMR est à peu orès entièrement à la charge de l'IRISA. Le principe de l'intégration au reste de 
+Le module OMR est à peu près entièrement à la charge de l'IRISA. Le principe de l'intégration au reste de 
 l'architecture est le suivant: le module OMR interroge le serveur CollabScore pour obtenir des partitions multimodales.
-Pour chacune, l'image-origine peut être récupérée par URL, traitée par l'OMR, avec production d'une partition
+Pour chacune, la source originale peut être récupérée par URL, traitée par l'OMR, avec production d'une partition
 pivot (document MEI) et sans doute des annotations indiquant les parties à confirmer ou contrôler. 
 
 La partition pivot et les annotations sont transmises au serveur CollabScore via les services REST.
-
-### UI corretion collaborative (Cnam)
-
-Module à la charge du Cnam. A creuser.
 
 **TODO**:
   
    - Proposition très générale, à vérifier dans le détail
    - Question: obtiendra-t-on automatiquement les liens entre BB de la source-origine et les éléments-pivot ?
    - Concertation avec l'IRISA sur les détails techniques
+
+### UI correction collaborative (Cnam)
+
+Module à la charge du Cnam. A creuser.
 
 # Références
 
