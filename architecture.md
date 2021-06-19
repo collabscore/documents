@@ -42,32 +42,40 @@ corresponde à celle des éléments-pivot (en principe, la granularité sera la 
 Les annotations seront conformes au modèle du W3C. En particulier, les services REST de CollabScore permettront de déposer / récupérer les annotations
 au format JSON-LD.
 
-## Les modules
-
-### Interface (UI) d'alignement entre une partition-image et le pivot (IReMus, fin 2021)
+## Interface (UI) d'alignement entre une partition-image et le pivot (IReMus, fin 2021)
 
 Cette interface permettra de lier les boites englobantes (BB) des mesures sur une partition-image et la partition-pivot. Elle interrogera le serveur
 CollabScore pour obtenir la partition-pivot et l'URL d'une source-image, calculera l'ensemble des liens entre une BB de mesure et 
 l'élément correspondant dans la partition-pivot, et enverra l'ensemble de ces liens sous forme d'annotation au serveur CollabScore.
 
-**TODO**: 
+Il serait sans doute très utile de récupérer des outils existants ([3],[4]) ou de collaborer avec des groupes qui ont déjà travaillé sur un
+sujet équivalent (cf. Dezrann, développé par AlgoMus [5]).
+
+### Pour spéficier une région sur une image
+
+La norme à suivre est (?) celle du IIIF. Elle est décrite ici https://iiif.io/api/image/3.0/#41-region. Les paramètres pour la boîte englobante sont le coin supérieur gauche de la boîte, la hauteur et la largeur. On y ajouter deux paramètres: la taille (utiliser *max*), la rotation (utiliser 0) et enfin la qualité (utiliser default) le format (par exemple jpg).
+
+Exemple pour une image d'URL *imgurl*: *<imgurl>/125,15,120,140/max/0/default.jpg*.
+
+**Faut-il un serveur IIIF ?**. Pas nécessairement, on peut simplement utiliser les paramètres pour situer la région sur une image et surimposer un calque. Avantage du serveur IIIF: on peut extraire une mesure individuellement. intérêt ?
+ 
+En résumé: 
+ **TODO**: 
 
  - Donner un exemple d'annotation liant une BB et une mesure de la partition-pivot).
  - Est-il nécessaire que la source-image soit accessible via un serveur IIIF ? À éclaircir. L'adressage des  BB devrait certainement être fait en 
    respectant l'adressage IIIF.
  - Concertation préalable avec l'IReMus.
 
-Il serait sans doute très utile de récupérer des outils existants ([3],[4]) ou de collaborer avec des groupes qui ont déjà travaillé sur un
-sujet équivalent (cf. Dezrann, développé par AlgoMus [5]).
 
-### Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
+## Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
 
 L'idée est la même mais cette fois il faut associer à chaque mesure de la partition-pivot un fragment (période) d'un document audio ou d'une vidéo. Il
 est possible / probable qu'il existe déjà des procédures d'alignement automatique.
 
 **TODO**: essayer de reprendre contact avec Antescofo, sinon étudier l'état de l'art.
 
-### Interface (UI) de synchronisation des sources (Cnam + BnF, fin 2022)
+## Interface (UI) de synchronisation des sources (Cnam + BnF, fin 2022)
 
 Via la partition-pivot, il sera possible de mettre en correspondance deux sources quelconques. 
 
@@ -93,7 +101,7 @@ pour l'adaptation selon les normes IIIF.
   - cas des sources littéraires à étudier
   - concertation avec la BnF sur les choix techniques
 
-### Le module OMR (IRISA, toute la durée du projet)
+## Le module OMR (IRISA, toute la durée du projet)
 
 Le module OMR est à peu près entièrement à la charge de l'IRISA. Le principe de l'intégration au reste de 
 l'architecture est le suivant: le module OMR interroge le serveur CollabScore pour obtenir des partitions multimodales.
@@ -108,7 +116,7 @@ La partition pivot et les annotations sont transmises au serveur CollabScore via
    - Question: obtiendra-t-on automatiquement les liens entre BB de la source-origine et les éléments-pivot ?
    - Concertation avec l'IRISA sur les détails techniques
 
-### UI correction collaborative (Cnam)
+## UI correction collaborative (Cnam)
 
 Module à la charge du Cnam. A creuser.
 
