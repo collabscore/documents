@@ -44,7 +44,7 @@ au format JSON-LD.
 
 ## Interface (UI) d'alignement entre une partition-image et le pivot (IReMus, fin 2021)
 
-Cette interface permettra de lier les boites englobantes (BB) des mesures sur une partition-image et la partition-pivot. Elle interrogera le serveur
+Cette interface permettra de lier les boites englobantes (bounding-box ou BB) des mesures sur une partition-image et la partition-pivot. Elle interrogera le serveur
 CollabScore pour obtenir la partition-pivot et l'URL d'une source-image, calculera l'ensemble des liens entre une BB de mesure et 
 l'élément correspondant dans la partition-pivot, et enverra l'ensemble de ces liens sous forme d'annotation au serveur CollabScore.
 
@@ -57,17 +57,27 @@ La norme à suivre est (?) celle du IIIF. Elle est décrite ici https://iiif.io/
 
 Exemple pour une image d'URL *imgurl*: *<imgurl>/125,15,120,140/max/0/default.jpg*.
 
-**Faut-il un serveur IIIF ?**. Pas nécessairement, on peut simplement utiliser les paramètres pour situer la région sur une image et surimposer un calque. Avantage du serveur IIIF: on peut extraire une mesure individuellement. intérêt ?
+**Faut-il un serveur IIIF ?**. Pas nécessairement, on peut simplement utiliser les paramètres pour situer la région sur une image et surimposer un calque. Avantage du serveur IIIF: on peut extraire une mesure individuellement. Intérêt ? Peut-être dans le cadre de l'annotation collaborative. À voir.
  
-En résumé: 
- **TODO**: 
+En résumé: une BB est décrite par l'URL de l'image, les coordonnées du rectangle, et les trois autres paramètres (optionnels,  ou valeurs par défaut).
 
- - Donner un exemple d'annotation liant une BB et une mesure de la partition-pivot).
- - Est-il nécessaire que la source-image soit accessible via un serveur IIIF ? À éclaircir. L'adressage des  BB devrait certainement être fait en 
-   respectant l'adressage IIIF.
- - Concertation préalable avec l'IReMus.
+ ### Annotation liant la partition-pivot et une BB
 
+ On va suivre la recommandation du W3C (https://www.w3.org/TR/annotation-model/).
+ 
+ On part du principe que l'annotation qualifie une mesure d'une partition. Au sens du W3C, la mesure est donc la *cible* (*target*)
+ de l'annotation, et l'adresse de la BB est le *corps* (*body*) de l'annotation. 
 
+```json
+{
+  "@context": "http://www.w3.org/ns/anno.jsonld",
+  "id": "http://example.org/anno1",
+  "type": "Annotation",
+  "body": "http://example.org/post1",
+  "target": "http://example.com/page1"
+}
+```
+ 
 ## Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
 
 L'idée est la même mais cette fois il faut associer à chaque mesure de la partition-pivot un fragment (période) d'un document audio ou d'une vidéo. Il
