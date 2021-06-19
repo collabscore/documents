@@ -67,16 +67,29 @@ En résumé: une BB est décrite par l'URL de l'image, les coordonnées du recta
  
  On part du principe que l'annotation qualifie une mesure d'une partition. Au sens du W3C, la mesure est donc la *cible* (*target*)
  de l'annotation, et l'adresse de la BB est le *corps* (*body*) de l'annotation. 
+ 
+    - pour *target*, on utilise l'adressage IIIF décrit ci-dessus
+    - pour *corps*, il faut simplement l'URL du document MEI de la partition, et le *xml:id* de la mesure annotée.
+ 
+ Pour obtenir une représentation du corps à intégrer dans une annotation JSON_LD,  on peut utiliser la recommandation XPointer (https://www.w3.org/TR/xptr-framework/). La syntaxe serait donc par exemple ``mapartition.mei#xpointer(id('m-57'))``
+ 
+ Voici un exemple de ce que peut être la représentation JSON-LD de l'annotation (avec qq attributs optionnels comme l'auteur, dates de création
+ et modoification).
 
 ```json
 {
   "@context": "http://www.w3.org/ns/anno.jsonld",
   "id": "http://example.org/anno1",
   "type": "Annotation",
-  "body": "http://example.org/post1",
-  "target": "http://example.com/page1"
+  "creator": "createur",
+  "created": "2021-01-28",
+  "modified": "2021-05-29",
+  "body": "http://serveurIIIF/imgdir/12,50,90,56/max/0/default.jpg",
+  "target": "http://collabscore/mapartition.mei#xpointer(id('m-57'))"
 }
 ```
+ 
+**Note**: 
  
 ## Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
 
