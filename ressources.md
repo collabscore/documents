@@ -1,4 +1,4 @@
-# Ressources utiles pour l'implantation du projet
+# Ressources et liens utiles pour l'implantation du projet
 
 ## Outils
 
@@ -12,3 +12,7 @@
   * L'API Présentation de IIIF: https://iiif.io/api/presentation/3.0/
   * Modèle de données des annotations Web: https://www.w3.org/TR/annotation-model/
   
+## Liens vers divers documents utiles
+
+  * Etude de l'IReMus sur les résultats OMR = https://docs.google.com/document/d/1Lhfyu6x2_h4wku4qIzYaImoVpE4FrVZCkWrLalmeCeI/edit?usp=sharing
+ 
