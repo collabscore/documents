@@ -16,6 +16,8 @@ Le Cnam met en place un serveur CollabScore constitué
 L'architecture à base de services permet à chaque partenaire de développer ses outils indépendamment, la seule contrainte technique étant
 d'établir un canal de communication avec le serveur CollabScore via ses services.
 
+Le serveur sera réalisé en Python avec le framework Django. Indépendamment du format interne, les échanges via les services se feront en JSON pour les méta-données, en MEI pour la notation musicale. L'utilisation du MEI permettra d'exploiter les capacités de Verovio (http://veorvio.org) en terme de visualisation, interaction, édition.
+
 ### Les partitions multimodales
 
 La notion de partition multimodale est centrale dans le projet (figure ci-dessus). Elle est basée sur la *partition pivot*, un codage de
@@ -89,7 +91,9 @@ En résumé: une BB est décrite par l'URL de l'image, les coordonnées du recta
 }
 ```
  
-**Note**: 
+### Aspects techniques
+ 
+Du point de vue des outils, le scénario privilégié est le suivant. Dans une interface HTML on met en vis-à-vis la source-image, et la visualisation Verovio de la partition-pivot, enrichie avec des ancres permettant de sélectionner une mesure. Il reste à encadrer la mesure correspondante sur l'image, et à valider l'association, ce qui correspond tecnhiquement à l'appel au service REST du serveur CollabScore. 
  
 ## Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
 
