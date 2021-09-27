@@ -99,6 +99,9 @@ Du point de vue des outils, le scénario privilégié est le suivant. Dans une i
 
 L'idée est la même mais cette fois il faut associer à chaque mesure de la partition-pivot un fragment (période) d'un document audio ou d'une vidéo. Il
 est possible / probable qu'il existe déjà des procédures d'alignement automatique.
+ 
+Voir la librairie Vues.js
+ 
 
 **TODO**: essayer de reprendre contact avec Antescofo, sinon étudier l'état de l'art.
 
