@@ -102,19 +102,15 @@ Chaque page est constitué d'une liste de systèmes, et chaque système comprend
           "staves": {
             "description": "Tableau des descripteurs de portée",
             "type": "array",
-            "items": {
-                      "$ref": "https://collabscore.org/omr_staff.json"
-                   },
-                }
-            },
-            "minItems": 1
-          }
+            "items": {"$ref": "https://collabscore.org/omr_staff.json"},
+          },
+          "minItems": 1
        }
     }
 }
 ```
 
-> Question: détecte-t-on que les portées sont gropées entre elles (piano, ou bois / vents / cordes dans l'orchestre, etc.)
+> Question: détecte-t-on que les portées sont groupées entre elles (piano, ou bois / vents / cordes dans l'orchestre, etc.)
 
 Une portée comprend un entête et un tableau de voix
 
@@ -193,7 +189,7 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
          "items": {
             "type": "object",
             "properties": {
-              "description": "À préciser,
+              "description": "À préciser",
               "zone": {"$ref": "https://collabscore.org/omr_zone.json" }
             }
          }
