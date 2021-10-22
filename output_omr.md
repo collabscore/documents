@@ -190,8 +190,16 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
     "voices": {
          "type": "array",
          "description" : "Une voix est une séquence de symboles",
-         "items": {"$ref": "https://collabscore.org/omr_voice.json" }
+         "items": {
+            "type": "object",
+            "properties": {
+              "description": "À préciser,
+              "zone": {"$ref": "https://collabscore.org/omr_zone.json" }
+            }
+         }
     }
   }
 }
 ```
+
+> Question: peut-on obtenir une info de plus haut niveau sur les symboles  (savoir que c'est un fa# par exemple)
