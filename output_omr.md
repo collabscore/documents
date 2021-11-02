@@ -77,7 +77,7 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
 }
 ```
 
-> Vérifier que l'OMR traite bien plusieurs pages.
+> Vérifié: DMOS traite bien plusieurs pages.
 
 ### Pages, systèmes et portées
 
