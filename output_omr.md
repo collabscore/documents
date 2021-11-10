@@ -77,7 +77,7 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
 }
 ```
 
-> Vérifié: DMOS traite bien plusieurs pages.
+> Vérifié: DMOS traite bien plusieurs pages. Mais je n'ai pas trouvé mention du no de page dans la structure produite.
 
 ### Pages, systèmes et portées
 
@@ -199,3 +199,7 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
 ```
 
 > Question: peut-on obtenir une info de plus haut niveau sur les symboles  (savoir que c'est un fa# par exemple)
+> Question: les paroles éventuelles sont-elles reconnues
+> Question: sait-on distinguer les liaisons d'articulations (slurs) et celles qui prolongent une note (tie)
+
+
