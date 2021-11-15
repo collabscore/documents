@@ -17,6 +17,8 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
 
 À titre d'exemple de type JSON, voici le fragment décrivant les coordonnées d'un rectangle.
 
+### Zones
+
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -31,7 +33,9 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
    }
 }
 ```
-On peut faire référence à un type, comme dans le type Symbol.
+On peut faire référence à un type, comme dans les types Symbol et Element.
+
+### Symboles
 
 ```json
 {
@@ -40,12 +44,25 @@ On peut faire référence à un type, comme dans le type Symbol.
   "title": "Schéma de description d'un symbole",
   "type": "object",
   "properties": {
-     "name": {"type": "string"},
+     "label": {"type": "string"},
      "zone": {"description": "Emprise du symbole", "$ref": "https://collabscore.org/omr_zone.json"}
    }
 }
 ```
+### Eléments
 
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_element.json",
+  "title": "Schéma de description d'un élément",
+  "type": "object",
+  "properties": {
+     "label": {"type": "string"},
+     "zone": {"description": "Emprise du symbole", "$ref": "https://collabscore.org/omr_zone.json"}
+   }
+}
+```
 D'autres types utilitaires sont donnés en fin de document: clef, armure, métrique.
 
 ### Structure d'un document
@@ -196,7 +213,7 @@ Finalement une voix (dans une mesure) est une séquence de symboles. Elle peut p
   }
 }
 ```
-Elément de voix:
+### Elément de voix:
 
 > Ce type correspond à `ElemVoix`
 
@@ -221,13 +238,79 @@ Elément de voix:
 }
 ```
 
-> Question: peut-on obtenir une info de plus haut niveau sur les symboles  (savoir que c'est un fa# par exemple)
-> Question: les paroles éventuelles sont-elles reconnues
-> Question: sait-on distinguer les liaisons d'articulations (slurs) et celles qui prolongent une note (tie)
 > Question: est-il nécessaire de communiquer les informations sur les pas ?
 
+### Attributs des notes et des silences
+
+> Ce type correspond à `AttNot`
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_att_note.json",
+  "title": "Schéma des attributs de note",
+  "type": "object",
+  "properties": {
+    "nb_heads": {"description": "Nombre de têtes", "type": "integer"},
+    "heads": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_note.json" },
+    "articulations_top": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_symbol.json" },
+    "articulations_bottom": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_symbol.json" },
+    "directions": {"description": "nuances et autres symboles", "type": "array", "items": { "$ref": "https://collabscore.org/omr_symbol.json" },
+    "other_objects": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_element.json" },
+    "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+  }
+}
+```
+
+> Question: peut-on obtenir une info de plus haut niveau sur les symboles  (savoir que c'est un fa# par exemple)
+
+> Question: sait-on distinguer les liaisons d'articulations (slurs) et celles qui prolongent une note (tie)
+
+Ce type correspond à `AttRest`
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_att_rest.json",
+  "title": "Schéma des attributs de note",
+  "type": "object",
+  "properties": {
+    "nb_heads": {"description": "Nombre de têtes", "type": "integer"},
+    "heads": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_note.json" },
+    "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+  }
+}
+```
+> Nbb: le no de porté semble déjà faire partie de `TeteR`
+
+> Question: les paroles éventuelles sont-elles reconnues
 
 ## Schéma des types de base
+
+### Tête de note
+
+> Correspond au type `TeteR`
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_note.json",
+  "title": "Schéma de la description d'une note",
+  "type": "object",
+  "properties": {
+     "head_symbol": {"description": "Noire, blanche, etc.", "$ref": "https://collabscore.org/omr_symbol.json"},
+     "no_staff": {"description": "Numéro de portée", "type": "integer"},
+     "height": {"description": "Hauteur de la note sur la portée", "type": "integer"},
+     "alter": {"description": "Altération", "$ref": "https://collabscore.org/omr_symbol.json"},
+     "tied": {"description": "Liée à la note précédente ? À clarifier", "type": "boolean"},
+     "errors": {"description": "Liste des erreurs", 
+                "type": "array",
+                "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     }
+   }
+}
+```
+> Question : des informations comme le nb et la liste de points doivent-elles être exportées ?
 
 ### Clef
 
@@ -242,11 +325,9 @@ Elément de voix:
   "type": "object",
   "properties": {
      "symbol": {"description": "Code du symbole", "$ref": "https://collabscore.org/omr_symbol.json"},
-     "no": {"description": "Numéro de portée", "type": "string"},
+     "no": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la clef sur la portée", "type": "integer"},
-     "errors": {"description": "Liste des erreurs", 
-                "type": "array",
-                "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
      }
    }
 }
