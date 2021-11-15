@@ -31,6 +31,20 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
    }
 }
 ```
+On peut faire référence à un type, comme dans le type Symbol.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_symbol.json",
+  "title": "Schéma de description d'un symbole",
+  "type": "object",
+  "properties": {
+     "name": {"type": "string"},
+     "zone": {"description": "Emprise du symbole", "$ref": "https://collabscore.org/omr_zone.json"}
+   }
+}
+```
 
 D'autres types utilitaires sont donnés en fin de document: clef, armure, métrique.
 
@@ -107,6 +121,8 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
 
 > Correspond au type `SystPorteeReco`.
 
+> Question: l'entête d'un système étant le même que l'entête d'une mesure, semble redondant ?
+
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -130,9 +146,9 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
 }
 ```
 
-### Mesures et voix
+### Mesures 
 
-NB: la mesure ici est considérée pour une seule portée.
+> Ce type correspond à `SystMesureReco`
 
 ```json
 {
@@ -142,12 +158,13 @@ NB: la mesure ici est considérée pour une seule portée.
   "type": "object",
   "properties": {
      "zone": {
-               "description": "Zone de la mesure dans la portée",
+               "description": "Zone de la mesure dans le système",
                "$ref": "https://collabscore.org/omr_zone.json"
      },
     "headers": {
          "type": "array",
-         "description" : "Préciser les informations qui peuvent être trouvées dans l'entête d'une mesure"
+         "description" : "Entêtes, un pour chaque portée. Idem que pour les systèmes",
+          "items": {"$ref": "https://collabscore.org/omr_system_header.json" }
     },
     "voices": {
          "type": "array",
@@ -160,10 +177,9 @@ NB: la mesure ici est considérée pour une seule portée.
 
 > Question: que se passe-t-il si on a un changement de clé dans une mesure
 
-Finalement une voix (dans une mesure) est une séquence de symboles.
+## Voix
 
-> Question: déjà rencontré le cas d'une voix qui passe d'une portée à une autre (assez fréquent, surtout au clavier)
-
+Finalement une voix (dans une mesure) est une séquence de symboles. Elle peut passer d'une portée à une autre.
 
 ```json
 {
@@ -172,13 +188,35 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
   "title": "Schéma des descripteurs de voix",
   "type": "object",
   "properties": {
-    "voices": {
+    "elements": {
          "type": "array",
-         "description" : "Une voix est une séquence de symboles",
-         "items": {
-            "type":  {"$ref": "https://collabscore.org/omr_error.json" } 
-         }
+         "description" : "Une voix est une séquence d'éléments de voix",
+         "items": {"$ref": "https://collabscore.org/omr_element_voice.json" } 
     }
+  }
+}
+```
+Elément de voix:
+
+> Ce type correspond à `ElemVoix`
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_element_voice.json",
+  "title": "Schéma des éléments de voix",
+  "type": "object",
+  "properties": {
+    "type": {"description": "Elément ou symbole", "type": "string"},
+    "no_step": {"description": "Numéro de pas", "type": "integer"},
+    "step_duration": {"description": "A expliquer", "type": "integer"},
+    "no_group": {"description": "A expliquer", "type": "integer"},
+    "duration": {"description": "Codification à clarifier", "type": "integer"},  
+    "direction": {"description": "Haut ou bas?", "type": "string"},
+    "att_note": { "$ref": "https://collabscore.org/omr_att_note.json"},
+    "att_rest": { "$ref": "https://collabscore.org/omr_att_rest.json"},
+    "att_clef": { "$ref": "https://collabscore.org/omr_att_clef.json"},
+    "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
   }
 }
 ```
@@ -186,6 +224,7 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
 > Question: peut-on obtenir une info de plus haut niveau sur les symboles  (savoir que c'est un fa# par exemple)
 > Question: les paroles éventuelles sont-elles reconnues
 > Question: sait-on distinguer les liaisons d'articulations (slurs) et celles qui prolongent une note (tie)
+> Question: est-il nécessaire de communiquer les informations sur les pas ?
 
 
 ## Schéma des types de base
@@ -202,9 +241,9 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
   "title": "Schéma de la description d'une clef",
   "type": "object",
   "properties": {
-     "symbol": {"description": "Code du symbole", "type": "string"},
+     "symbol": {"description": "Code du symbole", "$ref": "https://collabscore.org/omr_symbol.json"},
      "no": {"description": "Numéro de portée", "type": "string"},
-     "height": {"description": "Abcisse supérieure", "type": "integer"},
+     "height": {"description": "Hauteur de la clef sur la portée", "type": "integer"},
      "errors": {"description": "Liste des erreurs", 
                 "type": "array",
                 "items": { "$ref": "https://collabscore.org/omr_error.json" }
@@ -212,6 +251,7 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
    }
 }
 ```
+
 ### Armure
 
 > Correspond au type `ArmR`
@@ -235,11 +275,44 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
 
 ### Chiffrage métrique
 
+> Correspond au type `ChiR`
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_time_signature.json",
+  "title": "Schéma de la description d'une métrique",
+  "type": "object",
+  "properties": {
+     "element": {"description": "type du chiffrage", "type": "string"},
+     "time": {"description": "A éclaircir", "type": "array", "items": {}},
+     "unit": {"description": "A éclaircir", "type": "array", "items": {}},
+     "numerator": {"description": "Nb de temps", "type": "integer"},
+     "denominator": {"description": "Unité de temps", "type": "integer"},
+     "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     }
+   }
+}
+```
 ### Entete de portée
+
+Une portée peut être simple ou double (ou  même triple -- orgue ?)
 
 > Correspond au type `Entete'
 
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_system_header.json",
+  "title": "Schéma de la description d'un entête de portée",
+  "type": "object",
+  "properties": {
+     "clef": {"$ref": "https://collabscore.org/omr_clef.json" },
+     "key_signature": {"$ref": "https://collabscore.org/omr_key_signature.json" },
+     "time_signature": {"$ref": "https://collabscore.org/omr_time_signature.json" },
+     }
+   }
+}
+```
 
 
-
-(portée double -- piano ou  même triple -- orgue)( liste de portées. 
