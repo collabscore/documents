@@ -32,11 +32,15 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
 }
 ```
 
+D'autres types utilitaires sont donnés en fin de document: clef, armure, métrique.
+
 ### Structure d'un document
 
 Le fragment de plus haut niveau indique que le document OMR s'applique à une partition-image, et que le résultat
 est constitué d'un tableau de descripteurs de page, un
 descripteur pour chaque page analysée. Le schéma d'un descripteur de page se trouve dans le fichier  ``omr_pages.json``.
+
+> Le type suivant correspond à 'PartitionReco`.
 
 ```json
 {
@@ -67,7 +71,7 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
 
 > Vérifié: DMOS traite bien plusieurs pages. Mais je n'ai pas trouvé mention du no de page dans la structure produite.
 
-### Pages, systèmes et portées
+### Pages, systèmes et mesures
 
 Chaque page est constitué d'une entête (*à définir*) et d'une liste de systèmes. 
 
@@ -85,14 +89,11 @@ Chaque page est constitué d'une entête (*à définir*) et d'une liste de syst�
          "description": "Tableau des descripteurs de système",
          "type": "object",
          "properties": {
-           "zone": {
-               "description": "Zone du système dans la page",
-                "$ref": "https://collabscore.org/omr_zone.json"
-           },
+           "entete": {"description": "Infos d'entête de la page: à préciser", "type": "object"},
           "systems": {
-            "description": "Tableau des descripteurs de portée",
+            "description": "Tableau des descripteurs de systèmes",
             "type": "array",
-            "items": {"$ref": "https://collabscore.org/omr_staff.json"},
+            "items": {"$ref": "https://collabscore.org/omr_system.json"},
           },
           "minItems": 1
        }
@@ -100,31 +101,29 @@ Chaque page est constitué d'une entête (*à définir*) et d'une liste de syst�
 }
 ```
 
-> Question: détecte-t-on que les portées sont groupées entre elles (piano, ou bois / vents / cordes dans l'orchestre, etc.)
+> Question: détecte-t-on que les portées sont groupées entre elles de manière hiérarchique (piano, ou bois / vents / cordes dans l'orchestre, etc.)
 
-Une portée comprend un entête et un tableau de voix
+Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et d'une liste de mesures.
 
-> Question: j'ai l'impression que dans la version dont je dispose, on découpe d'abord un système en mesure, puis chaque mesure en portée. Est-il possible de faire l'inverse 
-> pour obtenir la séquence des mesures d'une portée ? 
+> Correspond au type `SystPorteeReco`.
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_staff.json",
-  "title": "Schéma des descripteurs de portée",
+  "$id": "https://collabscore.org/omr_system.json",
+  "title": "Schéma des descripteurs de système",
   "type": "object",
   "properties": {
-     "zone": {
-               "description": "Zone de la portée dans le système",
-               "$ref": "https://collabscore.org/omr_zone.json"
-     },
+      "id" : {"description": "Numéro du système", "type": "integer"},
+     "zone": {"description": "Zone du système dans la page","$ref": "https://collabscore.org/omr_zone.json"},
     "headers": {
          "type": "array",
-         "description" : "Préciser les informations qui peuvent être trouvées dans l'entête d'une portée"
+         "description" : "Description des portées du système",
+          "items": {"$ref": "https://collabscore.org/omr_system_header.json" }
     },
     "measures": {
          "type": "array",
-         "description" : "Une portée est une séquence de mesures",
+         "description" : "Une système est une séquence de mesures",
          "items": {"$ref": "https://collabscore.org/omr_measure.json" }
     }
   }
@@ -177,11 +176,7 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
          "type": "array",
          "description" : "Une voix est une séquence de symboles",
          "items": {
-            "type": "object",
-            "properties": {
-              "description": "À préciser",
-              "zone": {"$ref": "https://collabscore.org/omr_zone.json" }
-            }
+            "type":  {"$ref": "https://collabscore.org/omr_error.json" } 
          }
     }
   }
@@ -193,3 +188,58 @@ Finalement une voix (dans une mesure) est une séquence de symboles.
 > Question: sait-on distinguer les liaisons d'articulations (slurs) et celles qui prolongent une note (tie)
 
 
+## Schéma des types de base
+
+### Clef
+
+> Correspond au type `CleR`
+
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_clef.json",
+  "title": "Schéma de la description d'une clef",
+  "type": "object",
+  "properties": {
+     "symbol": {"description": "Code du symbole", "type": "string"},
+     "no": {"description": "Numéro de portée", "type": "string"},
+     "height": {"description": "Abcisse supérieure", "type": "integer"},
+     "errors": {"description": "Liste des erreurs", 
+                "type": "array",
+                "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     }
+   }
+}
+```
+### Armure
+
+> Correspond au type `ArmR`
+
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://collabscore.org/omr_key_signature.json",
+  "title": "Schéma de la description d'une armure",
+  "type": "object",
+  "properties": {
+     "element": {"description": "dièse, bémol ou aucun", "type": "string"},
+     "nb_flats": {"description": "Nombre de bécarres", "type": "integer"},
+     "nb_alter": {"description": "Nombre d'altérations", "type": "integer"},
+     "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     }
+   }
+}
+```
+
+### Chiffrage métrique
+
+### Entete de portée
+
+> Correspond au type `Entete'
+
+
+
+
+(portée double -- piano ou  même triple -- orgue)( liste de portées. 
