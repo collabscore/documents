@@ -33,7 +33,7 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
    }
 }
 ```
-On peut faire référence à un type, comme dans les types Symbol et Element.
+On peut faire référence à un type, comme dans les types `Symbol` et `Element`.
 
 ### Symboles
 
@@ -390,8 +390,7 @@ Une portée peut être simple ou double (ou  même triple -- orgue ?)
   "properties": {
      "clef": {"$ref": "https://collabscore.org/omr_clef.json" },
      "key_signature": {"$ref": "https://collabscore.org/omr_key_signature.json" },
-     "time_signature": {"$ref": "https://collabscore.org/omr_time_signature.json" },
-     }
+     "time_signature": {"$ref": "https://collabscore.org/omr_time_signature.json" }
    }
 }
 ```
