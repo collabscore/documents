@@ -22,7 +22,7 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_zone.json",
+  "$id": "dmos_zone.json",
   "title": "Schéma des coordonnées d'une zone sur une image",
   "type": "object",
   "properties": {
@@ -30,7 +30,9 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
      "y_min": {"description": "Ordonnée inférieure", "type": "integer"},
      "x_max": {"description": "Abcisse supérieure", "type": "integer"},
      "y_max": {"description": "Ordonnée supérieure", "type": "integer"}
-   }
+   },
+   "required": ["x_min", "x_max", "y_min", "max"],
+  "additionalProperties": false
 }
 ```
 On peut faire référence à un type, comme dans les types `Symbol` et `Element`.
@@ -40,12 +42,12 @@ On peut faire référence à un type, comme dans les types `Symbol` et `Element`
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_symbol.json",
+  "$id": "dmos_symbol.json",
   "title": "Schéma de description d'un symbole",
   "type": "object",
   "properties": {
      "label": {"type": "string"},
-     "zone": {"description": "Emprise du symbole", "$ref": "https://collabscore.org/omr_zone.json"}
+     "zone": {"description": "Emprise du symbole", "$ref": "dmos_zone.json"}
    }
 }
 ```
@@ -54,12 +56,12 @@ On peut faire référence à un type, comme dans les types `Symbol` et `Element`
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_element.json",
+  "$id": "dmos_element.json",
   "title": "Schéma de description d'un élément",
   "type": "object",
   "properties": {
      "label": {"type": "string"},
-     "zone": {"description": "Emprise du symbole", "$ref": "https://collabscore.org/omr_zone.json"}
+     "zone": {"description": "Emprise de l'élément", "$ref": "dmos_zone.json"}
    }
 }
 ```
@@ -76,7 +78,7 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/schema_omr.json",
+  "$id": "https://collabscore.org/dmos_schema.json",
   "title": "Schéma des documents de sortie OMR",
   "type": "object",
   "properties": {
@@ -92,7 +94,7 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
          "description": "Tableau des descripteurs de page",
          "type": "array",
          "items": {
-           "$ref": "https://collabscore.org/omr_page.json"
+           "$ref": "dmos_page.json"
          },
          "minItems": 1
        }
@@ -111,24 +113,27 @@ Chaque page est constitué d'une entête (*à définir*) et d'une liste de syst�
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_pages.json",
+  "$id": "dmos_page.json",
   "title": "Schéma des descripteurs de page",
   "type": "object",
   "properties": {
      "no_page": { "type": "integer" },
-     "systems": {
+     "header_systems": {
          "description": "Tableau des descripteurs de système",
          "type": "object",
          "properties": {
-           "entete": {"description": "Infos d'entête de la page: à préciser", "type": "object"},
-          "systems": {
-            "description": "Tableau des descripteurs de systèmes",
+           "entete": {"description": "Infos d'entête de la page: à préciser", "type": "string"}
+           }
+      },
+     "systems": {
+            "description": "Tableau des systèmes",
             "type": "array",
-            "items": {"$ref": "https://collabscore.org/omr_system.json"},
-          },
-          "minItems": 1
+            "items": {"$ref": "dmos_system.json"},
+         "minItems": 1
        }
-    }
+   },
+   "required": ["no_page", "header_systems"],
+  "additionalProperties": false
 }
 ```
 
