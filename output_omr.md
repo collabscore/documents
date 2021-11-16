@@ -71,9 +71,7 @@ D'autres types utilitaires sont donnés en fin de document: clef, armure, métri
 
 Le fragment de plus haut niveau indique que le document OMR s'applique à une partition-image, et que le résultat
 est constitué d'un tableau de descripteurs de page, un
-descripteur pour chaque page analysée. Le schéma d'un descripteur de page se trouve dans le fichier  ``omr_pages.json``.
-
-> Le type suivant correspond à 'PartitionReco`.
+descripteur pour chaque page analysée. Le schéma d'un descripteur de page se trouve dans le fichier  ``dmos_page.json``.
 
 ```json
 {
@@ -98,7 +96,9 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
          },
          "minItems": 1
        }
-    }
+    },
+   "required": ["score_image_url", "date", "pages"],
+  "additionalProperties": false
 }
 ```
 
@@ -148,23 +148,25 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_system.json",
+  "$id": "dmos_system.json",
   "title": "Schéma des descripteurs de système",
   "type": "object",
   "properties": {
       "id" : {"description": "Numéro du système", "type": "integer"},
-     "zone": {"description": "Zone du système dans la page","$ref": "https://collabscore.org/omr_zone.json"},
+     "zone": {"description": "Zone du système dans la page","$ref": "dmos_zone.json"},
     "headers": {
          "type": "array",
          "description" : "Description des portées du système",
-          "items": {"$ref": "https://collabscore.org/omr_system_header.json" }
+          "items": {"$ref": "dmos_system_header.json" }
     },
     "measures": {
          "type": "array",
          "description" : "Une système est une séquence de mesures",
-         "items": {"$ref": "https://collabscore.org/omr_measure.json" }
+         "items": {"$ref": "dmos_measure.json" }
     }
-  }
+  },
+   "required": ["id", "zone", "headers", "measures"],
+  "additionalProperties": false
 }
 ```
 
@@ -299,20 +301,22 @@ Ce type correspond à `AttRest`
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_note.json",
+  "$id": "dmos_note.json",
   "title": "Schéma de la description d'une note",
   "type": "object",
   "properties": {
-     "head_symbol": {"description": "Noire, blanche, etc.", "$ref": "https://collabscore.org/omr_symbol.json"},
+     "head_symbol": {"description": "Noire, blanche, etc.", "$ref": "dmos_symbol.json"},
      "no_staff": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la note sur la portée", "type": "integer"},
-     "alter": {"description": "Altération", "$ref": "https://collabscore.org/omr_symbol.json"},
+     "alter": {"description": "Altération", "$ref": "dmos_symbol.json"},
      "tied": {"description": "Liée à la note précédente ? À clarifier", "type": "boolean"},
      "errors": {"description": "Liste des erreurs", 
                 "type": "array",
-                "items": { "$ref": "https://collabscore.org/omr_error.json" }
+                "items": { "$ref": "dmos_error.json" }
      }
-   }
+   },
+   "required": ["head_symbol", "no_staff", "height", "errors"],
+  "additionalProperties": false
 }
 ```
 > Question : des informations comme le nb et la liste de points doivent-elles être exportées ?
@@ -321,20 +325,21 @@ Ce type correspond à `AttRest`
 
 > Correspond au type `CleR`
 
-
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_clef.json",
+  "$id": "dmos_clef.json",
   "title": "Schéma de la description d'une clef",
   "type": "object",
   "properties": {
-     "symbol": {"description": "Code du symbole", "$ref": "https://collabscore.org/omr_symbol.json"},
+     "symbol": {"description": "Code du symbole", "$ref": "dmos_symbol.json"},
      "no": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la clef sur la portée", "type": "integer"},
-     "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
-   }
+   },
+   "required": ["symbol", "no", "height", "errors"],
+  "additionalProperties": false
 }
 ```
 
@@ -346,16 +351,18 @@ Ce type correspond à `AttRest`
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_key_signature.json",
+  "$id": "dmos_key_signature.json",
   "title": "Schéma de la description d'une armure",
   "type": "object",
   "properties": {
      "element": {"description": "dièse, bémol ou aucun", "type": "string"},
      "nb_flats": {"description": "Nombre de bécarres", "type": "integer"},
      "nb_alter": {"description": "Nombre d'altérations", "type": "integer"},
-     "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
-   }
+   },
+   "required": ["element", "nb_flats", "nb_alter", "errors"],
+  "additionalProperties": false
 }
 ```
 
@@ -366,7 +373,7 @@ Ce type correspond à `AttRest`
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_time_signature.json",
+  "$id": "dmos_time_signature.json",
   "title": "Schéma de la description d'une métrique",
   "type": "object",
   "properties": {
@@ -375,9 +382,11 @@ Ce type correspond à `AttRest`
      "unit": {"description": "A éclaircir", "type": "array", "items": {}},
      "numerator": {"description": "Nb de temps", "type": "integer"},
      "denominator": {"description": "Unité de temps", "type": "integer"},
-     "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
-   }
+   },
+   "required": ["element", "time", "unit", "numerator", "denominator", "errors"],
+  "additionalProperties": false
 }
 ```
 ### Entete de portée
@@ -389,13 +398,13 @@ Une portée peut être simple ou double (ou  même triple -- orgue ?)
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_system_header.json",
+  "$id": "dmos_system_header.json",
   "title": "Schéma de la description d'un entête de portée",
   "type": "object",
   "properties": {
-     "clef": {"$ref": "https://collabscore.org/omr_clef.json" },
-     "key_signature": {"$ref": "https://collabscore.org/omr_key_signature.json" },
-     "time_signature": {"$ref": "https://collabscore.org/omr_time_signature.json" }
+     "clef": {"$ref": "dmos_clef.json" },
+     "key_signature": {"$ref": "dmos_key_signature.json" },
+     "time_signature": {"$ref": "dmos_time_signature.json" }
    }
 }
 ```
