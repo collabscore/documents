@@ -104,6 +104,8 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
 
 > Vérifié: DMOS traite bien plusieurs pages. Mais je n'ai pas trouvé mention du no de page dans la structure produite.
 
+[Exemple d'un document JSON racine](http://collabscore.org/dmos/data/dmos_data.json)
+
 ### Pages, systèmes et mesures
 
 Chaque page est constitué d'une entête (*à définir*) et d'une liste de systèmes. 
@@ -139,6 +141,8 @@ Chaque page est constitué d'une entête (*à définir*) et d'une liste de syst�
 
 > Question: détecte-t-on que les portées sont groupées entre elles de manière hiérarchique (piano, ou bois / vents / cordes dans l'orchestre, etc.)
 
+[Exemple du composant JSON représentant une page](http://collabscore.org/dmos/data/page_1.json)
+
 Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et d'une liste de mesures.
 
 > Correspond au type `SystPorteeReco`.
@@ -157,7 +161,7 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
     "headers": {
          "type": "array",
          "description" : "Description des portées du système",
-          "items": {"$ref": "dmos_system_header.json" }
+          "items": {"$ref": "dmos_staff_header.json" }
     },
     "measures": {
          "type": "array",
@@ -169,6 +173,22 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
   "additionalProperties": false
 }
 ```
+Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-dessous:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dmos_staff_header.json",
+  "title": "Schéma de la description d'un portée de système",
+  "type": "object",
+    "properties": {
+       "id_staff": {"$type": "integer" },
+       "first_bar": {"$ref": "dmos_element.json" }
+   }
+}
+'''
+
+[Exemple du composant JSON représentant un système avec trois portées](http://collabscore.org/dmos/data/system_1_1.json)
 
 ### Mesures 
 
