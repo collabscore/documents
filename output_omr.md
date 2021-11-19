@@ -147,8 +147,6 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
 
 > Correspond au type `SystPorteeReco`.
 
-> Question: l'entête d'un système étant le même que l'entête d'une mesure, semble redondant ?
-
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -186,7 +184,7 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
        "first_bar": {"$ref": "dmos_element.json" }
    }
 }
-'''
+```
 
 [Exemple du composant JSON représentant un système avec trois portées](http://collabscore.org/dmos/data/system_1_1.json)
 
@@ -197,23 +195,23 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_measure.json",
+  "$id": "https://collabscore.org/dmos_measure.json",
   "title": "Schéma des descripteurs de mesure",
   "type": "object",
   "properties": {
      "zone": {
                "description": "Zone de la mesure dans le système",
-               "$ref": "https://collabscore.org/omr_zone.json"
+               "$ref": "https://collabscore.org/dmos_zone.json"
      },
     "headers": {
          "type": "array",
-         "description" : "Entêtes, un pour chaque portée. Idem que pour les systèmes",
-          "items": {"$ref": "https://collabscore.org/omr_system_header.json" }
+         "description" : "Entêtes, un pour chaque portée.",
+          "items": {"$ref": "https://collabscore.org/dmos_measure_header.json" }
     },
     "voices": {
          "type": "array",
          "description" : "Une mesure est une séquence de voix",
-         "items": {"$ref": "https://collabscore.org/omr_voice.json" }
+         "items": {"$ref": "https://collabscore.org/dmos_voice.json" }
     }
   }
 }
@@ -353,12 +351,12 @@ Ce type correspond à `AttRest`
   "type": "object",
   "properties": {
      "symbol": {"description": "Code du symbole", "$ref": "dmos_symbol.json"},
-     "no": {"description": "Numéro de portée", "type": "integer"},
+     "id_staff": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la clef sur la portée", "type": "integer"},
      "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
    },
-   "required": ["symbol", "no", "height", "errors"],
+   "required": ["symbol", "id_staff", "height", "errors"],
   "additionalProperties": false
 }
 ```
@@ -376,12 +374,12 @@ Ce type correspond à `AttRest`
   "type": "object",
   "properties": {
      "element": {"description": "dièse, bémol ou aucun", "type": "string"},
-     "nb_flats": {"description": "Nombre de bécarres", "type": "integer"},
-     "nb_alter": {"description": "Nombre d'altérations", "type": "integer"},
+     "nb_naturals": {"description": "Nombre de bécarres", "type": "integer"},
+     "nb_alterations": {"description": "Nombre d'altérations", "type": "integer"},
      "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
    },
-   "required": ["element", "nb_flats", "nb_alter", "errors"],
+   "required": ["element", "nb_flats", "nb_alterations", "errors"],
   "additionalProperties": false
 }
 ```
@@ -398,17 +396,19 @@ Ce type correspond à `AttRest`
   "type": "object",
   "properties": {
      "element": {"description": "type du chiffrage", "type": "string"},
-     "time": {"description": "A éclaircir", "type": "array", "items": {}},
-     "unit": {"description": "A éclaircir", "type": "array", "items": {}},
-     "numerator": {"description": "Nb de temps", "type": "integer"},
-     "denominator": {"description": "Unité de temps", "type": "integer"},
+     "time": {"description": "Nb de temps", "type": "integer"},
+     "unit": {"description": "Unité de temps", "type": "integer"},
      "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
    },
-   "required": ["element", "time", "unit", "numerator", "denominator", "errors"],
+   "required": ["element", "time", "unit", "errors"],
   "additionalProperties": false
-}
+
 ```
+
+> Question type du chiffrage à préciser
+
+
 ### Entete de portée
 
 Une portée peut être simple ou double (ou  même triple -- orgue ?)
