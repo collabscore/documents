@@ -252,7 +252,8 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
   "title": "Schéma des éléments de voix",
   "type": "object",
   "properties": {
-    "type": {"description": "Elément ou symbole", "type": "string"},
+    "type": {"description": "Elément ou symbole",
+          "oneOf": [{"$ref": "dmos_element.json"}, {"$ref": "dmos_symbol.json"}]},
     "no_step": {"description": "Numéro de pas", "type": "integer"},
     "step_duration": {"description": "A expliquer", "type": "integer"},
     "no_group": {"description": "A expliquer", "type": "integer"},
@@ -261,7 +262,7 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
     "att_note": { "$ref": "dmos_att_note.json"},
     "att_rest": { "$ref": "dmos_att_rest.json"},
     "att_clef": { "$ref": "dmos_att_clef.json"},
-    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
+    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
   }
 }
 ```
