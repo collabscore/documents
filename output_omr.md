@@ -218,13 +218,13 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 ```
 
 
-[Exemple du composant JSON représentant une mesure avec trois portées (première mesure du premier système de la première page](http://collabscore.org/dmos/data/mesure_1_1_1.json)
+[Exemple du composant JSON représentant une mesure avec trois portées (première mesure du premier système de la première page)](http://collabscore.org/dmos/data/mesure_1_1_1.json)
 
 > Question: que se passe-t-il si on a un changement de clé dans une mesure
 
 ## Voix
 
-Finalement une voix (dans une mesure) est une séquence de symboles. Elle peut passer d'une portée à une autre.
+Finalement une voix (dans une mesure) est une séquence d'éléments de voix. Elle peut passer d'une portée à une autre.
 
 ```json
 {
