@@ -261,6 +261,9 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
 }
 ```
 
+
+[Exemple du composant JSON représentant une voix de la première mesure du premier système de la première page](http://collabscore.org/dmos/data/voice_111_1.json)
+
 > Question: est-il nécessaire de communiquer les informations sur les pas ?
 
 ### Attributs des notes et des silences
