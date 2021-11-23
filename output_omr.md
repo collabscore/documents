@@ -217,6 +217,9 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 }
 ```
 
+
+[Exemple du composant JSON représentant une mesure avec trois portées (première mesure du premier système de la première page](http://collabscore.org/dmos/data/mesure_1_1_1.json)
+
 > Question: que se passe-t-il si on a un changement de clé dans une mesure
 
 ## Voix
@@ -226,14 +229,14 @@ Finalement une voix (dans une mesure) est une séquence de symboles. Elle peut p
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_voice.json",
+  "$id": "dmos_voice.json",
   "title": "Schéma des descripteurs de voix",
   "type": "object",
   "properties": {
     "elements": {
          "type": "array",
          "description" : "Une voix est une séquence d'éléments de voix",
-         "items": {"$ref": "https://collabscore.org/omr_element_voice.json" } 
+         "items": {"$ref": "dmos_element_voice.json" } 
     }
   }
 }
@@ -245,7 +248,7 @@ Finalement une voix (dans une mesure) est une séquence de symboles. Elle peut p
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_element_voice.json",
+  "$id": "dmos_element_voice.json",
   "title": "Schéma des éléments de voix",
   "type": "object",
   "properties": {
@@ -255,10 +258,10 @@ Finalement une voix (dans une mesure) est une séquence de symboles. Elle peut p
     "no_group": {"description": "A expliquer", "type": "integer"},
     "duration": {"description": "Codification à clarifier", "type": "integer"},  
     "direction": {"description": "Haut ou bas?", "type": "string"},
-    "att_note": { "$ref": "https://collabscore.org/omr_att_note.json"},
-    "att_rest": { "$ref": "https://collabscore.org/omr_att_rest.json"},
-    "att_clef": { "$ref": "https://collabscore.org/omr_att_clef.json"},
-    "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+    "att_note": { "$ref": "dmos_att_note.json"},
+    "att_rest": { "$ref": "dmos_att_rest.json"},
+    "att_clef": { "$ref": "dmos_att_clef.json"},
+    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
   }
 }
 ```
@@ -272,17 +275,17 @@ Finalement une voix (dans une mesure) est une séquence de symboles. Elle peut p
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_att_note.json",
+  "$id": "dmos_att_note.json",
   "title": "Schéma des attributs de note",
   "type": "object",
   "properties": {
     "nb_heads": {"description": "Nombre de têtes", "type": "integer"},
-    "heads": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_note.json" },
-    "articulations_top": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_symbol.json" },
-    "articulations_bottom": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_symbol.json" },
-    "directions": {"description": "nuances et autres symboles", "type": "array", "items": { "$ref": "https://collabscore.org/omr_symbol.json" },
-    "other_objects": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_element.json" },
-    "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+    "heads": {"type": "array", "items": { "$ref": "dmos_note.json" },
+    "articulations_top": {"type": "array", "items": { "$ref": "dmos_symbol.json" },
+    "articulations_bottom": {"type": "array", "items": { "$ref": "dmos_symbol.json" },
+    "directions": {"description": "nuances et autres symboles", "type": "array", "items": { "$ref": "dmos_symbol.json" },
+    "other_objects": {"type": "array", "items": { "$ref": "dmos_element.json" },
+    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
   }
 }
 ```
@@ -296,13 +299,13 @@ Ce type correspond à `AttRest`
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/omr_att_rest.json",
+  "$id": "dmos_att_rest.json",
   "title": "Schéma des attributs de note",
   "type": "object",
   "properties": {
     "nb_heads": {"description": "Nombre de têtes", "type": "integer"},
-    "heads": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_note.json" },
-    "errors": {"type": "array", "items": { "$ref": "https://collabscore.org/omr_error.json" }
+    "heads": {"type": "array", "items": { "$ref": "dmos_note.json" },
+    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
   }
 }
 ```
