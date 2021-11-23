@@ -23,16 +23,10 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_zone.json",
-  "title": "Schéma des coordonnées d'une zone sur une image",
-  "type": "object",
-  "properties": {
-     "x_min": {"description": "Abcisse inférieure", "type": "integer"},
-     "y_min": {"description": "Ordonnée inférieure", "type": "integer"},
-     "x_max": {"description": "Abcisse supérieure", "type": "integer"},
-     "y_max": {"description": "Ordonnée supérieure", "type": "integer"}
-   },
-   "required": ["x_min", "x_max", "y_min", "max"],
-  "additionalProperties": false
+  "title": "Schéma des coordonnées d'une zone sur une image (xmin ymin xmax ymax)",
+  "type": "array",
+  "minItems": 4,
+  "maxItems": 4
 }
 ```
 On peut faire référence à un type, comme dans les types `Symbol` et `Element`.
