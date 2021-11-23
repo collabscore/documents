@@ -281,12 +281,13 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
   "type": "object",
   "properties": {
     "nb_heads": {"description": "Nombre de têtes", "type": "integer"},
-    "heads": {"type": "array", "items": { "$ref": "dmos_note.json" },
-    "articulations_top": {"type": "array", "items": { "$ref": "dmos_symbol.json" },
-    "articulations_bottom": {"type": "array", "items": { "$ref": "dmos_symbol.json" },
-    "directions": {"description": "nuances et autres symboles", "type": "array", "items": { "$ref": "dmos_symbol.json" },
-    "other_objects": {"type": "array", "items": { "$ref": "dmos_element.json" },
-    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
+    "heads": {"type": "array", "items": { "$ref": "dmos_note.json" }},
+    "articulations_top": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
+    "articulations_bottom": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
+    "directions": {"description": "nuances et autres symboles", "type": "array", 
+        "items": { "$ref": "dmos_symbol.json" }},
+    "other_objects": {"type": "array", "items": { "$ref": "dmos_element.json" }},
+    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
   }
 }
 ```
