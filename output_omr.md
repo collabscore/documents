@@ -212,7 +212,7 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 ```
 
 
-[Exemple du composant JSON représentant une mesure avec trois portées (première mesure du premier système de la première page)](http://collabscore.org/dmos/data/mesure_1_1_1.json)
+[Exemple du composant JSON représentant une mesure avec trois portées (première mesure du premier système de la première page)](http://collabscore.org/dmos/data/measure_1_1_1.json)
 
 > Question: que se passe-t-il si on a un changement de clé dans une mesure
 
