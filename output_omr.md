@@ -383,7 +383,7 @@ Ce type correspond à `AttRest`
      "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
    },
-   "required": ["element", "nb_flats", "nb_alterations", "errors"],
+   "required": ["element", "nb_naturals", "nb_alterations", "errors"],
   "additionalProperties": false
 }
 ```
