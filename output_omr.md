@@ -413,23 +413,24 @@ Ce type correspond à `AttRest`
 > Question type du chiffrage à préciser
 
 
-### Entete de portée
+### Entete de mesure
 
-Une portée peut être simple ou double (ou  même triple -- orgue ?)
 
 > Correspond au type `Entete'
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "dmos_system_header.json",
-  "title": "Schéma de la description d'un entête de portée",
+  "$id": "dmos_measure_header.json",
+  "title": "Schéma de la description d'un entête de mesure",
   "type": "object",
   "properties": {
      "clef": {"$ref": "dmos_clef.json" },
      "key_signature": {"$ref": "dmos_key_signature.json" },
      "time_signature": {"$ref": "dmos_time_signature.json" }
-   }
+   },
+  "required": ["clef", "key_signature", "time_signature"],
+  "additionalProperties": false
 }
 ```
 
