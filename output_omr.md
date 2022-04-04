@@ -174,7 +174,7 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
   "title": "Schéma de la description d'un portée de système",
   "type": "object",
     "properties": {
-       "id_staff": {"$type": "integer" },
+       "no_staff": {"$type": "integer" },
        "first_bar": {"$ref": "dmos_element.json" }
    }
 }
@@ -364,7 +364,7 @@ Ce type correspond à `AttRest`
      "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
    },
-   "required": ["symbol", "id_staff", "height", "errors"],
+   "required": ["symbol", "no_staff", "height", "errors"],
   "additionalProperties": false
 }
 ```
