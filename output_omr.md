@@ -359,7 +359,7 @@ Ce type correspond à `AttRest`
   "type": "object",
   "properties": {
      "symbol": {"description": "Code du symbole", "$ref": "dmos_symbol.json"},
-     "id_staff": {"description": "Numéro de portée", "type": "integer"},
+     "no_staff": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la clef sur la portée", "type": "integer"},
      "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
      }
