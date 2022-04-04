@@ -429,7 +429,6 @@ Ce type correspond à `AttRest`
      "key_signature": {"$ref": "dmos_key_signature.json" },
      "time_signature": {"$ref": "dmos_time_signature.json" }
    },
-  "required": ["clef", "key_signature", "time_signature"],
   "additionalProperties": false
 }
 ```
