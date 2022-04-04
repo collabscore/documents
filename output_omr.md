@@ -289,7 +289,9 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
         "items": { "$ref": "dmos_symbol.json" }},
     "other_objects": {"type": "array", "items": { "$ref": "dmos_element.json" }},
     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
-  }
+  },
+   "required": ["nb_heads", "heads"],
+  "additionalProperties": false
 }
 ```
 
