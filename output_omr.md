@@ -372,6 +372,7 @@ Ce type correspond à `AttRest`
 ### Armure
 
 > Correspond au type `ArmR`
+> Important: ne faudrait-il pas indiquer le no de la portée?
 
 
 ```json
@@ -395,6 +396,7 @@ Ce type correspond à `AttRest`
 ### Chiffrage métrique
 
 > Correspond au type `ChiR`
+> Important: ne faudrait-il pas indiquer le no de la portée?
 
 ```json
 {
