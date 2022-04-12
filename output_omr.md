@@ -433,6 +433,7 @@ Ce type correspond à `AttRest`
 
 > Correspond au type `Entete'
 
+> Important: j'ai ajouté le numéro de la portée car il n'apparaissait que sur la clé
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -440,10 +441,12 @@ Ce type correspond à `AttRest`
   "title": "Schéma de la description d'un entête de mesure",
   "type": "object",
   "properties": {
-     "clef": {"$ref": "dmos_clef.json" },
+      "no_staff": {"description": "No de la portée", "type": "integer"},
+    "clef": {"$ref": "dmos_clef.json" },
      "key_signature": {"$ref": "dmos_key_signature.json" },
      "time_signature": {"$ref": "dmos_time_signature.json" }
    },
+   "required": ["no_staff"],
   "additionalProperties": false
 }
 ```
