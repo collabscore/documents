@@ -173,7 +173,7 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_staff_header.json",
-  "title": "Schéma de la description d'un portée de système",
+  "title": "Schéma de la description d'une portée de système",
   "type": "object",
     "properties": {
        "id_part": {"$type": "string" },
@@ -223,6 +223,9 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 
 Finalement une voix (dans une mesure) est une séquence d'éléments de voix. Elle peut passer d'une portée à une autre.
 
+> Important: j'ai ajouté id_part, pour savoir à quelle partie appartient une voix. En principe une voix ne peut évoluer
+> que sur les portées de sa partie
+
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -230,12 +233,13 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
   "title": "Schéma des descripteurs de voix",
   "type": "object",
   "properties": {
+    "id_part": {"description": "Identifiant de la partie", "type": "string"},
     "elements": {
          "type": "array",
          "description" : "Une voix est une séquence d'éléments de voix",
          "items": {"$ref": "dmos_element_voice.json" } 
     },
-   "required": ["items"],
+   "required": ["id_part","elements"],
   "additionalProperties": false
   }
 }
