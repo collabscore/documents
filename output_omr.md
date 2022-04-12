@@ -179,7 +179,9 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
        "id_part": {"$type": "string" },
        "no_staff": {"$type": "integer" },
        "first_bar": {"$ref": "dmos_element.json" }
-   }
+   },
+   "required": [ "id_part", "no_staff", "first_bar"],
+  "additionalProperties": false
 }
 ```
 
