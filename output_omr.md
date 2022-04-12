@@ -166,6 +166,8 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
 }
 ```
 Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-dessous:
+> Important: j'ai ajouté id_part pour indiquer à quelle partie appartient une portée. Pour l'instant une portée = une partie
+> mais à l'avenir on pourra avoir des parties de clavier avec deux portées
 
 ```json
 {
@@ -174,6 +176,7 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
   "title": "Schéma de la description d'un portée de système",
   "type": "object",
     "properties": {
+       "id_part": {"$type": "string" },
        "no_staff": {"$type": "integer" },
        "first_bar": {"$ref": "dmos_element.json" }
    }
