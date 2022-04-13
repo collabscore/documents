@@ -226,7 +226,8 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 Finalement une voix (dans une mesure) est une séquence d'éléments de voix. Elle peut passer d'une portée à une autre.
 
 > Important: j'ai ajouté id_part, pour savoir à quelle partie appartient une voix. En principe une voix ne peut évoluer
-> que sur les portées de sa partie
+> que sur les portées de sa partie. Dans un premier temps, on peut se contenter d'assimiler partie et portée.
+> J'ai aussi ajouté l'identifiant de la voix (à engendrer)
 
 ```json
 {
@@ -235,6 +236,7 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
   "title": "Schéma des descripteurs de voix",
   "type": "object",
   "properties": {
+      "id" : {"description": "Id of the voice", "type": "string"}
     "id_part": {"description": "Identifiant de la partie", "type": "string"},
     "elements": {
          "type": "array",
