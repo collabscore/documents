@@ -243,7 +243,7 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
          "description" : "Une voix est une séquence d'éléments de voix",
          "items": {"$ref": "dmos_element_voice.json" } 
     },
-   "required": ["id_part","elements"],
+   "required": ["id", "id_part","elements"],
   "additionalProperties": false
   }
 }
