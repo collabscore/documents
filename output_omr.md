@@ -263,7 +263,7 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
           "anyOf": [{"$ref": "dmos_element.json"}, {"$ref": "dmos_symbol.json"}]},
     "no_step": {"description": "Numéro de pas", "type": "integer"},
     "no_group": {"description": "A expliquer", "type": "integer"},
-    "duration": {"description": "Codification à clarifier", "type": "number"},  
+    "duration": { "$ref": "dmos_duration.json"},
     "step_duration": {"description": "A expliquer", "type": "number"},
     "direction": {"description": "Haut ou bas?", "type": "string"},
     "att_note": { "$ref": "dmos_att_note.json"},
@@ -330,6 +330,24 @@ Ce type correspond à `AttRest`
 > Question: les paroles éventuelles sont-elles reconnues
 
 ## Schéma des types de base
+
+### Durée
+
+La durée est représentée comme une fraction de la durée d'un temps
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dmos_duration.json",
+  "title": "Schéma de la description d'une durée musicale",
+  "type": "object",
+  "properties": {
+     "numer": {"description": "Numérateur", "type": "integer"},
+     "denom": {"description": "Dénominateur", "type": "integer"}
+     },
+   "required": [ "numer", "denom"],
+  "additionalProperties": false
+}
 
 ### Tête de note
 
