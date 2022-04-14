@@ -250,7 +250,7 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
 ```
 ### Elément de voix:
 
-> Ce type correspond à `ElemVoix`
+> Ce type correspond à `ElemVoix`. Il faut revoir la codification des durées (flottant = difficile à parser)
 
 ```json
 {
