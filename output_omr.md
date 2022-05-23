@@ -225,11 +225,9 @@ Schema ``dmos_staff_header``.
 
 [Example of a measure over three staves  (first staff, first system, first page)](http://collabscore.org/dmos/data/measure_1_1_1.json)
 
-> Question: que se passe-t-il si on a un changement de clé dans une mesure
+## Voice
 
-## Voix
-
-Finalement une voix (dans une mesure) est une séquence d'éléments de voix. Elle peut passer d'une portée à une autre.
+A voice (in  a measure) is a sequence of voice elements, which each belongs to one of the staves of the voice's part.
 
 > Important: j'ai ajouté id_part, pour savoir à quelle partie appartient une voix. En principe une voix ne peut évoluer
 > que sur les portées de sa partie. Dans un premier temps, on peut se contenter d'assimiler partie et portée.
@@ -239,14 +237,14 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_voice.json",
-  "title": "Schéma des descripteurs de voix",
+  "title": "Schema of voice descriptor",
+  "description": "A voice (in  a measure) is a sequence of voice elements, which each belongs to one of the staves of the voice's part.",
   "type": "object",
   "properties": {
-      "id" : {"description": "Id of the voice", "type": "string"}
-    "id_part": {"description": "Identifiant de la partie", "type": "string"},
+    "id" : {"description": "Id of the voice", "type": "string"},
+    "id_part" : {"description": "Id of the part the voice belongs to", "type": "string"},  
     "elements": {
          "type": "array",
-         "description" : "Une voix est une séquence d'éléments de voix",
          "items": {"$ref": "dmos_element_voice.json" } 
     },
    "required": ["id", "id_part","elements"],
@@ -254,15 +252,20 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
   }
 }
 ```
-### Elément de voix:
+### Voice elements
 
-> Ce type correspond à `ElemVoix`. Il faut revoir la codification des durées (flottant = difficile à parser)
+> From `ElemVoix`. 
+
+> Important: representation of durations must be revised (float = clumsy parsing)
+ 
+> Important: there can probably be other stuff than notes, rests of clefs. To be investigated
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_element_voice.json",
-  "title": "Schéma des éléments de voix",
+  "title": "Schema of voice elements",
+  "description": "A voice element is a symbol that can appear as part of a voice in a measure. Either a note, a rest or a clef",
   "type": "object",
   "properties": {
     "type": {"description": "Elément ou symbole",
@@ -274,7 +277,7 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
     "direction": {"description": "Haut ou bas?", "type": "string"},
     "att_note": { "$ref": "dmos_att_note.json"},
     "att_rest": { "$ref": "dmos_att_rest.json"},
-    "att_clef": { "$ref": "dmos_att_clef.json"},
+    "att_clef": { "$ref": "dmos_clef.json"},
     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
   },
    "required": ["type", "no_step", "duration"],
@@ -283,23 +286,24 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
 ```
 
 
-[Exemple du composant JSON représentant une voix de la première mesure du premier système de la première page](http://collabscore.org/dmos/data/voice_111_1.json)
+[Example: voice, first measure, first syste, first page](http://collabscore.org/dmos/data/voice_111_1.json)
 
-> Question: est-il nécessaire de communiquer les informations sur les pas ?
+> Question: do we need of the details on steps?
 
-### Attributs des notes et des silences
+### Notes and rest attributes
 
-> Ce type correspond à `AttNot`
+> From `AttNote`
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_att_note.json",
-  "title": "Schéma des attributs de note",
+  "title": "Schema of note attributes",
+  "description": "A note consists of several heads, directions and other symbols",
   "type": "object",
   "properties": {
     "nb_heads": {"description": "Nombre de têtes", "type": "integer"},
-    "heads": {"type": "array", "items": { "$ref": "dmos_note.json" }},
+    "heads": {"type": "array", "items": { "$ref": "dmos_note_head.json" }, "minItems": 1},
     "articulations_top": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
     "articulations_bottom": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
     "directions": {"description": "nuances et autres symboles", "type": "array", 
@@ -312,34 +316,35 @@ Finalement une voix (dans une mesure) est une séquence d'éléments de voix. El
 }
 ```
 
-> Question: peut-on obtenir une info de plus haut niveau sur les symboles  (savoir que c'est un fa# par exemple)
+> Question: can we distinguish slurs from ties ?
 
-> Question: sait-on distinguer les liaisons d'articulations (slurs) et celles qui prolongent une note (tie)
-
-Ce type correspond à `AttRest`
+> From `AttRest`
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_att_rest.json",
-  "title": "Schéma des attributs de note",
+  "title": "Schema of rest attributes",
+  "description": "A rest consists of several heads",
   "type": "object",
   "properties": {
-    "nb_heads": {"description": "Nombre de têtes", "type": "integer"},
-    "heads": {"type": "array", "items": { "$ref": "dmos_note.json" },
-    "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }
-  }
+    "nb_heads": {"description": "Nb heads", "type": "integer"},
+    "heads": {"type": "array", "items": { "$ref": "dmos_note_head.json" }, "minItems": 1},
+     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
+  },
+   "required": ["nb_heads", "heads"],
+  "additionalProperties": false
 }
 ```
-> Nbb: le no de porté semble déjà faire partie de `TeteR`
+> Note: the staff number os already in `TeteR`
 
-> Question: les paroles éventuelles sont-elles reconnues
+> Question: what about lyrics ?
 
 ## Schéma des types de base
 
 ### Durée
 
-La durée est représentée comme une fraction de la durée d'un temps
+Duration = a fraction of a beat
 
 ```json
 {
@@ -355,36 +360,38 @@ La durée est représentée comme une fraction de la durée d'un temps
   "additionalProperties": false
 }
 
-### Tête de note
+### Note head
 
-> Correspond au type `TeteR`
+> From type `TeteR`
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "dmos_note.json",
-  "title": "Schéma de la description d'une note",
+  "$id": "dmos_note_head.json",
+  "title": "Schema of note head descriptor",
+  "description": "A note head on a staff, with an optional accidental", 
   "type": "object",
   "properties": {
      "head_symbol": {"description": "Noire, blanche, etc.", "$ref": "dmos_symbol.json"},
      "no_staff": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la note sur la portée", "type": "integer"},
      "alter": {"description": "Altération", "$ref": "dmos_symbol.json"},
+     "nb_points": {"description": "Nbre de points", "type": "integer"},
      "tied": {"description": "Liée à la note précédente ? À clarifier", "type": "boolean"},
      "errors": {"description": "Liste des erreurs", 
                 "type": "array",
                 "items": { "$ref": "dmos_error.json" }
      }
    },
-   "required": ["head_symbol", "no_staff", "height", "errors"],
+   "required": ["head_symbol", "no_staff", "height"],
   "additionalProperties": false
 }
 ```
-> Question : des informations comme le nb et la liste de points doivent-elles être exportées ?
+> Question : do we need the number of points ?
 
 ### Clef
 
-> Correspond au type `CleR`
+> From type `CleR`
 
 ```json
 {
@@ -407,6 +414,7 @@ La durée est représentée comme une fraction de la durée d'un temps
 ### Armure
 
 > Correspond au type `ArmR`
+> 
 > Important: ne faudrait-il pas indiquer le no de la portée?
 
 
@@ -456,19 +464,19 @@ La durée est représentée comme une fraction de la durée d'un temps
 
 ### Entete de mesure
 
+> From type `Entete'
 
-> Correspond au type `Entete'
+> Important: I added the staff number, common to the clef, key and meter (only appeared with the clef in Bertrand)
 
-> Important: j'ai ajouté le numéro de la portée car il n'apparaissait que sur la clé
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_measure_header.json",
-  "title": "Schéma de la description d'un entête de mesure",
+  "title": "Schema of measure headers (clef, key, meter, on a specific staff)",
   "type": "object",
   "properties": {
-      "no_staff": {"description": "No de la portée", "type": "integer"},
-    "clef": {"$ref": "dmos_clef.json" },
+      "no_staff": {"type": "integer"},
+     "clef": {"$ref": "dmos_clef.json" },
      "key_signature": {"$ref": "dmos_key_signature.json" },
      "time_signature": {"$ref": "dmos_time_signature.json" }
    },
