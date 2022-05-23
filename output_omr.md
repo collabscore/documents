@@ -4,7 +4,7 @@ Hypothèses sur l'entrée:
  
   - c'est un PDF, découpé en pages
   - l'OMR donne le résultat pour l'ensemble des pages
-  - chaque page contient un fragent de partition constitué de plusieurs systèmes
+  - chaque page contient un fragment de partition constitué de plusieurs systèmes
 
 L'OMR produit en sortie un document JSON contenant toutes les informations collectées, et structuré selon
 le schéma détaillé ci-dessous.
@@ -64,26 +64,26 @@ D'autres types utilitaires sont donnés en fin de document: clef, armure, métri
 ### Structure d'un document
 
 Le fragment de plus haut niveau indique que le document OMR s'applique à une partition-image, et que le résultat
-est constitué d'un tableau de descripteurs de page, un
+est constitué d'un tableau de descripteurs de pages, un
 descripteur pour chaque page analysée. Le schéma d'un descripteur de page se trouve dans le fichier  ``dmos_page.json``.
 
 ```json
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/dmos_schema.json",
-  "title": "Schéma des documents de sortie OMR",
-  "type": "object",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "dmos-schema.json",
+    "type": "object",
+  "title": "Schema of DMOS documents",
   "properties": {
      "score_image_url": {
-          "description": "URL de la partition-image analysée",
+          "description": "URL of the analyzed score-image",
           "type": "string"
         },
      "date" : {
-          "description": "Date de l'analyse",
+          "description": "Date of image analysis",
           "type": "string"
         },  
      "pages": {
-         "description": "Tableau des descripteurs de page",
+         "description": "Array of page descriptors",
          "type": "array",
          "items": {
            "$ref": "dmos_page.json"
