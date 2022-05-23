@@ -61,11 +61,11 @@ On peut faire référence à un type, comme dans les types `Symbol` et `Element`
 ```
 D'autres types utilitaires sont donnés en fin de document: clef, armure, métrique.
 
-### Structure d'un document
+### DMOS document structure
 
-Le fragment de plus haut niveau indique que le document OMR s'applique à une partition-image, et que le résultat
-est constitué d'un tableau de descripteurs de pages, un
-descripteur pour chaque page analysée. Le schéma d'un descripteur de page se trouve dans le fichier  ``dmos_page.json``.
+A DMOS document is the result of a score-image recognition. It describes a list of page, with one descriptor for each page.
+The schema of DMOS documents is contained in ``dmos_schema.json``, and the schema of a page descriptor is in 
+``dmos_page.json``.
 
 ```json
 {
@@ -95,14 +95,11 @@ descripteur pour chaque page analysée. Le schéma d'un descripteur de page se t
   "additionalProperties": false
 }
 ```
+[Example of a DMOS document root](http://collabscore.org/dmos/data/dmos_ex1.json)
 
-> Vérifié: DMOS traite bien plusieurs pages. Mais je n'ai pas trouvé mention du no de page dans la structure produite.
+### Pages, systems and measures
 
-[Exemple d'un document JSON racine](http://collabscore.org/dmos/data/dmos_data.json)
-
-### Pages, systèmes et mesures
-
-Chaque page est constitué d'une entête (*à définir*) et d'une liste de systèmes. 
+Each page consists in a header (*structure to be defined*) and a list of systems. 
 
 > Le type suivant correspond à `PartitionReco`.  
 
@@ -110,7 +107,7 @@ Chaque page est constitué d'une entête (*à définir*) et d'une liste de syst�
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_page.json",
-  "title": "Schéma des descripteurs de page",
+  "title": "Schema of page descriptor",
   "type": "object",
   "properties": {
      "no_page": { "type": "integer" },
@@ -122,20 +119,20 @@ Chaque page est constitué d'une entête (*à définir*) et d'une liste de syst�
            }
       },
      "systems": {
-            "description": "Tableau des systèmes",
+            "description": "Array of systems ",
             "type": "array",
             "items": {"$ref": "dmos_system.json"},
          "minItems": 1
        }
    },
-   "required": ["no_page", "header_systems"],
+   "required": ["no_page", "header_systems", "systems"],
   "additionalProperties": false
 }
 ```
 
-> Question: détecte-t-on que les portées sont groupées entre elles de manière hiérarchique (piano, ou bois / vents / cordes dans l'orchestre, etc.)
+> Question: what about hierarchical grouping of staves in a system ?  (piano, strings / winds / organ / etc.)
 
-[Exemple du composant JSON représentant une page](http://collabscore.org/dmos/data/page_1.json)
+[Example of a page descriptor](http://collabscore.org/dmos/data/page_1.json)
 
 Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et d'une liste de mesures.
 
