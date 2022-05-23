@@ -1,4 +1,4 @@
-# Syntaxe des documents JSON donnant le résultat d'une reconnaissance optique
+# Syntax of JSON document output par DMOS
 
 Hypothèses sur l'entrée: 
  
@@ -63,7 +63,6 @@ D'autres types utilitaires sont donnés en fin de document: clef, armure, métri
 
 ### DMOS document structure
 
-A DMOS document is the result of a score-image recognition. It describes a list of page, with one descriptor for each page.
 The schema of DMOS documents is contained in ``dmos_schema.json``, and the schema of a page descriptor is in 
 ``dmos_page.json``.
 
@@ -73,6 +72,7 @@ The schema of DMOS documents is contained in ``dmos_schema.json``, and the schem
     "$id": "dmos-schema.json",
     "type": "object",
   "title": "Schema of DMOS documents",
+  "description": "A DMOS document is a list of pages, with one descriptor for each page.",
   "properties": {
      "score_image_url": {
           "description": "URL of the analyzed score-image",
@@ -99,15 +99,18 @@ The schema of DMOS documents is contained in ``dmos_schema.json``, and the schem
 
 ### Pages, systems and measures
 
+#### Page
+
 Each page consists in a header (*structure to be defined*) and a list of systems. 
 
-> Le type suivant correspond à `PartitionReco`.  
+> From type `PartitionReco`.  
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_page.json",
   "title": "Schema of page descriptor",
+  "description": "Each page consists in a header (*structure to be defined*) and a list of systems",
   "type": "object",
   "properties": {
      "no_page": { "type": "integer" },
@@ -130,31 +133,29 @@ Each page consists in a header (*structure to be defined*) and a list of systems
 }
 ```
 
-> Question: what about hierarchical grouping of staves in a system ?  (piano, strings / winds / organ / etc.)
 
 [Example of a page descriptor](http://collabscore.org/dmos/data/page_1.json)
 
-Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et d'une liste de mesures.
+#### System 
 
-> Correspond au type `SystPorteeReco`.
+> From type `SystPorteeReco`.
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_system.json",
-  "title": "Schéma des descripteurs de système",
+  "title": "Schema of system descriptor",
+  "description": "Each system is a list of headers, one for each staff, and a list of measures",
   "type": "object",
   "properties": {
       "id" : {"description": "Numéro du système", "type": "integer"},
      "zone": {"description": "Zone du système dans la page","$ref": "dmos_zone.json"},
     "headers": {
          "type": "array",
-         "description" : "Description des portées du système",
           "items": {"$ref": "dmos_staff_header.json" }
     },
     "measures": {
          "type": "array",
-         "description" : "Une système est une séquence de mesures",
          "items": {"$ref": "dmos_measure.json" }
     }
   },
@@ -162,15 +163,24 @@ Un système est composé d'un ou plusieurs entêtes, un pour chaque portée, et 
   "additionalProperties": false
 }
 ```
-Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-dessous:
-> Important: j'ai ajouté id_part pour indiquer à quelle partie appartient une portée. Pour l'instant une portée = une partie
-> mais à l'avenir on pourra avoir des parties de clavier avec deux portées
+#### Staff descriptor
+
+> Form type `ExtGPorteeReco`
+
+
+> Important: there might be a hierarchical grouping of staves in a system.  (piano, strings / winds / organ / etc.) At some
+> point, a staff belongs to a "part", i.e., the sub-score assigned to a single performer. There might be one (usually),
+> 2 or even 3 staves (organ), and the voices played by the performed can (in the most complex case) be distribued 
+> over all the staves of its part. **Thus**, I added the ``id_part`` to the staff descriptor to indicate
+> the part a staff belongs to. As an inital approx., we can assume that staff = part.
+
+Schema ``dmos_staff_header``. 
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_staff_header.json",
-  "title": "Schéma de la description d'une portée de système",
+  "title": "Staff descriptor",
   "type": "object",
     "properties": {
        "id_part": {"$type": "string" },
@@ -182,39 +192,38 @@ Le type des descripteurs de portée (correspondant à `ExtGPorteeReco`) est ci-d
 }
 ```
 
-[Exemple du composant JSON représentant un système avec trois portées](http://collabscore.org/dmos/data/system_1_1.json)
+[Example of a system with three staves](http://collabscore.org/dmos/data/system_1_1.json)
 
-### Mesures 
+#### Measures
 
-> Ce type correspond à `SystMesureReco`
+> From type `SystMesureReco`
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://collabscore.org/dmos_measure.json",
-  "title": "Schéma des descripteurs de mesure",
+  "$id": "dmos_measure.json",
+  "title": "Schema of measure descriptor",
   "type": "object",
   "properties": {
      "zone": {
-               "description": "Zone de la mesure dans le système",
-               "$ref": "https://collabscore.org/dmos_zone.json"
+               "description": "Zone of the measure",
+               "$ref": "dmos_zone.json"
      },
     "headers": {
          "type": "array",
-         "description" : "Entêtes, un pour chaque portée.",
-          "items": {"$ref": "https://collabscore.org/dmos_measure_header.json" }
+         "description" : "Headers, one for each staff",
+          "items": {"$ref": "dmos_measure_header.json" }
     },
     "voices": {
          "type": "array",
-         "description" : "Une mesure est une séquence de voix",
-         "items": {"$ref": "https://collabscore.org/dmos_voice.json" }
+         "description" : "A measure is  list of voices",
+         "items": {"$ref": "dmos_voice.json" }
     }
   }
 }
 ```
 
-
-[Exemple du composant JSON représentant une mesure avec trois portées (première mesure du premier système de la première page)](http://collabscore.org/dmos/data/measure_1_1_1.json)
+[Example of a measure over three staves  (first staff, first system, first page)](http://collabscore.org/dmos/data/measure_1_1_1.json)
 
 > Question: que se passe-t-il si on a un changement de clé dans une mesure
 
