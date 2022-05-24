@@ -134,7 +134,7 @@ Each page consists in a header (*structure to be defined*) and a list of systems
 ```
 
 
-[Example of a page descriptor](http://collabscore.org/dmos/data/page_1.json)
+[Example of a page descriptor](http://collabscore.org/dmos/data/page1.json)
 
 #### System 
 
@@ -485,4 +485,10 @@ Duration = a fraction of a beat
 }
 ```
 
+# Pending issues
+
+ #. We need to codify errors, and error representation
+ #. When a new system is met, it is crucial to identify the continuity of staves, otherwise we cannot obtain the proper sequence of measures
+ 
+ 
 
