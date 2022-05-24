@@ -192,7 +192,7 @@ Schema ``dmos_staff_header``.
 }
 ```
 
-[Example of a system with three staves](http://collabscore.org/dmos/data/system_1_1.json)
+[Example of a system with three staves](http://collabscore.org/dmos/data/page1_s1.json)
 
 #### Measures
 
@@ -223,7 +223,7 @@ Schema ``dmos_staff_header``.
 }
 ```
 
-[Example of a measure over three staves  (first staff, first system, first page)](http://collabscore.org/dmos/data/measure_1_1_1.json)
+[Example of a measure over three staves  (first staff, first system, first page)](http://collabscore.org/dmos/data/page1_s1_m1.json)
 
 ## Voice
 
@@ -286,7 +286,7 @@ A voice (in  a measure) is a sequence of voice elements, which each belongs to o
 ```
 
 
-[Example: voice, first measure, first syste, first page](http://collabscore.org/dmos/data/voice_111_1.json)
+[Example: first page, first system, first measure, first part, voice 1](http://collabscore.org/dmos/data/page1_s1_m1_p1_v1.json)
 
 > Question: do we need of the details on steps?
 
