@@ -23,7 +23,7 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_zone.json",
-  "title": "Schéma des coordonnées d'une zone sur une image (xmin ymin xmax ymax)",
+  "title": "Schéma des coordonnées d'une zone sur une image (x y w h)",
   "type": "array",
   "minItems": 4,
   "maxItems": 4
