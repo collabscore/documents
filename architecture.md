@@ -16,7 +16,7 @@ Le Cnam met en place un serveur CollabScore constitué
 L'architecture à base de services permet à chaque partenaire de développer ses outils indépendamment, la seule contrainte technique étant
 d'établir un canal de communication avec le serveur CollabScore via ses services.
 
-Le serveur sera réalisé en Python avec le framework Django. Indépendamment du format interne, les échanges via les services se feront en JSON pour les méta-données, en MEI pour la notation musicale. L'utilisation du MEI permettra d'exploiter les capacités de Verovio (http://veorvio.org) en terme de visualisation, interaction, édition.
+Le serveur sera réalisé en Python avec le framework Django. Indépendamment du format interne, les échanges via les services se feront en JSON pour les méta-données, en MEI pour la notation musicale. L'utilisation du MEI permettra d'exploiter les capacités de Verovio (http://verovio.org) en terme de visualisation, interaction, édition.
 
 ### Les partitions multimodales
 
@@ -50,8 +50,7 @@ Cette interface permettra de lier les boites englobantes (bounding-box ou BB) de
 CollabScore pour obtenir la partition-pivot et l'URL d'une source-image, calculera l'ensemble des liens entre une BB de mesure et 
 l'élément correspondant dans la partition-pivot, et enverra l'ensemble de ces liens sous forme d'annotation au serveur CollabScore.
 
-Il serait sans doute très utile de récupérer des outils existants ([3],[4]) ou de collaborer avec des groupes qui ont déjà travaillé sur un
-sujet équivalent (cf. Dezrann, développé par AlgoMus [5]).
+Il serait sans doute très utile de récupérer des outils existants ([3],[4]).
 
 ### Pour spéficier une région sur une image
 
