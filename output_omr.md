@@ -17,13 +17,13 @@ ou référencer d'autres fragments. Le découpage en fragments suit celui de l'a
 
 À titre d'exemple de type JSON, voici le fragment décrivant les coordonnées d'un rectangle.
 
-### Zones
+### Régions
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "dmos_zone.json",
-  "title": "Schéma des coordonnées d'une zone sur une image (x y w h)",
+  "$id": "dmos_region.json",
+  "title": "Schéma des coordonnées d'une région sur une image (x y w h)",
   "type": "array",
   "minItems": 4,
   "maxItems": 4
@@ -41,7 +41,7 @@ On peut faire référence à un type, comme dans les types `Symbol` et `Element`
   "type": "object",
   "properties": {
      "label": {"type": "string"},
-     "zone": {"description": "Emprise du symbole", "$ref": "dmos_zone.json"}
+     "region": {"description": "Emprise du symbole", "$ref": "dmos_region.json"}
    }
 }
 ```
@@ -55,7 +55,7 @@ On peut faire référence à un type, comme dans les types `Symbol` et `Element`
   "type": "object",
   "properties": {
      "label": {"type": "string"},
-     "zone": {"description": "Emprise de l'élément", "$ref": "dmos_zone.json"}
+     "region": {"description": "Emprise de l'élément", "$ref": "dmos_region.json"}
    }
 }
 ```
@@ -149,7 +149,7 @@ Each page consists in a header (*structure to be defined*) and a list of systems
   "type": "object",
   "properties": {
       "id" : {"description": "Numéro du système", "type": "integer"},
-     "zone": {"description": "Zone du système dans la page","$ref": "dmos_zone.json"},
+     "region": {"description": "Région du système dans la page","$ref": "dmos_region.json"},
     "headers": {
          "type": "array",
           "items": {"$ref": "dmos_staff_header.json" }
@@ -205,9 +205,9 @@ Schema ``dmos_staff_header``.
   "title": "Schema of measure descriptor",
   "type": "object",
   "properties": {
-     "zone": {
-               "description": "Zone of the measure",
-               "$ref": "dmos_zone.json"
+     "region": {
+               "description": "Région of the measure",
+               "$ref": "dmos_region.json"
      },
     "headers": {
          "type": "array",
