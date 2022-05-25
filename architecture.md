@@ -75,7 +75,7 @@ En résumé: une BB est décrite par l'URL de l'image, les coordonnées du recta
  Pour obtenir une représentation du corps à intégrer dans une annotation JSON_LD,  on peut utiliser la recommandation XPointer (https://www.w3.org/TR/xptr-framework/). La syntaxe serait donc par exemple ``mapartition.mei#xpointer(id('m-57'))``
  
  Voici un exemple de ce que peut être la représentation JSON-LD de l'annotation (avec qq attributs optionnels comme l'auteur, dates de création
- et modoification).
+ et modification).
 
 ```json
 {
@@ -85,8 +85,8 @@ En résumé: une BB est décrite par l'URL de l'image, les coordonnées du recta
   "creator": "createur",
   "created": "2021-01-28",
   "modified": "2021-05-29",
-  "body": "http://serveurIIIF/imgdir/12,50,90,56/max/0/default.jpg",
-  "target": "http://collabscore/mapartition.mei#xpointer(id('m-57'))"
+  "target": "http://serveurIIIF/imgdir/12,50,90,56/max/0/default.jpg",
+  "body": "http://collabscore/mapartition.mei#xpointer(id('m-57'))"
 }
 ```
  
@@ -94,15 +94,12 @@ En résumé: une BB est décrite par l'URL de l'image, les coordonnées du recta
  
 Du point de vue des outils, le scénario privilégié est le suivant. Dans une interface HTML on met en vis-à-vis la source-image, et la visualisation Verovio de la partition-pivot, enrichie avec des ancres permettant de sélectionner une mesure. Il reste à encadrer la mesure correspondante sur l'image, et à valider l'association, ce qui correspond tecnhiquement à l'appel au service REST du serveur CollabScore. 
  
-## Interface (UI) d'alignement entre un audio ou vidéo et le pivot (Cnam, mi-2022)
+## Interface (UI) d'alignement entre un audio ou vidéo et le pivot (AlgoMus, fin 2022)
 
 L'idée est la même mais cette fois il faut associer à chaque mesure de la partition-pivot un fragment (période) d'un document audio ou d'une vidéo. Il
 est possible / probable qu'il existe déjà des procédures d'alignement automatique.
  
 Voir la librairie Vues.js
- 
-
-**TODO**: essayer de reprendre contact avec Antescofo, sinon étudier l'état de l'art.
 
 ## Interface (UI) de synchronisation des sources (Cnam + BnF, fin 2022)
 
@@ -133,17 +130,14 @@ pour l'adaptation selon les normes IIIF.
 ## Le module OMR (IRISA, toute la durée du projet)
 
 Le module OMR est à peu près entièrement à la charge de l'IRISA. Le principe de l'intégration au reste de 
-l'architecture est le suivant: le module OMR interroge le serveur CollabScore pour obtenir des partitions multimodales.
+l'architecture est le suivant: le module OMR (DMOS) interroge le serveur CollabScore pour obtenir des partitions multimodales.
 Pour chacune, la source originale peut être récupérée par URL, traitée par l'OMR, avec production d'une partition
-pivot (document MEI) et sans doute des annotations indiquant les parties à confirmer ou contrôler. 
+pivot (document MEI) et des annotations indiquant les parties à confirmer ou contrôler. 
 
+DMOS transmet un document JSON (dont le format est décrit ici: https://github.com/collabscore/documents/edit/main/output_omr.md)
+qui est ingéré par le serveur CollabScore et converti en MEI.
+ 
 La partition pivot et les annotations sont transmises au serveur CollabScore via les services REST.
-
-**TODO**:
-  
-   - Proposition très générale, à vérifier dans le détail
-   - Question: obtiendra-t-on automatiquement les liens entre BB de la source-origine et les éléments-pivot ?
-   - Concertation avec l'IRISA sur les détails techniques
 
 ## UI correction collaborative (Cnam)
 
