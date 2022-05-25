@@ -44,7 +44,7 @@ corresponde à celle des éléments-pivot (en principe, la granularité sera la 
 Les annotations seront conformes au modèle du W3C. En particulier, les services REST de CollabScore permettront de déposer / récupérer les annotations
 au format JSON-LD.
 
-## Interface (UI) d'alignement entre une partition-image et le pivot (IReMus, fin 2021)
+## Interface (UI) d'alignement entre une partition-image et le pivot (AlgoMus, fin 2022)
 
 Cette interface permettra de lier les boites englobantes (bounding-box ou BB) des mesures sur une partition-image et la partition-pivot. Elle interrogera le serveur
 CollabScore pour obtenir la partition-pivot et l'URL d'une source-image, calculera l'ensemble des liens entre une BB de mesure et 
