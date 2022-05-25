@@ -74,6 +74,10 @@ The schema of DMOS documents is contained in ``dmos_schema.json``, and the schem
   "title": "Schema of DMOS documents",
   "description": "A DMOS document is a list of pages, with one descriptor for each page.",
   "properties": {
+     "id" : {
+          "description": "Unique id of this score",
+          "type": "string"
+        },  
      "score_image_url": {
           "description": "URL of the analyzed score-image",
           "type": "string"
@@ -91,7 +95,7 @@ The schema of DMOS documents is contained in ``dmos_schema.json``, and the schem
          "minItems": 1
        }
     },
-   "required": ["score_image_url", "date", "pages"],
+   "required": ["id", "score_image_url", "date", "pages"],
   "additionalProperties": false
 }
 ```
