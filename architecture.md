@@ -66,14 +66,15 @@ En résumé: une BB est décrite par l'URL de l'image, les coordonnées du recta
 
  On va suivre la recommandation du W3C (https://www.w3.org/TR/annotation-model/).
  
- On part du principe que l'annotation qualifie une mesure d'une partition. Au sens du W3C, la mesure est donc la *cible* (*target*)
- de l'annotation, et l'adresse de la BB est le *corps* (*body*) de l'annotation. 
+ On part du principe que l'annotation qualifie une mesure d'une partition. Au sens du W3C, l'élement de la partition
+ pivot qui fait l'objet de l'annotation est  la *cible* (*target*), et ce qui est dit à propos de cet élément 
+ est le *corps* (*body*) de l'annotation. Concrètement, pour dire qu'une mesure correspond à une boîte englobante dans 
+ une image, on aure
  
-    - pour *target*, on utilise l'adressage IIIF décrit ci-dessus
-    - pour *corps*, il faut simplement l'URL du document MEI de la partition, et le *xml:id* de la mesure annotée.
+    - pour *target*, l'URL du document MEI de la partition pivot, et le *xml:id* de la mesure annotée
+    - pour *corps*, l'URL de l'image, avec comme fragment les coordonnées de la boîte englobante. 
  
- Pour obtenir une représentation du corps à intégrer dans une annotation JSON_LD,  on peut utiliser la recommandation XPointer (https://www.w3.org/TR/xptr-framework/). La syntaxe serait donc par exemple ``mapartition.mei#xpointer(id('m-57'))``
- 
+
  Voici un exemple de ce que peut être la représentation JSON-LD de l'annotation (avec qq attributs optionnels comme l'auteur, dates de création
  et modification).
 
@@ -85,10 +86,12 @@ En résumé: une BB est décrite par l'URL de l'image, les coordonnées du recta
   "creator": "createur",
   "created": "2021-01-28",
   "modified": "2021-05-29",
-  "target": "http://serveurIIIF/imgdir/12,50,90,56/max/0/default.jpg",
-  "body": "http://collabscore/mapartition.mei#xpointer(id('m-57'))"
+  "body": "http://serveurIIIF/imgdir/12,50,90,56/max/0/default.jpg",
+  "target": "http://collabscore/mapartition.mei#xpath(id('m-57'))"
 }
 ```
+
+Le modèle d'annotation est plus sophistiqué que ce simple exemple. (Autre document à venir).
  
 ### Aspects techniques
  
