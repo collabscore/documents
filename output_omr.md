@@ -159,7 +159,7 @@ Each page consists in a header (*structure to be defined*) and a list of systems
          "items": {"$ref": "dmos_measure.json" }
     }
   },
-   "required": ["id", "zone", "headers", "measures"],
+   "required": ["id", "region", "headers", "measures"],
   "additionalProperties": false
 }
 ```
