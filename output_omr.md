@@ -264,6 +264,9 @@ A voice (in  a measure) is a sequence of voice elements, which each belongs to o
  
 > Important: there can probably be other stuff than notes, rests of clefs. To be investigated
 
+> Important: could we add a region here for all the symbols that make a note / rest
+
+
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
