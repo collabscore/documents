@@ -394,6 +394,7 @@ Duration = a fraction of a beat
   "additionalProperties": false
 }
 ```
+
 > Question : do we need the number of points ?
 
 ### Clef
