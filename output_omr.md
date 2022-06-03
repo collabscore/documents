@@ -366,6 +366,7 @@ Duration = a fraction of a beat
    "required": [ "numer", "denom"],
   "additionalProperties": false
 }
+```
 
 ### Note head
 
