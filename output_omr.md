@@ -115,7 +115,7 @@ The schema of DMOS documents is contained in ``dmos_schema.json``, and the schem
   "additionalProperties": false
 }
 ```
-[Example of a DMOS document root](http://collabscore.org/dmos/data/dmos_ex1.json)
+[Example of a DMOS document root](http://collabscore.org/dmos/data/ex1/dmos_ex1.json)
 
 ### Pages, systems and measures
 
