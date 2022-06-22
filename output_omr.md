@@ -212,7 +212,7 @@ Schema ``dmos_staff_header``.
 }
 ```
 
-[Example of a system with three staves](http://collabscore.org/dmos/data/page1_s1.json)
+[Example of a system with three staves](http://collabscore.org/dmos/data/ex1/page1_s1.json)
 
 #### Measures
 
