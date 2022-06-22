@@ -1,65 +1,81 @@
 # Syntax of JSON document output par DMOS
 
-Hypothèses sur l'entrée: 
- 
-  - c'est un PDF, découpé en pages
-  - l'OMR donne le résultat pour l'ensemble des pages
-  - chaque page contient un fragment de partition constitué de plusieurs systèmes
+DMOS produces a JSON document that encodes all the collected information.
 
-L'OMR produit en sortie un document JSON contenant toutes les informations collectées, et structuré selon
-le schéma détaillé ci-dessous.
+  - music notation: all data that constitute the music score and belong to the music notation language
+  - geometric information: points, regions and segments that locate the notation symbols in the analyzed image
+  - errors and questions: annotation on parts of the image that raise problems
 
-## Schéma de la sortie JSON
+## Schema of the JSON output
 
-La spécification s'appuie sur la syntaxe des schémas JSON (https://json-schema.org/). Elle est découpée
-en fragments pour plus de lisibilité. Chaque fragment définit un type de donnée particulier, et peut être référencé
-ou référencer d'autres fragments. Le découpage en fragments suit celui de l'annexe C de la thèse de Bertrand (le nom du type est signalé).   
+The specification below is based on JSON schemas (https://json-schema.org/). For readability reasons, it
+is split in small fragments, each describing a specific data type. Fragments can refer others. 
 
-À titre d'exemple de type JSON, voici le fragment décrivant les coordonnées d'un rectangle.
+The types  descriptions follows the principles of Annex 3 in Bertrand's thesis (the type nalme given there
+is referred to in the following).
 
-### Régions
+## Geometric types
+
+As a first example, here is the JSON type for (2D) points. The type describes an array of exactly 
+2 integer  values.
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dmos_point.json",
+  "title": "A point = a pair of coordinates",
+  "type": "array",
+  "items": {"type": "integer" },
+  "minItems": 2,
+  "maxItems": 2
+}
+```
+
+A segment is a pair of points (note the reference to the above ``Point``type).
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dmos_segment.json",
+  "title": "A segment  described by its two endpoints",
+   "type": "array",
+  "items": {"$ref": "dmos_point.json" },
+  "minItems": 2,
+  "maxItems": 2  
+  }
+```
+A region is described by its contour (at least three points).
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_region.json",
-  "title": "Schéma des coordonnées d'une région sur une image (x y w h)",
+  "title": "A region = a polygon described by its contour",
   "type": "array",
-  "minItems": 4,
-  "maxItems": 4
+  "items": {"$ref": "dmos_point.json" },
+  "minItems": 3
 }
 ```
 On peut faire référence à un type, comme dans les types `Symbol` et `Element`.
 
-### Symboles
+## Symboles
+
+A symbol is a name, associated to an (optional) region.
 
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "dmos_symbol.json",
-  "title": "Schéma de description d'un symbole",
+  "title": "Symbol description",
   "type": "object",
   "properties": {
      "label": {"type": "string"},
-     "region": {"description": "Emprise du symbole", "$ref": "dmos_region.json"}
-   }
+     "region": {"$ref": "dmos_region.json"}
+   },
+   "required": ["label"],
+  "additionalProperties": false
 }
 ```
-### Eléments
-
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "dmos_element.json",
-  "title": "Schéma de description d'un élément",
-  "type": "object",
-  "properties": {
-     "label": {"type": "string"},
-     "region": {"description": "Emprise de l'élément", "$ref": "dmos_region.json"}
-   }
-}
-```
-D'autres types utilitaires sont donnés en fin de document: clef, armure, métrique.
+> Important: the list of recognized labels is given in the ``symbol.md`` document. 
 
 ### DMOS document structure
 
