@@ -135,7 +135,7 @@ Each page consists in a header (*structure to be defined*) and a list of systems
   "properties": {
      "no_page": { "type": "integer" },
      "header_systems": {
-         "description": "Tableau des descripteurs de système",
+         "description":  "description": "Array of systems descriptors",
          "type": "object",
          "properties": {
            "entete": {"description": "Infos d'entête de la page: à préciser", "type": "string"}
@@ -154,7 +154,7 @@ Each page consists in a header (*structure to be defined*) and a list of systems
 ```
 
 
-[Example of a page descriptor](http://collabscore.org/dmos/data/page1.json)
+[Example of a page descriptor](http://collabscore.org/dmos/data/ex1/page1.json)
 
 #### System 
 
@@ -168,34 +168,34 @@ Each page consists in a header (*structure to be defined*) and a list of systems
   "description": "Each system is a list of headers, one for each staff, and a list of measures",
   "type": "object",
   "properties": {
-      "id" : {"description": "Numéro du système", "type": "integer"},
-     "region": {"description": "Région du système dans la page","$ref": "dmos_region.json"},
+      "id" : {"description": "System id", "type": "integer"},
+     "region": {"description": "Region covered by the system in the page","$ref": "dmos_region.json"},
     "headers": {
          "type": "array",
           "items": {"$ref": "dmos_staff_header.json" }
     },
     "measures": {
          "type": "array",
-         "items": {"$ref": "dmos_measure.json" }
+         "items": {"$ref": "dmos_measure.json" },
+           "minItems": 1
     }
   },
    "required": ["id", "region", "headers", "measures"],
   "additionalProperties": false
 }
 ```
+
 #### Staff descriptor
 
 > Form type `ExtGPorteeReco`
 
+There might be a hierarchical grouping of staves in a system.  (piano, strings / winds / organ / etc.) At some
+point, a staff belongs to a "part", i.e., the sub-score assigned to a single performer. There might be one (usually), 2 or even 3 staves (organ), and the voices played by the performed can (in the most complex case) be distributed over all the staves of its part. **Thus**, I added the ``id_part`` to the staff descriptor to indicate
+the part a staff belongs to. As an inital approx., we can assume that staff = part.
 
-> Important: there might be a hierarchical grouping of staves in a system.  (piano, strings / winds / organ / etc.) At some
-> point, a staff belongs to a "part", i.e., the sub-score assigned to a single performer. There might be one (usually),
-> 2 or even 3 staves (organ), and the voices played by the performed can (in the most complex case) be distribued 
-> over all the staves of its part. **Thus**, I added the ``id_part`` to the staff descriptor to indicate
-> the part a staff belongs to. As an inital approx., we can assume that staff = part.
+The first bar is a segment that locates the left-most  vertical bar of the system.
 
 Schema ``dmos_staff_header``. 
-
 ```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -205,9 +205,9 @@ Schema ``dmos_staff_header``.
     "properties": {
        "id_part": {"$type": "string" },
        "no_staff": {"$type": "integer" },
-       "first_bar": {"$ref": "dmos_element.json" }
+       "first_bar": {"$ref": "dmos_segment.json" }
    },
-   "required": [ "id_part", "no_staff", "first_bar"],
+   "required": [ "id_part", "no_staff"],
   "additionalProperties": false
 }
 ```
@@ -243,15 +243,14 @@ Schema ``dmos_staff_header``.
 }
 ```
 
-[Example of a measure over three staves  (first staff, first system, first page)](http://collabscore.org/dmos/data/page1_s1_m1.json)
+[Example of a measure over three staves  (first staff, first system, first page)](http://collabscore.org/dmos/data/ex1/page1_s1_m1.json)
 
 ## Voice
 
 A voice (in  a measure) is a sequence of voice elements, which each belongs to one of the staves of the voice's part.
 
-> Important: j'ai ajouté id_part, pour savoir à quelle partie appartient une voix. En principe une voix ne peut évoluer
-> que sur les portées de sa partie. Dans un premier temps, on peut se contenter d'assimiler partie et portée.
-> J'ai aussi ajouté l'identifiant de la voix (à engendrer)
+The ``id_part`` property determines the part the voice belongs to, and thus indirectly the list of
+staves on which a voice can be spread. 
 
 ```json
 {
@@ -276,11 +275,25 @@ A voice (in  a measure) is a sequence of voice elements, which each belongs to o
 
 > From `ElemVoix`. 
 
-> Important: representation of durations must be revised (float = clumsy parsing)
- 
+A voice elemnt is either a clef, a not or a rest. It is represented as a graphic symbol and 
+corresponds to a duration.
+
+The ``duration`` property gathers all the symbolic constituents that determine the duration  
+value:
+
+  - a symbol (whole note, 8th note, quarter rest, etc.)
+  - the number of points (each point adds a 1.5 factor to the duration value)
+  - the tupler factor
+
+The latter two are optional. Given the current meter and these elements, 
+the conversion system can infer the duration.
+
+> Important : the region covered by the element as a complex symbol is given 
+> with the duratioin symbol.
+
+
 > Important: there can probably be other stuff than notes, rests of clefs. To be investigated
 
-> Important: could we add a region here for all the symbols that make a note / rest
 
 
 ```json
@@ -291,27 +304,20 @@ A voice (in  a measure) is a sequence of voice elements, which each belongs to o
   "description": "A voice element is a symbol that can appear as part of a voice in a measure. Either a note, a rest or a clef",
   "type": "object",
   "properties": {
-    "type": {"description": "Elément ou symbole",
-          "anyOf": [{"$ref": "dmos_element.json"}, {"$ref": "dmos_symbol.json"}]},
-    "no_step": {"description": "Numéro de pas", "type": "integer"},
-    "no_group": {"description": "A expliquer", "type": "integer"},
     "duration": { "$ref": "dmos_duration.json"},
-    "step_duration": {"description": "A expliquer", "type": "number"},
-    "direction": {"description": "Haut ou bas?", "type": "string"},
+    "no_group": {"description": "Beaming. To be clarified", "type": "integer"},
+    "direction": {"description": "Up or down", "type": "string"},
     "att_note": { "$ref": "dmos_att_note.json"},
     "att_rest": { "$ref": "dmos_att_rest.json"},
     "att_clef": { "$ref": "dmos_clef.json"},
     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
   },
-   "required": ["type", "no_step", "duration"],
+   "required": ["duration"],
   "additionalProperties": false
 }
 ```
+[Example: first page, first system, first measure, first part, voice 1](http://collabscore.org/dmos/data/ex1/page1_s1_m1_p1_v1.json)
 
-
-[Example: first page, first system, first measure, first part, voice 1](http://collabscore.org/dmos/data/page1_s1_m1_p1_v1.json)
-
-> Question: do we need of the details on steps?
 
 ### Notes and rest attributes
 
@@ -331,7 +337,7 @@ A voice (in  a measure) is a sequence of voice elements, which each belongs to o
     "articulations_bottom": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
     "directions": {"description": "nuances et autres symboles", "type": "array", 
         "items": { "$ref": "dmos_symbol.json" }},
-    "other_objects": {"type": "array", "items": { "$ref": "dmos_element.json" }},
+    "other_objects": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
   },
    "required": ["nb_heads", "heads"],
@@ -339,7 +345,7 @@ A voice (in  a measure) is a sequence of voice elements, which each belongs to o
 }
 ```
 
-> Question: can we distinguish slurs from ties ?
+> Slurs are distinguished from ties by the rule: a tie connects note of similar height.
 
 > From `AttRest`
 
@@ -359,7 +365,6 @@ A voice (in  a measure) is a sequence of voice elements, which each belongs to o
   "additionalProperties": false
 }
 ```
-> Note: the staff number os already in `TeteR`
 
 > Question: what about lyrics ?
 
@@ -400,7 +405,6 @@ Duration = a fraction of a beat
      "no_staff": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la note sur la portée", "type": "integer"},
      "alter": {"description": "Altération", "$ref": "dmos_symbol.json"},
-     "nb_points": {"description": "Nbre de points", "type": "integer"},
      "tied": {"description": "Liée à la note précédente ? À clarifier", "type": "boolean"},
      "errors": {"description": "Liste des erreurs", 
                 "type": "array",
@@ -411,8 +415,6 @@ Duration = a fraction of a beat
   "additionalProperties": false
 }
 ```
-
-> Question : do we need the number of points ?
 
 ### Clef
 
