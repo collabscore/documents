@@ -31,7 +31,7 @@
  - SMB_HREST_HEAD = "hresthead"
  - SMB_WREST_HEAD = "wresthead"
  - SMB_REST_HEAD = "qresthead"
- - SMB_8REST_HEAD = "8resthead"
+ - SMB_8THREST_HEAD = "8thresthead"
 
 ## Misc
 
