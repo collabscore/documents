@@ -20,9 +20,9 @@ vidéo, identifiant d'un élément dans un document XML.
 AlgoMus dispose déjà de composants mûrs pour lier une partition pivot et un fragment audio. La première cible est donc 
 l'adaptation de ces composants à l'architecture CollabScore. À court terme, on vise donc les résultats suivants:
  
-  #. Le Cnam et l'IRémus fournissent une liste de partitions pivots MEI disponibles sur Neuma (http:///neuma.huma-num.fr)
+  1. Le Cnam et l'IRémus fournissent une liste de partitions pivots MEI disponibles sur Neuma (http:///neuma.huma-num.fr)
      associées à des enregistrements (YouTube en priorité, autre sources éventuellement).
-  #. Le Cnam transmet à Algomus les spécifications d'une interface REST permettant de déposer sous forme d'annotation
+  2. Le Cnam transmet à Algomus les spécifications d'une interface REST permettant de déposer sous forme d'annotation
      la correspondance entre un élément de la partition pivot (une mesure) et un fragment temporel dans la source YouTube.
   3. Algomus fournira une interface permettant de lire en mode synchronisé la partition pivot (p.e. avec Verovio) et 
      le fragment YouTube.  Cette interface s'appuiera sur les données précédents récupérées en lecture via les services REST. 
