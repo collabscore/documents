@@ -1,29 +1,27 @@
 # Notes réunions CollabScore
 
-## Réunion pleinière, 8 juin 2022
+## Réunion pleinière du 5 octobre 2022
 
-(Notes S. Cretin)
+Présentation de la situation administrative du projet: un rapport intermédiaire est en cours de rédaction pour transmission à l'ANR (par P. Rigaux). Il comprendra une demande formelle de prolongation du projet de 6 mois pour compenser les retards de début de projet dûs àa la crise Covid et aux difficultés de recrutement. Le partenaire Algomus (Lille) est maintenant officiellement intégré et a pu recruter un ingénieur.
 
-Ordre du jour :
+Point d'avancement :
 
-  - Présentation de l’état actuel d’avancement (serveur CollabScore, procédure d’import de l’OMR, système d’annotation) ; NB : le projet a pris entre 6 mois et 1 an de retard.
-  - Présentation par Algomus (nouveau partenaire) des outils actuels de synchronisation multimedia.
-  - Actions à lancer d'ici fin 2022.
+  - Une liste de partitions-cible issues de Gallica a été établie par l'IReMus, avec une cotation du niveau de difficulté et la saisie de partitions numérisées qui serviront de référence.
+  - L'IRISA a recruté deux ingénieurs qui ont commencé à remettre en place l'outil OMR, avec un premier essai de conversion de la sortie OMR vers le format MEI basé sur le convertisseur du Cnam. 
+  - Le Cnam a avancé sur la mise en place du serveur CollabScore qui servira de point central dans l'architecture.
+  - Algomus dispose d'outils d'alignement entre partition numérisée et document audio, qui peuvent être intégrés à court terme dans l'architecture Collabscore.
 
-### Outil OMR : DMOS (IRISA)
+L'objectif à court terme est de mettre en place une chaîne de transformation automatisée permettant de visualiser le résultat de l'omérisation sous forme de documents MEI. Une deuxième axe est la réalisation de l'outil d'alignement audio avec enregistrement dans CollabScore des annotations décrivant la synchronisation des deux documents.
 
-Format d'export : MEI ; encodage des éléments musicaux + annotations : identification de l'image omrisée, coordonnées des boîtes, erreurs et questions du moteur OMR... Ces annotations sont récupérables au format json ; elles seront exploitées pour la correction collaborative et par les outils de synchronisation multimedia. Le moteur OMR est à l'état de prototype : non complètement fonctionnel (exemple : absence des coordonnées matricielles des boîtes dans le MEI). Des développements coordonnés par l'IRISA sont à venir.
 
-### Algomus (http://www.algomus.fr/)
+### Actions 
 
-Ils ont déjà développé des solutions de synchronisation multimedia (alignement partition encodée-pivot / partition image / audio ou vidéo), mais qui ne reposent pas sur MEI (enjeu aussi autour de l'exploitation de l'attribut xml id des notes encodées). Développements à venir.
+ - Rédaction du rapport intermédiaire pour l'ANR (Cnam)
+ - Mise en place de l'intégration entre la sortie de l'IRISA et le serveur CollabScore (Cnam-IRISA)
+ - Application de l'omérisation aux cibles fournies par l'IRémus au moins niveau 1 (IRISA)
+ - Choix de documents audio à aligner avec les cibles de l'IRéMus (IRémus)
+ - Intégration de l'outil d'alignement audio dans CollabScore (Cnam - Algomus)
 
-### Actions côté BnF
-
-- Produire les spécifications de la plateforme de correction collaborative (développée par le CNAM).
-- Fournir les images pour environ 500 partitions de Saint-Saëns.
-
-Pour préparer cette mise à disposition, voici pour 1 partition de Saint-Saëns prise au hasard (https://gallica.bnf.fr/ark:/12148/bpt6k1170231k, 20 vues), les dimensions en pixels des images récupérées via IIIF (jpg) et via la Chaîne de mise à disposition de la BnF (tif). Vous constaterez que ces dimensions sont (quasi) identiques. Ceux ou celles parmi vous qui souhaiteraient recevoir les images pour comparaison peuvent se signaler par retour de mail.
 
 ## Réunion du 4 octobre 2022, Cnam - AlgoMus
 
@@ -55,24 +53,27 @@ l'adaptation de ces composants à l'architecture CollabScore. À court terme, on
  Note PR: un graphiste / ergonome est disponible pour nous conseiller sur les interfaces de visualisation et réaliser les
  composants graphiques nécessaires (CSS, autres).
 
-## Réunion pleinière du 5 octobre 2022
+## Réunion pleinière, 8 juin 2022
 
-Présentation de la situation administrative du projet: un rapport intermédiaire est en cours de rédaction pour transmission à l'ANR (par P. Rigaux). Il comprendra une demande formelle de prolongation du projet de 6 mois pour compenser les retards de début de projet dûs àa la crise Covid et aux difficultés de recrutement. Le partenaire Algomus (Lille) est maintenant officiellement intégré et a pu recruter un ingénieur.
+(Notes S. Cretin)
 
-Point d'avancement :
+Ordre du jour :
 
-  - Une liste de partitions-cible issues de Gallica a été établie par l'IReMus, avec une cotation du niveau de difficulté et la saisie de partitions numérisées qui serviront de référence.
-  - L'IRISA a recruté deux ingénieurs qui ont commencé à remettre en place l'outil OMR, avec un premier essai de conversion de la sortie OMR vers le format MEI basé sur le convertisseur du Cnam. 
-  - Le Cnam a avancé sur la mise en place du serveur CollabScore qui servira de point central dans l'architecture.
-  - Algomus dispose d'outils d'alignement entre partition numérisée et document audio, qui peuvent être intégrés à court terme dans l'architecture Collabscore.
+  - Présentation de l’état actuel d’avancement (serveur CollabScore, procédure d’import de l’OMR, système d’annotation) ; NB : le projet a pris entre 6 mois et 1 an de retard.
+  - Présentation par Algomus (nouveau partenaire) des outils actuels de synchronisation multimedia.
+  - Actions à lancer d'ici fin 2022.
 
-L'objectif à court terme est de mettre en place une chaîne de transformation automatisée permettant de visualiser le résultat de l'omérisation sous forme de documents MEI. Une deuxième axe est la réalisation de l'outil d'alignement audio avec enregistrement dans CollabScore des annotations décrivant la synchronisation des deux documents.
+### Outil OMR : DMOS (IRISA)
 
+Format d'export : MEI ; encodage des éléments musicaux + annotations : identification de l'image omrisée, coordonnées des boîtes, erreurs et questions du moteur OMR... Ces annotations sont récupérables au format json ; elles seront exploitées pour la correction collaborative et par les outils de synchronisation multimedia. Le moteur OMR est à l'état de prototype : non complètement fonctionnel (exemple : absence des coordonnées matricielles des boîtes dans le MEI). Des développements coordonnés par l'IRISA sont à venir.
 
-### Actions 
+### Algomus (http://www.algomus.fr/)
 
- - Rédaction du rapport intermédiaire pour l'ANR (Cnam)
- - Mise en place de l'intégration entre la sortie de l'IRISA et le serveur CollabScore (Cnam-IRISA)
- - Application de l'omérisation aux cibles fournies par l'IRémus au moins niveau 1 (IRISA)
- - Choix de documents audio à aligner avec les cibles de l'IRéMus (IRémus)
- - Intégration de l'outil d'alignement audio dans CollabScore (Cnam - Algomus)
+Ils ont déjà développé des solutions de synchronisation multimedia (alignement partition encodée-pivot / partition image / audio ou vidéo), mais qui ne reposent pas sur MEI (enjeu aussi autour de l'exploitation de l'attribut xml id des notes encodées). Développements à venir.
+
+### Actions côté BnF
+
+- Produire les spécifications de la plateforme de correction collaborative (développée par le CNAM).
+- Fournir les images pour environ 500 partitions de Saint-Saëns.
+
+Pour préparer cette mise à disposition, voici pour 1 partition de Saint-Saëns prise au hasard (https://gallica.bnf.fr/ark:/12148/bpt6k1170231k, 20 vues), les dimensions en pixels des images récupérées via IIIF (jpg) et via la Chaîne de mise à disposition de la BnF (tif). Vous constaterez que ces dimensions sont (quasi) identiques. Ceux ou celles parmi vous qui souhaiteraient recevoir les images pour comparaison peuvent se signaler par retour de mail.
