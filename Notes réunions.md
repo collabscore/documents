@@ -54,3 +54,25 @@ l'adaptation de ces composants à l'architecture CollabScore. À court terme, on
     
  Note PR: un graphiste / ergonome est disponible pour nous conseiller sur les interfaces de visualisation et réaliser les
  composants graphiques nécessaires (CSS, autres).
+
+## Réunion pleinière du 5 octobre 2022
+
+Présentation de la situation administrative du projet: un rapport intermédiaire est en cours de rédaction pour transmission à l'ANR (par P. Rigaux). Il comprendra une demande formelle de prolongation du projet de 6 mois pour compenser les retards de début de projet dûs àa la crise Covid et aux difficultés de recrutement. Le partenaire Algomus (Lille) est maintenant officiellement intégré et a pu recruter un ingénieur.
+
+Point d'avancement :
+
+  - Une liste de partitions-cible issues de Gallica a été établie par l'IReMus, avec une cotation du niveau de difficulté et la saisie de partitions numérisées qui serviront de référence.
+  - L'IRISA a recruté deux ingénieurs qui ont commencé à remettre en place l'outil OMR, avec un premier essai de conversion de la sortie OMR vers le format MEI basé sur le convertisseur du Cnam. 
+  - Le Cnam a avancé sur la mise en place du serveur CollabScore qui servira de point central dans l'architecture.
+  - Algomus dispose d'outils d'alignement entre partition numérisée et document audio, qui peuvent être intégrés à court terme dans l'architecture Collabscore.
+
+L'objectif à court terme est de mettre en place une chaîne de transformation automatisée permettant de visualiser le résultat de l'omérisation sous forme de documents MEI. Une deuxième axe est la réalisation de l'outil d'alignement audio avec enregistrement dans CollabScore des annotations décrivant la synchronisation des deux documents.
+
+
+### Actions 
+
+ - Rédaction du rapport intermédiaire pour l'ANR (Cnam)
+ - Mise en place de l'intégration entre la sortie de l'IRISA et le serveur CollabScore (Cnam-IRISA)
+ - Application de l'omérisation aux cibles fournies par l'IRémus au moins niveau 1 (IRISA)
+ - Choix de documents audio à aligner avec les cibles de l'IRéMus (IRémus)
+ - Intégration de l'outil d'alignement audio dans CollabScore (Cnam - Algomus)
