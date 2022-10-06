@@ -6,9 +6,9 @@
 
 Ordre du jour :
 
-  # Présentation de l’état actuel d’avancement (serveur CollabScore, procédure d’import de l’OMR, système d’annotation) ; NB : le projet a pris entre 6 mois et 1 an de retard.
-  # Présentation par Algomus (nouveau partenaire) des outils actuels de synchronisation multimedia.
-  # Actions à lancer d'ici fin 2022.
+  - Présentation de l’état actuel d’avancement (serveur CollabScore, procédure d’import de l’OMR, système d’annotation) ; NB : le projet a pris entre 6 mois et 1 an de retard.
+  - Présentation par Algomus (nouveau partenaire) des outils actuels de synchronisation multimedia.
+  - Actions à lancer d'ici fin 2022.
 
 ### Outil OMR : DMOS (IRISA)
 
