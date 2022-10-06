@@ -1,6 +1,31 @@
-# Notes sur les tâches AlgoMus
+# Notes réunions CollabScore
 
-## Réunion du 4 octobre 2022
+## Réunion pleinière, 8 juin 2022
+
+(Notes S. Cretin)
+
+Ordre du jour :
+
+  # Présentation de l’état actuel d’avancement (serveur CollabScore, procédure d’import de l’OMR, système d’annotation) ; NB : le projet a pris entre 6 mois et 1 an de retard.
+  # Présentation par Algomus (nouveau partenaire) des outils actuels de synchronisation multimedia.
+  # Actions à lancer d'ici fin 2022.
+
+### Outil OMR : DMOS (IRISA)
+
+Format d'export : MEI ; encodage des éléments musicaux + annotations : identification de l'image omrisée, coordonnées des boîtes, erreurs et questions du moteur OMR... Ces annotations sont récupérables au format json ; elles seront exploitées pour la correction collaborative et par les outils de synchronisation multimedia. Le moteur OMR est à l'état de prototype : non complètement fonctionnel (exemple : absence des coordonnées matricielles des boîtes dans le MEI). Des développements coordonnés par l'IRISA sont à venir.
+
+### Algomus (http://www.algomus.fr/)
+
+Ils ont déjà développé des solutions de synchronisation multimedia (alignement partition encodée-pivot / partition image / audio ou vidéo), mais qui ne reposent pas sur MEI (enjeu aussi autour de l'exploitation de l'attribut xml id des notes encodées). Développements à venir.
+
+### Actions côté BnF
+
+- Produire les spécifications de la plateforme de correction collaborative (développée par le CNAM).
+- Fournir les images pour environ 500 partitions de Saint-Saëns.
+
+Pour préparer cette mise à disposition, voici pour 1 partition de Saint-Saëns prise au hasard (https://gallica.bnf.fr/ark:/12148/bpt6k1170231k, 20 vues), les dimensions en pixels des images récupérées via IIIF (jpg) et via la Chaîne de mise à disposition de la BnF (tif). Vous constaterez que ces dimensions sont (quasi) identiques. Ceux ou celles parmi vous qui souhaiteraient recevoir les images pour comparaison peuvent se signaler par retour de mail.
+
+## Réunion du 4 octobre 2022, Cnam - AlgoMus
 
 Présents: Philippe, Mathieu, Charles, Emmanuel
 
