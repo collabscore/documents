@@ -26,27 +26,45 @@ Example for the REST interface
  - Its set of pscores is at http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
  - A specific pscore such as ``dmos_ex1`` is accessible at: http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/
 
-In this document, we document the set of web services useful to CollabScore
+In this document, we document the set of web services useful to CollabScore. A Swagger interface with all services is
+available at http://neuma.huma-num.fr/rest/swagger/.
 
-## Schema of the JSON output
+## Getting collections and pscores
 
-The specification below is based on JSON schemas (https://json-schema.org/). For readability reasons, it
-is split in small fragments, each describing a specific data type. Fragments can refer others. 
+Given a collection, you can retrieve the list of sub-collections with the ``_corpora``
+service. The sub-collections of CollabScore are obtained by calling the service:
 
-The types  descriptions follows the principles of Annex 3 in Bertrand's thesis (the type nalme given there
-is referred to in the following).
-
-## Geometric types
-
-As a first example, here is the JSON type for (2D) points. The type describes an array of exactly 
-2 integer  values.
-
-```json
-{
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "dmos_point.json",
-  "title": "A point = a pair of coordinates",
-  "type": "array",
 ```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_corpora/
+```
+
+The list of pscores in a collection is obtained with the ``_opera`` service.
+
+```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
+```
+
+The meta-description of a pscore is obtained 
+
+http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/
+A pscore is associated  MusicXML document, the MEI document, the PDF and PNG 
+rendering obtained from Lilypond, etc. You can check the list of files available 
+with the <tt>_files</tt> Opus service.
+</p>
+
+<code>
+curl -X GET "/rest/collections/psautiers/godeau1656/1/_files" 
+</code>
+
+<p>
+Test it: <a href="{{NEUMA_URL}}/collections/psautiers/godeau1656/1/_files" target="_blank">/rest/collections/psautiers/godeau1656/1/_files</a>.
+</p>
+<p>
+Here is the list of possible files names.
+<ol>
+<li><tt>score.xml</tt>. The MusicXML document.</li>
+<li><tt>mei.xml</tt>. The MEI document.</li>
+<li><tt>score.ly</tt>. The Lilypond document.</li>
+</ol>
 
 
