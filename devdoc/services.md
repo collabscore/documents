@@ -14,8 +14,19 @@ separated by semicolons. For instance
 
  - the id of the CollabScore collection  is ``all:collabscore``
  - the id of the basic sample file ``dmos_ex1`` pscore in CollabScore is ``all:collabscore:dmos_ex1``
-    is <tt>c1:c4:o2</tt>
-All CollabScore collections are rooted at 
+
+One can interact with a pscore either with a Web interface or with the Restful interface. Examples for the Web interface:
+
+ - Collection CollabScore can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/corpus/all:collabscore/
+ - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/opus/all:collabscore:dmos_ex1/
+
+Example for the REST interface 
+
+ - Collection CollabScore can be consulted at http://neuma.huma-num.fr/rest/collections/all:collabscore/, 
+ - Its set of pscores is at http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
+ - A specific pscore such as ``dmos_ex1`` is accessible at: http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/
+
+In this document, we document the set of web services useful to CollabScore
 
 ## Schema of the JSON output
 
@@ -36,3 +47,6 @@ As a first example, here is the JSON type for (2D) points. The type describes an
   "$id": "dmos_point.json",
   "title": "A point = a pair of coordinates",
   "type": "array",
+```
+
+
