@@ -65,9 +65,9 @@ One obtains a json with all the files and their URLs.
 {
   "ref":"dmos_ex1",
  "title":"Test collabscore",
-  "files": {"score.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/score.xml"},
-             "mei.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/mei.xml"}}
-           }
+  "files": ["score.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/score.xml"},
+             "mei.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/mei.xml"}
+           ]
 }
 ```
 
@@ -100,5 +100,14 @@ with the OMR output.
        ]
  }
 ```
+
+## Adding a source
+
+To come soon
+
+## Adding annotations
+
+To come soon
+
 
 
