@@ -62,14 +62,43 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/_
 One obtains a json with all the files and their URLs.
  
 ```json
-"ref":"dmos_ex1",
+{
+  "ref":"dmos_ex1",
  "title":"Test collabscore",
   "files": {"score.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/score.xml"},
              "mei.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/mei.xml"}}
            }
+}
 ```
 
 ### Pscore: sources
 
+A pscore is linked to *sources*, each source being a digital representation of a  pscore in a multimedia format: image, audio,
+video, etc.
+
+The list of sources of a pscore can be obtained with the ``_sources`` services.
+
+```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/_sources/
+```
+
+The services returns a list of sources descriptions. For instance, the following document
+details two sources: an image (Gallica address) and a MEI that can be used as a reference to compare
+with the OMR output.
+
+```json
+{"ref":"saintsaens71.1",
+  "sources":[
+       {"ref":"L-1718",
+          "source_type":"JPEG",
+          "mime_type":"image/jpeg",
+          "url":"https://gallica.bnf.fr/ark:/12148/bpt6k1174892k"},
+        {"ref":"iremus",
+         "source_type":"MEI",
+         "mime_type":"application/xml",
+         "url":"to_mei_doc.xml"}
+       ]
+ }
+```
 
 
