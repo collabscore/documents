@@ -31,6 +31,8 @@ available at http://neuma.huma-num.fr/rest/swagger/.
 
 ## Getting collections and pscores
 
+### Collections
+
 Given a collection, you can retrieve the list of sub-collections with the ``_corpora``
 service. The sub-collections of CollabScore are obtained by calling the service:
 
@@ -44,27 +46,30 @@ The list of pscores in a collection is obtained with the ``_opera`` service.
 curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
 ```
 
-The meta-description of a pscore is obtained 
+### Pscores: meta-data and score files
 
-http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/
-A pscore is associated  MusicXML document, the MEI document, the PDF and PNG 
-rendering obtained from Lilypond, etc. You can check the list of files available 
-with the <tt>_files</tt> Opus service.
-</p>
+The meta-description of a pscore is obtained from the pscore id:
 
-<code>
-curl -X GET "/rest/collections/psautiers/godeau1656/1/_files" 
-</code>
+```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/
+```
 
-<p>
-Test it: <a href="{{NEUMA_URL}}/collections/psautiers/godeau1656/1/_files" target="_blank">/rest/collections/psautiers/godeau1656/1/_files</a>.
-</p>
-<p>
-Here is the list of possible files names.
-<ol>
-<li><tt>score.xml</tt>. The MusicXML document.</li>
-<li><tt>mei.xml</tt>. The MEI document.</li>
-<li><tt>score.ly</tt>. The Lilypond document.</li>
-</ol>
+A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file. The list of score files associated to a pscore is obtained with the ``_files`` service.
+
+```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/_files/
+```
+One obtains a json with all the files and their URLs.
+ 
+```json
+"ref":"dmos_ex1",
+ "title":"Test collabscore",
+  "files": {"score.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/score.xml"},
+             "mei.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/mei.xml"}}
+           }
+```
+
+### Pscore: sources
+
 
 
