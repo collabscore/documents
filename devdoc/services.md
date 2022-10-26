@@ -51,7 +51,7 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
 The meta-description of a pscore is obtained from the pscore id:
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vivelevent/
 ```
 
 A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file. The list of score files associated to a pscore is obtained with the ``_files`` service.
@@ -79,7 +79,7 @@ video, etc.
 The list of sources of a pscore can be obtained with the ``_sources`` services.
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/_sources/
+curl -X GET "http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vivelevent/_sources/"
 ```
 
 The services returns a list of sources descriptions. For instance, the following document
@@ -87,18 +87,18 @@ details two sources: an image (Gallica address) and a MEI that can be used as a 
 with the OMR output.
 
 ```json
-{"ref":"saintsaens71.1",
-  "sources":[
-       {"ref":"L-1718",
-          "source_type":"JPEG",
-          "mime_type":"image/jpeg",
-          "url":"https://gallica.bnf.fr/ark:/12148/bpt6k1174892k"},
-        {"ref":"iremus",
-         "source_type":"MEI",
-         "mime_type":"application/xml",
-         "url":"to_mei_doc.xml"}
-       ]
- }
+{
+"ref": "vivelevent",
+"sources": [
+{
+"ref": "dmos",
+"description": "DMOS file",
+"source_type": "DMOS",
+"mime_type": "application/json",
+"url": "http://neuma.huma-num.fr/media/sources/all-collabscore-tests-vivelevent/dmos.json"
+}
+]
+}
 ```
 
 ## Adding a source
@@ -113,12 +113,29 @@ To add a source, send a PUT request to the pscore. The content of the request is
  }
 ```
 
-The 'source type' must belong to : JPEG, DMOS, MEI, MXML, MP3
+The 'source type' must belong to : JPEG, PDF, DMOS, MEI, MusicXML, MP3
 
 Assuming the above JSON object is stored in a ``source_rest.json`` filoe, the HTTP request is as follows:
 
 ```
 curl -X PUT "http://localhost:8000/rest/collections/all:collabscore:tests:vivelevent/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
+```
+
+## Modifying a source
+
+Same call, but adding the source ref to the URL, and using POST. There is no need to use the ``ref`` field in tje JSON file. For instance:
+
+```json
+{
+ "description":"DMOS file",
+ "source_type":"DMOS",
+ "url":""
+ }
+```
+A call:
+
+```
+curl -X POST "http://localhost:8000/rest/collections/all:collabscore:tests:vivelevent/_sources/dmos"  -H 'Content-Type: application/json'   -d @source_rest.json
 ```
 
 
