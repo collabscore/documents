@@ -103,7 +103,25 @@ with the OMR output.
 
 ## Adding a source
 
-To come soon
+To add a source, send a PUT request to the pscore. The content of the request is a JSON that describes the source. For instance:
+
+```json
+{"ref":"dmos",
+ "description":"DMOS file",
+ "source_type":"DMOS",
+ "mime_type":"application/json",
+ "url":""
+ }
+```
+
+The 'source type' must belong to : JPEG, DMOS, MEI, MXML, MP3
+
+Assuming the above JSON object is stored in a ``source_rest.json`` filoe, the HTTP request is as follows:
+
+```
+curl -X PUT "http://localhost:8000/rest/collections/all:collabscore:tests:vivelevent/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
+```
+
 
 ## Adding annotations
 
