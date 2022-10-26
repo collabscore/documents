@@ -109,7 +109,6 @@ To add a source, send a PUT request to the pscore. The content of the request is
 {"ref":"dmos",
  "description":"DMOS file",
  "source_type":"DMOS",
- "mime_type":"application/json",
  "url":""
  }
 ```
