@@ -1,5 +1,18 @@
 # Notes réunions CollabScore
 
+
+## Réunion Cnam - IRISA, 27 octobre 2022
+
+Présents: Philippe (Cnam), Bertrand, Hugo et xxx (IRISA)
+
+Objet: présentation des services CollabScore pour inspecter les collections, partitions pivots et sources et déposer par upload les fichiers de transformations DMOS. Ces services sont documentés ici: https://github.com/collabscore/documents/blob/main/devdoc/services.md.
+
+TO DO list:
+
+  - IRISA: envoi au Cnam d'une liste d'images de partitions avec liens Gallica ; choix d'exemples et représentatifs des fonctionnalités testées
+  - Cnam: saisie de ces partitions dans Neuma
+  - IRISA: omérisation des images, et transfert dans Neuma par appels des services
+
 ## Réunion pleinière du 5 octobre 2022
 
 Présentation de la situation administrative du projet: un rapport intermédiaire est en cours de rédaction pour transmission à l'ANR (par P. Rigaux). Il comprendra une demande formelle de prolongation du projet de 6 mois pour compenser les retards de début de projet dûs àa la crise Covid et aux difficultés de recrutement. Le partenaire Algomus (Lille) est maintenant officiellement intégré et a pu recruter un ingénieur.
