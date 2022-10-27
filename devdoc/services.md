@@ -57,7 +57,7 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vive
 A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file. The list of score files associated to a pscore is obtained with the ``_files`` service.
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/_files/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vivelevent/_files/
 ```
 One obtains a json with all the files and their URLs.
  
