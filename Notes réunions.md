@@ -3,7 +3,7 @@
 
 ## Réunion Cnam - IRISA, 27 octobre 2022
 
-Présents: Philippe (Cnam), Bertrand, Hugo et xxx (IRISA)
+Présents: Philippe (Cnam), Bertrand, Hugo et Ali (IRISA)
 
 Objet: présentation des services CollabScore pour inspecter les collections, partitions pivots et sources et déposer par upload les fichiers de transformations DMOS. Ces services sont documentés ici: https://github.com/collabscore/documents/blob/main/devdoc/services.md.
 
