@@ -141,6 +141,11 @@ curl -X POST "http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vi
 
 ## Uploading a source file
 
+A file can be attached to a source (useful if the file is not accessible via a URL). A multipart/form-data HTTP request has to be sent with the file to the ``/_sources/<source_ref>/_file/`` service. With Curl, this is done as follows (assuming the source_ref is 'dmos'):
+
+```
+ curl -X POST "http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vivelevent/_sources/dmos/_file/"  -F 'dmos.json=@tst_grammar.json'
+```
 
 ## Adding annotations
 
