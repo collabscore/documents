@@ -14,15 +14,85 @@ The following focuses on annotations.
 
 We comply as much as possible to the annotation model of the W3C (https://www.w3.org/TR/annotation-model/). In particular, web services of CollabScore exchange annotations serialized in JSON-LD.
 
-### Principles
+### The Annotation object
 
-In this model, an element of the pscore is annotated and constitutes the *target* of the annotation. 
-What is said about this target is the annotation *body*. Let's take an example: we want 
+An annotation is described by the following properties:
+
+  - a unique id
+  - the *creator* of the annotation (see below)
+  - dates of creation and last update
+  - the *motivation*, is a character string which, for the time being is either *linking*, *commenting* or *questioning* ; it appears essentially for compatibility with the W3C, but its use for CollabScore is not yet established 
+  - the *target* and the *body* (see below)
+  - the *annotation model* and the *annotation concept* in this model (see below)
+  - a *style* (optional) for display purposes
+ 
+The main properties are the *target* and the *body*. In CollabScore, 
+an element of the pscore is annotated and constitutes the *target* of the annotation, whereas 
+what is said about this target is the annotation *body*. If, for instance, we want 
 to represent as an annotation the fact that a measure in the pscore corresponds to a region in
-an image source. Then:
+an image source, we create an annotation such that:
 
-  - The *target* is the URL that leads to the annotated measure in the MEI document of the pscore.
-  - The *body* is the URL that refers to the part of the source image covered by the region.
+  - the *target* is the URL that leads to the annotated measure in the MEI document of the pscore.
+  - the *body* is the URL that refers to the part of the source image covered by the region.
+
+Both the target and the body are (web) *resources*. The other
+properties of an annotation help to understand the context of its creation and usage. 
+These concepts are now detailed.
+
+### Resources and fragments
+
+A resource is an object located at a specific URL. In practice, it can be a document, a fragment of a document or any service yielding such a representation. In CollabScore, we deal with either *full Resource*, or
+(more frequently) *resource fragments* (aka *specific resources* in the W3C document). 
+A resource fragment is described by two fields:
+
+ - *source*, the resource URL
+ - a fragment *selector*
+
+The fragment selector tells how to extract the fragment representation from the source. Its specific
+representation depends on the source media: it can be a region (images), a temporal interval (audio and video), an XPath expression. Therefore a fragment selector is described by:
+
+ - a *conforms_to* field that states the fragment selection mechanism  (for instance, https://www.w3.org/TR/media-frags/)
+ - a *value* that gives the selector expression
+
+### Representing targets and bodies
+
+The target of an annotation is always a resource (or resource fragment). The body is either
+
+ - a resource (or resource fragment),
+ - a simpled text ("Textual body")
+
+### Creator
+
+The creator of an annotation is a triplet ``(id, type, name)`` where ``type``is either 
+``Person`` or ``Software``.
+
+### Annotation model, concepts and style
+
+In CollabScore, an *annotation model* represents the purpose of annotating a music item. It consists of a 
+set of *concepts* denoting a specific type of annotation related to the model. Here is the list of
+models used by CollabScore:
+
+#### The image-region model
+
+This model is used to link a pscore (the MEI document) with regions of an image. It contains the following concepts:
+
+  - ``measure_region``: the annotations refers to a measure
+  - ``note_region``: the annotations refers to a note or rest
+ 
+#### The interval model
+
+This model is used to link a pscore (the MEI document) with time intervals in an audio or video. It contains the following concepts:
+
+  - ``measure_interval``: the annotations refers to a measure
+  - ``note_interval``: the annotations refers to a note or rest
+  - ``generic_interval``: the annotation does not refer to a specific music notation object
+
+#### The ORM model
+
+This model is used to link a pscore (the MEI document) with errors and questions issued from the OMR process.
+*To come soon*.
+
+# JSON serialization
 
 In JSON-LD, this *could be* represented by the following document: 
 
