@@ -20,9 +20,9 @@ In this model, an element of the pscore is annotated and constitutes the *target
 What is said about this target is the annotation *body*. Let's take an example: we want 
 to represent as an annotation the fact that a measure in the pscore corresponds to a region in
 an image source. Then:
- 
-    - The *target* is the URL that leads to the annotated measure in the MEI document of the pscore.
-    - The *body* is the URL that refers to the part of the source image covered by the region.
+
+  - The *target* is the URL that leads to the annotated measure in the MEI document of the pscore.
+  - The *body* is the URL that refers to the part of the source image covered by the region.
 
 In JSON-LD, this *could be* represented by the following document: 
 
