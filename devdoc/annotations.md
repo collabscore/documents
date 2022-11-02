@@ -105,18 +105,27 @@ The creator of an annotation is a triplet ``(id, type, name)`` where ``type``is 
 
 # JSON serialization
 
-In JSON-LD, this *could be* represented by the following document: 
-
+Here is an example of a JSON serialization.
 
 ```json
-{
-  "@context": "http://www.w3.org/ns/anno.jsonld",
-  "id": "http://collabscore.org/anno1",
-  "type": "Annotation",
-  "creator": "createur",
-  "created": "2021-01-28",
-  "modified": "2021-05-29",
-  "body": "http://serveurIIIF/imgdir/12,50,90,56/max/0/default.jpg",
-  "target": "http://collabscore/mapartition.mei#xpath(id('m-57'))"
+{"id": "annot1", 
+  "type": "Annotation", 
+  "creator": {"id": 1, "type": "Person", "name": "collabscore"}, 
+  "motivation": "linking", 
+  "annotation_model": "time-frame", 
+  "annotation_concept": "measure_region", 
+  "body": {"type": "SpecificResource", 
+          "resource": {"source": "http://collabscore.org/body", 
+                       "selector": {"type": "FragmentSelector", 
+                                     "conformsTo": "https://www.w3.org/TR/media-frags/#naming-time", 
+                                     "value": "1234"}
+                       }
+           }, 
+    "target": {"source": "http://collabscore.org/target", 
+               "selector": {"type": "FragmentSelector", 
+                             "conformsTo": "https://www.w3.org/TR/media-frags/#naming-time", 
+                             "value": "1234"}}, 
+     "style": {"icon": "square", "color": "content6"}, 
+     "created": "2022-11-02 10:12:07.698468", "modified": "2022-11-02 10:12:07.698477"
 }
 ```
