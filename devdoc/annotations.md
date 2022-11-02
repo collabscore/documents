@@ -24,7 +24,6 @@ An annotation is described by the following properties:
   - the *motivation*, is a character string which, for the time being is either *linking*, *commenting* or *questioning* ; it appears essentially for compatibility with the W3C, but its use for CollabScore is not yet established 
   - the *target* and the *body* (see below)
   - the *annotation model* and the *annotation concept* in this model (see below)
-  - a *style* (optional) for display purposes
  
 The main properties are the *target* and the *body*. In CollabScore, 
 an element of the pscore is annotated and constitutes the *target* of the annotation, whereas 
@@ -40,7 +39,7 @@ other piece of digital information. The other
 properties of an annotation help to understand the context of its creation and usage. 
 These concepts are now detailed.
 
-### Annotation model, concepts and style
+### Annotation models and concepts
 
 In CollabScore, an *annotation model* represents the purpose of annotating a music item. It consists of a 
 set of *concepts* denoting a specific type of annotation related to the model. Here is the list of
