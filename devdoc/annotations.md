@@ -35,7 +35,8 @@ an image source, we create an annotation such that:
   - the *target* is the URL that leads to the annotated measure in the MEI document of the pscore.
   - the *body* is the URL that refers to the part of the source image covered by the region.
 
-Both the target and the body are (web) *resources*. The other
+The target is always a (web) *resource*. The body may be a web resource as well, but also a textual fragment or any
+other piece of digital information. The other
 properties of an annotation help to understand the context of its creation and usage. 
 These concepts are now detailed.
 
