@@ -40,33 +40,6 @@ other piece of digital information. The other
 properties of an annotation help to understand the context of its creation and usage. 
 These concepts are now detailed.
 
-### Resources and fragments
-
-A resource is an object located at a specific URL. In practice, it can be a document, a fragment of a document or any service yielding such a representation. In CollabScore, we deal with either *full Resource*, or
-(more frequently) *resource fragments* (aka *specific resources* in the W3C document). 
-A resource fragment is described by two fields:
-
- - *source*, the resource URL
- - a fragment *selector*
-
-The fragment selector tells how to extract the fragment representation from the source. Its specific
-representation depends on the source media: it can be a region (images), a temporal interval (audio and video), an XPath expression. Therefore a fragment selector is described by:
-
- - a *conforms_to* field that states the fragment selection mechanism  (for instance, https://www.w3.org/TR/media-frags/)
- - a *value* that gives the selector expression
-
-### Representing targets and bodies
-
-The target of an annotation is always a resource (or resource fragment). The body is either
-
- - a resource or resource fragment ("Resource body" in the W3C model),
- - a simpled text ("Textual body" in the W3C model)
-
-### Creator
-
-The creator of an annotation is a triplet ``(id, type, name)`` where ``type``is either 
-``Person`` or ``Software``.
-
 ### Annotation model, concepts and style
 
 In CollabScore, an *annotation model* represents the purpose of annotating a music item. It consists of a 
@@ -87,10 +60,48 @@ This model is used to link a pscore (the MEI document) with time frame in an aud
   - ``measure-tframe``: the annotations refers to a measure
   - ``note-tframe``: the annotations refers to a note or rest
 
+#### The xml-fragment model
+
+This model is used to link a pscore (the MEI document) with with another XML encoding. *To be elaborated.*
+
 #### The ORM model
 
 This model is used to link a pscore (the MEI document) with errors and questions issued from the OMR process.
 It will be elaborated soon.
+
+### Resources and fragments
+
+A resource is an object located at a specific URL. In practice, it can be a document, a fragment of a document or any service yielding such a representation. In CollabScore, we deal with either *full Resource*, or
+(more frequently) *resource fragments* (aka *specific resources* in the W3C document). 
+A resource fragment is described by two fields:
+
+ - *source*, the resource URL
+ - a fragment *selector*
+
+The fragment selector tells how to extract the fragment representation from the source. Its specific
+representation depends on the source media: it can be a region (images), a temporal interval (audio and video), an XPath expression. Therefore a fragment selector is described by:
+
+ - a *conforms_to* field that states the fragment selection mechanism  (for instance, https://www.w3.org/TR/media-frags/)
+ - a *value* that gives the selector expression
+
+The ``conforms_to`` field is determined by the annotation model. 
+
+ - If  the model is ``image-region``, then the resource is an image URL, and the selector is a region in this image, and the region *representation* conforms to the specification of https://www.w3.org/TR/media-frags/#naming-space. 
+ - If the model is ``time-frame``, the resource is an audio or video document, and the selector is a time frame conforms to https://www.w3.org/TR/media-frags/#naming-time
+ - If the model is ``xml-fragment``, the selector is conforms to	http://tools.ietf.org/rfc/rfc3023
+
+### Representing targets and bodies
+
+The target of an annotation is always a resource (or resource fragment). The body is either
+
+ - a resource or resource fragment ("Resource body" in the W3C model),
+ - a simpled text ("Textual body" in the W3C model)
+
+### Creator
+
+The creator of an annotation is a triplet ``(id, type, name)`` where ``type``is either 
+``Person`` or ``Software``.
+
 
 # JSON serialization
 
