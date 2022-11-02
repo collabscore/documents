@@ -77,16 +77,15 @@ models used by CollabScore:
 
 This model is used to link a pscore (the MEI document) with regions of an image. It contains the following concepts:
 
-  - ``measure_region``: the annotations refers to a measure
-  - ``note_region``: the annotations refers to a note or rest
+  - ``measure-region``: the annotations refers to a measure
+  - ``note-region``: the annotations refers to a note or rest
  
-#### The interval model
+#### The time-frame model
 
-This model is used to link a pscore (the MEI document) with time intervals in an audio or video. It contains the following concepts:
+This model is used to link a pscore (the MEI document) with time frame in an audio or video. It contains the following concepts:
 
-  - ``measure_interval``: the annotations refers to a measure
-  - ``note_interval``: the annotations refers to a note or rest
-  - ``generic_interval``: the annotation does not refer to a specific music notation object
+  - ``measure-tframe``: the annotations refers to a measure
+  - ``note-tframe``: the annotations refers to a note or rest
 
 #### The ORM model
 
