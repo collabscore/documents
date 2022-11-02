@@ -105,7 +105,10 @@ The creator of an annotation is a triplet ``(id, type, name)`` where ``type``is 
 
 # JSON serialization
 
-Here is an example of a JSON serialization.
+Here is an example of a JSON serialization. It represents an annotation of element 'lkx123' in the 
+(fictive) "http://collabscore.org/target.mei" 
+document that links this element to the time frame (10,20) in the (fictive)
+audio document http://collabscore.org/body.mp3.
 
 ```json
 {"id": "annot1", 
@@ -113,19 +116,18 @@ Here is an example of a JSON serialization.
   "creator": {"id": 1, "type": "Person", "name": "collabscore"}, 
   "motivation": "linking", 
   "annotation_model": "time-frame", 
-  "annotation_concept": "measure_region", 
+  "annotation_concept": "measure-tframe", 
   "body": {"type": "SpecificResource", 
-          "resource": {"source": "http://collabscore.org/body", 
+          "resource": {"source": "http://collabscore.org/body.mp3", 
                        "selector": {"type": "FragmentSelector", 
                                      "conformsTo": "https://www.w3.org/TR/media-frags/#naming-time", 
-                                     "value": "1234"}
+                                     "value": "t=10,20"}
                        }
            }, 
-    "target": {"source": "http://collabscore.org/target", 
+    "target": {"source": "http://collabscore.org/target.mei", 
                "selector": {"type": "FragmentSelector", 
-                             "conformsTo": "https://www.w3.org/TR/media-frags/#naming-time", 
-                             "value": "1234"}}, 
-     "style": {"icon": "square", "color": "content6"}, 
+                             "conformsTo": "http://tools.ietf.org/rfc/rfc3023", 
+                             "value": "xpath(id('lkx123')"}}, 
      "created": "2022-11-02 10:12:07.698468", "modified": "2022-11-02 10:12:07.698477"
 }
 ```
