@@ -59,8 +59,8 @@ representation depends on the source media: it can be a region (images), a tempo
 
 The target of an annotation is always a resource (or resource fragment). The body is either
 
- - a resource (or resource fragment),
- - a simpled text ("Textual body")
+ - a resource or resource fragment ("Resource body" in the W3C model),
+ - a simpled text ("Textual body" in the W3C model)
 
 ### Creator
 
@@ -91,7 +91,7 @@ This model is used to link a pscore (the MEI document) with time intervals in an
 #### The ORM model
 
 This model is used to link a pscore (the MEI document) with errors and questions issued from the OMR process.
-*To come soon*.
+It will be elaborated soon.
 
 # JSON serialization
 
