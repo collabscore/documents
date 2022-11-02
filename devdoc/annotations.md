@@ -4,7 +4,7 @@ CollabScore manages interlinked *multimodal* representations of music items, cal
 
  - A *pivot score* is an encoding of a music piece content based on music notation concepts. In practice, a pscore is a MEI document where *all* elements (measures, notes, rests, cleefs, etc.) are uniquely identified  and thus can be referred to by URIs.
  - One or several *sources*, i.e. multimedia documents that instantiate a representation of the music  item in a specific format: audio, video, image, XML encoding, etc.
- - *Annotations* that associate  elements of the pivot score to fragments of each source.
+ - *Annotations* that associate  elements of the pivot score to fragments of each source. 
  
 ![Multimodal score](/figures/partitionMM.png)
 
@@ -66,7 +66,7 @@ This model is used to link a pscore (the MEI document) with with another XML enc
 #### The ORM model
 
 This model is used to link a pscore (the MEI document) with errors and questions issued from the OMR process.
-It will be elaborated soon.
+It is note covered in the present document.
 
 ### Resources and fragments
 
@@ -102,11 +102,11 @@ The creator of an annotation is a triplet ``(id, type, name)`` where ``type``is 
 ``Person`` or ``Software``.
 
 
-# JSON serialization
+# Annotation services
 
-Here is an example of a JSON serialization. It represents an annotation of element 'lkx123' in the 
-(fictive) "http://collabscore.org/target.mei" 
-document that links this element to the time frame (10,20) in the (fictive)
+The CollabScore server exchanges annotations via REST services. The serialization is based on JSON. 
+Here is a first example. It represents an annotation of a measure element with id 'lkx123' in the 
+(fictive) "http://collabscore.org/target.mei" document that links this element to the time frame (10,20) in the (fictive)
 audio document http://collabscore.org/body.mp3.
 
 ```json
@@ -130,3 +130,78 @@ audio document http://collabscore.org/body.mp3.
      "created": "2022-11-02 10:12:07.698468", "modified": "2022-11-02 10:12:07.698477"
 }
 ```
+
+There exists a JSON utility to test / validate / analyze annotations and theirs JSON serialization. Look at the [README.md ](https://github.com/collabscore/utilities/blob/master/annotations/README.md) file for instructions.
+
+Some aspects of the JSON format are further explained below, before listing the services.
+
+## JSON serialization
+
+In the context of CollabScore, the *target* should always be the pivot score, and more specifically 
+the MEI document attached to it. The element referred to can be any element in the MEI. However, for source
+alignment purposes, element that correspond to some temporal granularity are priviledged. The form of the
+``target`` field is therefore always: 
+
+```json
+{
+    "target": {"source": "http://collabscore.org/target.mei", 
+               "selector": {"type": "FragmentSelector", 
+                             "conformsTo": "http://tools.ietf.org/rfc/rfc3023", 
+                             "value": "xpath(id('lkx123')"
+                            }
+            } 
+}
+```
+
+The body field is more versatile. It is always a ``SpecificResource`` with a fragment selector, but the selector itself
+depends on the source type.
+
+### Linking with images
+
+The selector is a quadruplet ``xywh`` that gives the  coordinates of the top-left point of the region, followed by its
+width and height. The format follows the recommendations of https://www.w3.org/TR/media-frags/#naming-space. 
+
+
+```json
+{
+  "body": {"type": "SpecificResource", 
+          "resource": {"source": "http://collabscore.org/body.jpg", 
+                       "selector": {"type": "FragmentSelector", 
+                                     "conformsTo": "https://www.w3.org/TR/media-frags/#naming-space", 
+                                     "value": "xywh=32,216,60,60"}
+                       }
+           }, 
+}
+```
+
+Note :  if the image server is equipped with IIIF functionalities, the IIIF reference can be inferred from the information above. In the future, CollabScore might provide directly, *in the output of its web services*, a pre-built IIIF address.
+
+### Linking with audio and video
+
+Same comment as above. The format is taken from https://www.w3.org/TR/media-frags/#naming-time. See the first
+example of JSON serialization given above.
+
+### Linking with XML encodings
+
+The form of the body is similar to that of the target.
+
+```json
+{
+  "body": {"type": "SpecificResource", 
+          "resource": {"source": "http://collabscore.org/body.mei", 
+                       "selector": {"type": "FragmentSelector", 
+                                     "conformsTo": "http://tools.ietf.org/rfc/rfc3023", 
+                                     "value": "xpath(id('my-id-in-body')"
+                                     }
+                       }
+           }, 
+}
+```
+### Serializing / deserializing with the CollabScore utility
+
+The CollabScore utilities feature a Python module to serialize / deserialize annotations. A command-line 
+script, ``annot_utils.py``, relies on this module for testing and checking annotations exchanges.
+
+## Annotation services
+
+To come soon.
