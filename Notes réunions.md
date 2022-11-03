@@ -1,6 +1,18 @@
 # Notes réunions CollabScore
 
 
+## Réunion Cnam - AlgoMus, 3 novembre 2022
+
+Présents: Philippe (Cnam), Mathieu, Emmanuel, Charles (Algomus)
+
+Objet: présentation du modèle d'annotation dans CollabScore (Philippe) et des services REST pour déposer des annotations. Algomus pense pouvoir présenter une première version du dépôt d'annotations de type 'time-frame' pour fin novembre.
+
+### Actions:
+
+  - Le Cnam saisit dans la collection collabscore/tests 3 ou 4 exemples de documents MEI avec une source audio (Youtube, Soundcloud ou IMSLP)
+  - Algomus implante le traitement de ces exemples pour obtenir des annotations 'time-frame', objectif fin novembre.
+
+
 ## Réunion Cnam - IRISA, 27 octobre 2022
 
 Présents: Philippe (Cnam), Bertrand, Hugo et Ali (IRISA)
