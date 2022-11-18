@@ -37,13 +37,13 @@ Given a collection, you can retrieve the list of sub-collections with the ``_cor
 service. The sub-collections of CollabScore are obtained by calling the service:
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_corpora/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/_corpora/
 ```
 
 The list of pscores in a collection is obtained with the ``_opera`` service.
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/_opera/
 ```
 
 ### Pscores: meta-data and score files
@@ -57,7 +57,7 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vive
 A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file. The list of score files associated to a pscore is obtained with the ``_files`` service.
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vivelevent/_files/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_files/
 ```
 One obtains a json with all the files and their URLs.
  
