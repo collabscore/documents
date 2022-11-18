@@ -20,11 +20,11 @@ One can interact with a pscore either with a Web interface or with the Restful i
  - Collection CollabScore can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/corpus/all:collabscore/
  - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/opus/all:collabscore:dmos_ex1/
 
-Example for the REST interface 
+For the REST interface, we replace ``home/corpus`` with ``rest/collections``. The id of the opus can be either given with the ':' separator, or with '/', as in a file system.
 
- - Collection CollabScore can be consulted at http://neuma.huma-num.fr/rest/collections/all:collabscore/, 
+ - Collection CollabScore can be consulted at http://neuma.huma-num.fr/rest/collections/all:collabscore/, or http://neuma.huma-num.fr/rest/collections/all/collabscore/
  - Its set of pscores is at http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
- - A specific pscore such as ``dmos_ex1`` is accessible at: http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/
+ - A specific pscore such as ``dmos_ex1`` is accessible at: http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/ or http://neuma.huma-num.fr/rest/collections/all/collabscore/dmos_ex1/ 
 
 In this document, we document the set of web services useful to CollabScore. A Swagger interface with all services is
 available at http://neuma.huma-num.fr/rest/swagger/.
