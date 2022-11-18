@@ -24,7 +24,7 @@ For the REST interface, we replace ``home/corpus`` with ``rest/collections``. Th
 
  - Collection CollabScore can be consulted at http://neuma.huma-num.fr/rest/collections/all:collabscore/, or http://neuma.huma-num.fr/rest/collections/all/collabscore/
  - Its set of pscores is at http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
- - A specific pscore such as ``dmos_ex1`` is accessible at: http://neuma.huma-num.fr/rest/collections/all:collabscore:dmos_ex1/ or http://neuma.huma-num.fr/rest/collections/all/collabscore/dmos_ex1/ 
+ - A specific pscore such as ``dmos_ex1``, in the sub-collection 'tests', is accessible either at: http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:dmos_ex1/ or http://neuma.huma-num.fr/rest/collections/all/collabscore/tests:dmos_ex1/ 
 
 In this document, we document the set of web services useful to CollabScore. A Swagger interface with all services is
 available at http://neuma.huma-num.fr/rest/swagger/.
@@ -51,7 +51,7 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
 The meta-description of a pscore is obtained from the pscore id:
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vivelevent/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/
 ```
 
 A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file. The list of score files associated to a pscore is obtained with the ``_files`` service.
@@ -79,7 +79,7 @@ video, etc.
 The list of sources of a pscore can be obtained with the ``_sources`` services.
 
 ```
-curl -X GET "http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:vivelevent/_sources/"
+curl -X GET "http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_sources/"
 ```
 
 The services returns a list of sources descriptions. For instance, the following document
