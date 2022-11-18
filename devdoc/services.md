@@ -18,13 +18,13 @@ separated by semicolons. For instance
 One can interact with a pscore either with a Web interface or with the Restful interface. Examples for the Web interface:
 
  - Collection CollabScore can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/corpus/all:collabscore/
- - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/opus/all:collabscore:dmos_ex1/
+ - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/opus/all:collabscore:tests:dmos_ex1/ in the sub-collection ``tests``.
 
 For the REST interface, we replace ``home/corpus`` with ``rest/collections``. The id of the opus can be either given with the ':' separator, or with '/', as in a file system.
 
  - Collection CollabScore can be consulted at http://neuma.huma-num.fr/rest/collections/all:collabscore/, or http://neuma.huma-num.fr/rest/collections/all/collabscore/
  - Its set of pscores is at http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
- - A specific pscore such as ``dmos_ex1``, in the sub-collection 'tests', is accessible either at: http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:dmos_ex1/ or http://neuma.huma-num.fr/rest/collections/all/collabscore/tests:dmos_ex1/ 
+ - A specific pscore such as ``dmos_ex1``, in the sub-collection 'tests', is accessible either at: http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:dmos_ex1/ or http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/dmos_ex1/ 
 
 In this document, we document the set of web services useful to CollabScore. A Swagger interface with all services is
 available at http://neuma.huma-num.fr/rest/swagger/.
@@ -54,20 +54,25 @@ The meta-description of a pscore is obtained from the pscore id:
 curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/
 ```
 
-A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file. The list of score files associated to a pscore is obtained with the ``_files`` service.
-
-```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_files/
-```
-One obtains a json with all the files and their URLs.
+A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file.  One obtains a json with all the files and their URLs.
  
 ```json
 {
-  "ref":"dmos_ex1",
- "title":"Test collabscore",
-  "files": ["score.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/score.xml"},
-             "mei.xml":{"url":"http://localhost:8000/media/corpora/all/collabscore/dmos_ex1/mei.xml"}
-           ]
+"ref": "dmos_ex1",
+"title": "Test collabscore",
+"composer": null,
+"lyricist": null,
+"corpus": "all:collabscore:tests",
+"meta_fields": [],
+"sources": [],
+"files": {
+ "score.xml": {
+    "url": "http://localhost:8000/media/corpora/all/collabscore/tests/dmos_ex1/score.xml"
+  },
+  "mei.xml": {
+  "url": "http://localhost:8000/media/corpora/all/collabscore/tests/dmos_ex1/mei.xml"
+  }
+ }
 }
 ```
 
