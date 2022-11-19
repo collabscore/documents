@@ -235,7 +235,8 @@ http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_anno
 ```
 
 Adding the ``_all`` keyword retrieves the list of annotation for the model. http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/_all/. In the results,
-annotations are grouped by the id ot the target element.
+annotations are grouped by the id ot the target element. Inn the example below, P0m11n1 and P0m11n2 are two such elements. The struture
+allows to easily find the annotations pertaining to a specific element.
 
 ```json
 {
@@ -250,8 +251,9 @@ annotations are grouped by the id ot the target element.
    {}
  ]
  "P0m11n2": []
+}
 ```
+The list of annotations can be restricted to a single concept: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/note-region/_all/
 
-
-
+### Posting annotations
 
