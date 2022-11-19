@@ -204,4 +204,38 @@ script, ``annot_utils.py``, relies on this module for testing and checking annot
 
 ## Annotation services
 
-To come soon.
+REST services allow the retrieval, insertion and update of annotations. Examples are based on the following pscore: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent.
+
+### Retrieving annotations
+
+Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
+http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/ should look like:
+
+```json
+{
+"total_annotations": 200,
+"count_per_model": [
+{ "model_code": "omr-error", "count": 100},
+{"model_code": "image-region","count": 100}
+]
+}
+```
+
+Adding the code of an annotation model gives the statistics per annotation concept. Exemple for the model 'image-region':
+http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region:
+
+```json
+{
+"annotation_model": "image-region",
+"total_annotations": 200,
+"count_per_concept": [
+{"concept_code": "note-region", "count": 100}
+]
+}
+```
+
+
+
+
+
+
