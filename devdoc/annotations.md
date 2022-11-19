@@ -234,7 +234,23 @@ http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_anno
 }
 ```
 
+Adding the ``_all`` keyword retrieves the list of annotation for the model. http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/_all/. In the results,
+annotations are grouped by the id ot the target element.
 
+```json
+{
+  "P0m11n1": [
+   {
+    "id": 11319, "type": "Annotation", "creator": {"id": 5,"type": "Person", "name": "rigaux"},
+    "motivation": "linking",
+     "annotation_model": "image-region",
+     "annotation_concept": "note-region",
+      "body": {}, "target": {}
+   },
+   {}
+ ]
+ "P0m11n2": []
+```
 
 
 
