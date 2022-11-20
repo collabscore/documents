@@ -94,7 +94,7 @@ The ``conforms_to`` field is determined by the annotation model.
 The target of an annotation is always a resource (or resource fragment). The body is either
 
  - a resource or resource fragment ("Resource body" in the W3C model),
- - a simpled text ("Textual body" in the W3C model)
+ - a simple text ("Textual body" in the W3C model)
 
 ### Creator
 
@@ -110,24 +110,34 @@ Here is a first example. It represents an annotation of a measure element with i
 audio document http://collabscore.org/body.mp3.
 
 ```json
-{"id": "annot1", 
-  "type": "Annotation", 
-  "creator": {"id": 1, "type": "Person", "name": "collabscore"}, 
-  "motivation": "linking", 
-  "annotation_model": "time-frame", 
-  "annotation_concept": "measure-tframe", 
-  "body": {"type": "SpecificResource", 
-          "resource": {"source": "http://collabscore.org/body.mp3", 
-                       "selector": {"type": "FragmentSelector", 
-                                     "conformsTo": "https://www.w3.org/TR/media-frags/#naming-time", 
-                                     "value": "t=10,20"}
-                       }
-           }, 
-    "target": {"source": "http://collabscore.org/target.mei", 
-               "selector": {"type": "FragmentSelector", 
-                             "conformsTo": "http://tools.ietf.org/rfc/rfc3023", 
-                             "value": "xpath(id('lkx123')"}}, 
-     "created": "2022-11-02 10:12:07.698468", "modified": "2022-11-02 10:12:07.698477"
+{
+	"id": 1234,
+	"creator": {"id": 1,	"type": "Person", "name": "collabscore" },
+	"motivation": "linking",
+	"annotation_model": "time-frame",
+	"annotation_concept": "measure_region",
+	"target": {
+		"type": "SpecificResource",
+		"resource": {
+			"source": "http://collabscore.org/target.mei",
+			"selector": {
+				"type": "FragmentSelector",
+				"conformsTo": "http://tools.ietf.org/rfc/rfc3023",
+				"value": "id('lkx123')"
+			}
+		}
+	},
+	"body": {
+		"type": "SpecificResource",
+		"resource": {
+			"source": "http://collabscore.org/body.mp3",
+			"selector": {
+				"type": "FragmentSelector",
+				"conformsTo": "https://www.w3.org/TR/media-frags/#naming-time",
+				"value": "t=10,20"
+			}
+		}
+	}
 }
 ```
 
@@ -144,12 +154,16 @@ alignment purposes, element that correspond to some temporal granularity are pri
 
 ```json
 {
-    "target": {"source": "http://collabscore.org/target.mei", 
-               "selector": {"type": "FragmentSelector", 
-                             "conformsTo": "http://tools.ietf.org/rfc/rfc3023", 
-                             "value": "xpath(id('lkx123')"
-                            }
-            } 
+    "target": {
+		    "type": "SpecificResource",
+	    	"resource": {
+		     	"source": "http://collabscore.org/target.mei",
+		     	"selector": {
+			     	"type": "FragmentSelector",
+			      	"conformsTo": "http://tools.ietf.org/rfc/rfc3023",
+			      	"value": "id('lkx123')"
+			     }
+     }
 }
 ```
 
@@ -191,7 +205,7 @@ The form of the body is similar to that of the target.
           "resource": {"source": "http://collabscore.org/body.mei", 
                        "selector": {"type": "FragmentSelector", 
                                      "conformsTo": "http://tools.ietf.org/rfc/rfc3023", 
-                                     "value": "xpath(id('my-id-in-body')"
+                                     "value": "id('my-id-in-body')"
                                      }
                        }
            }, 
