@@ -209,7 +209,7 @@ REST services allow the retrieval, insertion and update of annotations. Examples
 ### Retrieving annotations
 
 Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
-http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/ should look like:
+http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/_stats/ should look like:
 
 ```json
 {
@@ -222,7 +222,7 @@ http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_anno
 ```
 
 Adding the code of an annotation model gives the statistics per annotation concept. Exemple for the model 'image-region':
-http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region:
+http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/_stats/:
 
 ```json
 {
