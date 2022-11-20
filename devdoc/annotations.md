@@ -255,5 +255,16 @@ allows to easily find the annotations pertaining to a specific element.
 ```
 The list of annotations can be restricted to a single concept: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/note-region/_all/
 
-### Posting annotations
+### Create, update and get a specific annotation
+
+All these services are rooted at http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/.
+
+#### Getting an annotation
+
+Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/1234/
+
+#### Putting an annotation
+
+Send a PUT request to the ``_annotations`` service.
+
 
