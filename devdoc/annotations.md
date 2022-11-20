@@ -279,6 +279,12 @@ Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/col
 
 #### Putting an annotation
 
-Send a PUT request to the ``_annotations`` service.
+Send a PUT request to the ``_annotations`` service. With ``curl``, the syntax is
+
+```
+curl -X PUT  http://localhost:8000/rest/collections/all/collabscore/tests/vivelevent/_annotations/ \
+     -H "Content-Type: application/json" 
+     -d @file.json 
+```
 
 
