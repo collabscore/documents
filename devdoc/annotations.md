@@ -301,9 +301,9 @@ Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/col
 
 Send to the above URL a ``DELETE``HTTP request, along with the user credentials. For instance: 
 
-````
+```
 curl -u collabscore:pwd -X DELETE http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/1234/
-
+```
 
 #### Putting an annotation
 
