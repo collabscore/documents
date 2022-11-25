@@ -223,16 +223,14 @@ script, ``annot_utils.py``, relies on this module for testing and checking annot
 
 REST services allow the retrieval, insertion and update of annotations. Examples are based on the following pscore: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent. 
 
-In all cases, the user credentials has to be provided with the request. With ``curl``, this is
-done with the ``-u login:password`` option. In the following, the fictive ``collabscore:pwd`` 
-user is assumed.
+> In the case of PUT/POST/DELETE requests, the user credentials has to be provided. With ``curl``, this is done with the ``-u login:password`` option. In the following, the fictive ``collabscore:pwd`` user is assumed.
 
 ### Retrieving annotations
 
 Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
 
 ``
-curl -u collabscore:pwd http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/_stats/
+curl http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/_stats/
 ``
 
 should look like:
