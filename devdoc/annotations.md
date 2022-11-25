@@ -141,6 +141,9 @@ audio document http://collabscore.org/body.mp3.
 }
 ```
 
+Fields ``id``, ``creator``, and ``annotation_model`` are optional and don't need to be supplied 
+during an insertion or update request, as they are automatically inferred from the context.
+
 There exists a JSON utility to test / validate / analyze annotations and theirs JSON serialization. Look at the [README.md ](https://github.com/collabscore/utilities/blob/master/annotations/README.md) file for instructions.
 
 Some aspects of the JSON format are further explained below, before listing the services.
@@ -218,12 +221,21 @@ script, ``annot_utils.py``, relies on this module for testing and checking annot
 
 ## Annotation services
 
-REST services allow the retrieval, insertion and update of annotations. Examples are based on the following pscore: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent.
+REST services allow the retrieval, insertion and update of annotations. Examples are based on the following pscore: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent. 
+
+In all cases, the user credentials has to be provided with the request. With ``curl``, this is
+done with the ``-u login:password`` option. In the following, the fictive ``collabscore:pwd`` 
+user is assumed.
 
 ### Retrieving annotations
 
 Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
-http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/_stats/ should look like:
+
+``
+curl -u collabscore:pwd http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/_stats/
+``
+
+should look like:
 
 ```json
 {
