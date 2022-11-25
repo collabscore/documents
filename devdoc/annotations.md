@@ -297,12 +297,27 @@ All these services are rooted at http://neuma.huma-num.fr/rest/collections/all/c
 
 Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/1234/
 
+#### Deleting an annotation
+
+Send to the above URL a ``DELETE``HTTP request, along with the user credentials. For instance: 
+
+````
+curl -u collabscore:pwd -X DELETE http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/1234/
+
+
 #### Putting an annotation
 
-Send a PUT request to the ``_annotations`` service, along with the user credentials. With ``curl``, the syntax is
+Send a PUT request to the ``_annotations`` service, along with the user credentials. The body of the request is a JSON
+document that complies to the model outlined above. 
+With ``curl``, the syntax is
 
 ```
-curl -u login:password -X PUT  http://localhost:8000/rest/collections/all/collabscore/tests/vivelevent/_annotations/ \
+curl -u login:password -X PUT  http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/ \
      -H "Content-Type: application/json" \
      -d @file.json 
+```
+The service returns (if everything is OK) a JSON message featuring the new annotation id:
+
+```json
+{"message":"New annotation created on all:collabscore:tests:vivelevent","annotation_id":11723}
 ```
