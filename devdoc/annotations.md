@@ -284,7 +284,7 @@ The list of annotations can be restricted to a single concept: http://neuma.huma
 Deletion is obtained by sending a ``DELETE`` HTTP request, along with the user credentials.
 
 ```
-curl -u login:password -X DELETE  http://localhost:8000/rest/collections/all/collabscore/tests/vivelevent/_annotations//image-region/_all/ 
+curl -u login:password -X DELETE  http://localhost:8000/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/_all/ 
 ```
 
 No ``rollback`` or confirmation mechanism. Be careful...
