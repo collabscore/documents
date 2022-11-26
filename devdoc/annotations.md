@@ -123,7 +123,7 @@ audio document http://collabscore.org/body.mp3.
 			"selector": {
 				"type": "FragmentSelector",
 				"conformsTo": "http://tools.ietf.org/rfc/rfc3023",
-				"value": "id('lkx123')"
+				"value": "lkx123"
 			}
 		}
 	},
@@ -164,7 +164,7 @@ alignment purposes, element that correspond to some temporal granularity are pri
 		     	"selector": {
 			     	"type": "FragmentSelector",
 			      	"conformsTo": "http://tools.ietf.org/rfc/rfc3023",
-			      	"value": "id('lkx123')"
+			      	"value": "lkx123"
 			     }
      }
 }
@@ -175,17 +175,18 @@ depends on the source type.
 
 ### Linking with images
 
-The selector is a quadruplet ``xywh`` that gives the  coordinates of the top-left point of the region, followed by its
-width and height. The format follows the recommendations of https://www.w3.org/TR/media-frags/#naming-space. 
+The annotation refers to a a region in an image, which is non necessarily rectangular (case of a scanned page where the folding incurs
+a distorsion in an originally rectangular zone). Following the recommendations of https://iiif.io/api/cookbook/recipe/0261-non-rectangular-commenting/, the annotation  
+uses a SvgSelector, the value of which is a SVG path describing the region. It seems natural to use the ``polygon`` SVG type.
 
 
 ```json
 {
   "body": {"type": "SpecificResource", 
           "resource": {"source": "http://collabscore.org/body.jpg", 
-                       "selector": {"type": "FragmentSelector", 
-                                     "conformsTo": "https://www.w3.org/TR/media-frags/#naming-space", 
-                                     "value": "xywh=32,216,60,60"}
+                       "selector": {"type": "SvgSelector", 
+                                     "conformsTo": "http://www.w3.org/TR/SVG/", 
+                                     "value": "<polygon points="50, 160 55, 180 70, 180"/>"}
                        }
            }, 
 }
@@ -200,7 +201,7 @@ example of JSON serialization given above.
 
 ### Linking with XML encodings
 
-The form of the body is similar to that of the target.
+The form of the body is similar to that of the target. The value is the id of an element.
 
 ```json
 {
@@ -208,7 +209,7 @@ The form of the body is similar to that of the target.
           "resource": {"source": "http://collabscore.org/body.mei", 
                        "selector": {"type": "FragmentSelector", 
                                      "conformsTo": "http://tools.ietf.org/rfc/rfc3023", 
-                                     "value": "id('my-id-in-body')"
+                                     "value": "my-id-in-body"
                                      }
                        }
            }, 
