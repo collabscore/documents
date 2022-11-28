@@ -354,3 +354,6 @@ The service returns (if everything is OK) a JSON message featuring the new annot
 ```json
 {"message":"New annotation created on all:collabscore:tests:vivelevent","annotation_id":11723}
 ```
+
+The new annotation can be retrieved with:
+http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/11723/
