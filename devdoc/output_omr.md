@@ -358,6 +358,8 @@ the conversion system can infer the duration.
   "type": "object",
   "properties": {
     "nb_heads": {"description": "Nb heads", "type": "integer"},
+     "visible": {"description": "An invisible rest represents a (temporal) skip in a voice", 
+                    "type": "boolean"},
     "heads": {"type": "array", "items": { "$ref": "dmos_note_head.json" }, "minItems": 1},
      "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
   },
