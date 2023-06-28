@@ -133,9 +133,10 @@ Each page consists in a header (*structure to be defined*) and a list of systems
   "description": "Each page consists in a header (*structure to be defined*) and a list of systems",
   "type": "object",
   "properties": {
+     "page_url": { "type": "string",  "description":  "URL of the page image" },
      "no_page": { "type": "integer" },
      "header_systems": {
-         "description":  "description": "Array of systems descriptors",
+         "description":  "Array of systems descriptors",
          "type": "object",
          "properties": {
            "entete": {"description": "Infos d'entête de la page: à préciser", "type": "string"}
