@@ -276,7 +276,7 @@ staves on which a voice can be spread.
 
 > From `ElemVoix`. 
 
-A voice elemnt is either a clef, a not or a rest. It is represented as a graphic symbol and 
+A voice element is either a clef, a not or a rest. It is represented as a graphic symbol and 
 corresponds to a duration.
 
 The ``duration`` property gathers all the symbolic constituents that determine the duration  
@@ -308,6 +308,7 @@ the conversion system can infer the duration.
     "duration": { "$ref": "dmos_duration.json"},
     "no_group": {"description": "Beaming. To be clarified", "type": "integer"},
     "direction": {"description": "Up or down", "type": "string"},
+     "slur": {"description": "A string that starts either with 'i' (inital) or 't' (terminal), followed by the slur id (i.e., i1, i2, t2, t1)", "type": "string"},
     "att_note": { "$ref": "dmos_att_note.json"},
     "att_rest": { "$ref": "dmos_att_rest.json"},
     "att_clef": { "$ref": "dmos_clef.json"},
