@@ -284,7 +284,6 @@ value:
 
   - a symbol (whole note, 8th note, quarter rest, etc.)
   - the number of points (each point adds a 1.5 factor to the duration value)
-  - the tupler factor
 
 The latter two are optional. Given the current meter and these elements, 
 the conversion system can infer the duration.
@@ -334,9 +333,9 @@ the conversion system can infer the duration.
   "type": "object",
   "properties": {
     "num": {"description": "Used for tuplet: gives the actual number of events wrt the expected one (specified by numbase)", "type": "integer"},
-    "numbase": {"description": "Used for tuplet: gives the expected number of events wrt the actual one (specified by num)", "type": "integer"}
+    "num_base": {"description": "Used for tuplet: gives the expected number of events wrt the actual one (specified by num)", "type": "integer"}
    },
-   "required": ["num","numbase"],
+   "required": ["num","num_base"],
   "additionalProperties": false
 }
 ```
