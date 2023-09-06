@@ -535,10 +535,48 @@ Duration = a fraction of a beat
 }
 ```
 
-# Pending issues
+### Managing errors
 
- #. We need to codify errors, and error representation
- #. When a new system is met, it is crucial to identify the continuity of staves, otherwise we cannot obtain the proper sequence of measures
- 
- 
+DMOS reports errors, resulting from situation where an equivocal situation is met.
+Errors are normalized: a code gives  the type of the error, and a list of key-value pairs provide additional informations about the error.
+
+Here is the formal type:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dmos_error.json",
+  "title": "Schema of DMOS errors",
+  "description": "Encoding of an error reported by DMOS: a code, and a list of key-values",
+  "type": "object",
+  "properties": {
+     "code": {"decription": "Normalized code specifying the error type", "type": "string"},
+     "values": {"type": "array", 
+                "items": { "type": "object", 
+                 "properties": {
+                       "key": {"type": "string"},
+                      "value": {"type": "any"}
+                  },
+                  "required": ["key","value"],
+                  "additionalProperties": false
+                }
+      }
+  },
+  "required": ["code"],
+  "additionalProperties": false
+}
+```
+
+And here is an example, with the typical situation of a measure where the sum of events durations differs from the expected value
+
+```json
+{
+  "code": "supDurErr",
+  "values": [{"key": "expected", "value": 4},
+             {"key": "found", "value": 5}
+            ]
+}
+```
+
+Individual errors are reported in the ``errors`` array of elements. There might be several errors for a same element.
 
