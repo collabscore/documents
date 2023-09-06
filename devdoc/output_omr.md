@@ -312,6 +312,7 @@ the conversion system can infer the duration.
     "att_note": { "$ref": "dmos_att_note.json"},
     "att_rest": { "$ref": "dmos_att_rest.json"},
     "att_clef": { "$ref": "dmos_clef.json"},
+    "tuplet_info": { "$ref": "dmos_tuplet_info.json"},
     "num": {"description": "Used for tuplet: gives the actual number of events wrt the expected one (specified by numbase)", "type": "integer"},
     "numbase": {"description": "Used for tuplet: gives the expected number of events wrt the actual one (specified by num)", "type": "integer"},
     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
@@ -322,6 +323,21 @@ the conversion system can infer the duration.
 ```
 [Example: first page, first system, first measure, first part, voice 1](http://collabscore.org/dmos/data/ex1/page1_s1_m1_p1_v1.json)
 
+> I would like using the following structured type for tuplets
+```json
+ {
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dmos_tuplet_info.json",
+  "title": "Description of a tuplet",
+  "type": "object",
+  "properties": {
+    "num": {"description": "Used for tuplet: gives the actual number of events wrt the expected one (specified by numbase)", "type": "integer"},
+    "numbase": {"description": "Used for tuplet: gives the expected number of events wrt the actual one (specified by num)", "type": "integer"}
+   },
+   "required": ["num","numbase"],
+  "additionalProperties": false
+}
+```
 
 ### Notes and rest attributes
 
