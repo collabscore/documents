@@ -321,9 +321,11 @@ the conversion system can infer the duration.
   "additionalProperties": false
 }
 ```
+
 [Example: first page, first system, first measure, first part, voice 1](http://collabscore.org/dmos/data/ex1/page1_s1_m1_p1_v1.json)
 
 > I would like using the following structured type for tuplets
+
 ```json
  {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
