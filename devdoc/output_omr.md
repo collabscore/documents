@@ -428,7 +428,8 @@ Duration = a fraction of a beat
      "no_staff": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la note sur la portée", "type": "integer"},
      "alter": {"description": "Altération", "$ref": "dmos_symbol.json"},
-     "tied": {"description": "Liaison à la note précédente", "type": "boolean"},
+     "tie": {"description": "Indicateur de liaison: forward, backward ou none (défaut)", "type": "string"},
+      "id_tie":  {"description": "Identifiant de liaison", "type": "integer"},
      "errors": {"description": "Liste des erreurs", 
                 "type": "array",
                 "items": { "$ref": "dmos_error.json" }
