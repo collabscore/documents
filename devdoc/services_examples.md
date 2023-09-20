@@ -29,4 +29,4 @@ In the results, annotations are grouped by the id ot the target element (for ins
 
 The list of annotations can be restricted to a single concept. Example for measure-regions:
 
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_all/
+http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/measure-region/_all/
