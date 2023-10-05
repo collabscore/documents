@@ -527,6 +527,10 @@ Duration = a fraction of a beat
   "type": "object",
   "properties": {
       "no_staff": {"type": "integer"},
+      "region": {
+               "description": "Region of the measure for the current staff",
+               "$ref": "dmos_region.json"
+      },
      "clef": {"$ref": "dmos_clef.json" },
      "key_signature": {"$ref": "dmos_key_signature.json" },
      "time_signature": {"$ref": "dmos_time_signature.json" }
