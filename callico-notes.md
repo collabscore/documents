@@ -20,4 +20,10 @@ Le système semble intégré à IIIF.
 
 Un projet de test CollabScore est défini ici: https://callico.teklia.com/projects/ae5a37dc-2ec7-40e1-b3f6-0935ff754d88/details/
 
+### Le code
+
+Le code de Callico est disponible en Open Source sur GitLab: https://gitlab.com/teklia/callico
+
+
+
 
