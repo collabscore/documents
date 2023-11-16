@@ -13,7 +13,7 @@ Le système semble intégré à IIIF.
 - La documentation https://doc.arkindex.org/
 - Le site de démo: https://demo.arkindex.org/
 
-Une collection ("project") dédiée à CollabScore a été créée ici https://demo.arkindex.org/browse/bbc542e7-dfcf-45e1-b99c-3651c8934c37?top_level=true&folder=true
+Une collection ("project") dédiée à CollabScore a été créée ici https://demo.arkindex.org/browse/bbc542e7-dfcf-45e1-b99c-3651c8934c37?top_level=true&folder=true. Pour le rejoindre, créer un compte https://demo.arkindex.org/user/register?next=/user/login et demander à Philippe.
 
 ## Callico
 
