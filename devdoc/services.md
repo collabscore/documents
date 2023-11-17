@@ -125,7 +125,7 @@ Assuming the above JSON object is stored in a ``source_rest.json`` file, the HTT
 http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/
 
 ```
-curl -X PUT "http://localhost:8000/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
+curl -X PUT "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
 ```
 
 ## Modifying a source
