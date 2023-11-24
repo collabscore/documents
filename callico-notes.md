@@ -24,7 +24,9 @@ Un projet de test CollabScore est défini ici: https://callico.teklia.com/projec
 
 ### Le code
 
-Le code de Callico est disponible en Open Source sur GitLab: https://gitlab.com/teklia/callico
+Le code de Callico est disponible en Open Source sur GitLab: [https://gitlab.com/teklia/callico](https://gitlab.teklia.com/callico/callico)https://gitlab.teklia.com/callico/callico
+
+
 
 
 
