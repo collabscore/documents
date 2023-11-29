@@ -154,6 +154,8 @@ A file can be attached to a source (useful if the file is not accessible via a U
  curl -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/dmos/_file/"  -F 'dmos.json=@file.json'
 ```
 
+If the source does not exist, a generic one is created with a description that features the date of creation.
+
 
 
 
