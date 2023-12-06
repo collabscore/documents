@@ -15,7 +15,7 @@ Insertion dans Neuma
 
 Le script ```cp_saintsaens.sh``` (dans ```neuma/scripts```) permet de copier les sources Github dans les données de Neuma. Il prend notamment dans le fichier JSON la référence Gallica et l'insère en tant que source associée dans l'Opus de Neuma.
 
-Il reste à zipper le dossier ```saintsaens``` avant de l'importer dans Neuma. **Attention à bien vérifier la présence du fichier ```corpus.json```.
+Il reste à zipper le dossier ```saintsaens``` avant de l'importer dans Neuma. **Attention à bien vérifier la présence du fichier ```corpus.json```**.
 
   python3 manage.py import_zip -c all:collabscore :f data/composers-datasets/saintsaens  -o mei_as_source
 
