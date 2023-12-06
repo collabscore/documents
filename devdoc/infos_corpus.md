@@ -17,7 +17,9 @@ Le script ```cp_saintsaens.sh``` (dans ```neuma/scripts```) permet de copier les
 
 Il reste à zipper le dossier ```saintsaens``` avant de l'importer dans Neuma.
 
-  python3 manage.py import_zip -c all:collabscore :f data/composers-datasets/saintsaens
+  python3 manage.py import_zip -c all:collabscore :f data/composers-datasets/saintsaens  -o mei_as_source
+
+**Ne surtout pas oublier l'option ```mei_as_source```**
 
 Et éventuellement à l'indexer
 
