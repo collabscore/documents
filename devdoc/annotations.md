@@ -231,9 +231,7 @@ REST services allow the retrieval, insertion and update of annotations. Examples
 
 Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
 
-``
-curl http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/_stats/
-``
+http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/_stats/
 
 should look like:
 
@@ -254,7 +252,10 @@ should look like:
 ```
 
 Adding the code of an annotation model gives the statistics per annotation concept. Exemple for the model 'image-region':
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_stats/:
+
+http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_stats/
+
+Result:
 
 ```json
 {
@@ -271,7 +272,7 @@ http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/
 
 Adding the ``_all`` keyword retrieves the list of annotations for the model. 
 
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_all/. 
+http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_all/
 
 In the results,
 annotations are grouped by the id ot the target element. In the example below, P0m11n1 and P0m11n2 are two such elements. The struture
@@ -310,11 +311,11 @@ No ``rollback`` or confirmation mechanism. Be careful...
 
 ### Create, update and get a specific annotation
 
-All these services are rooted at http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/vivelevent/_annotations/.
+All these services are rooted at http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/.
 
 #### Getting an annotation
 
-Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/vivelevent/_annotations/1234/
+Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/1234/
 
 #### Deleting an annotation
 
