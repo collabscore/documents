@@ -232,17 +232,23 @@ REST services allow the retrieval, insertion and update of annotations. Examples
 Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
 
 ``
-curl http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/_stats/
+curl http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/_stats/
 ``
 
 should look like:
 
 ```json
 {
-"total_annotations": 200,
+"total_annotations": 724,
 "count_per_model": [
-{ "model_code": "omr-error", "count": 100},
-{"model_code": "image-region","count": 100}
+{
+"model_code": "image-region",
+"count": 648
+},
+{
+"model_code": "omr-error",
+"count": 76
+}
 ]
 }
 ```
@@ -253,14 +259,21 @@ http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_anno
 ```json
 {
 "annotation_model": "image-region",
-"total_annotations": 200,
+"total_annotations": 724,
 "count_per_concept": [
-{"concept_code": "note-region", "count": 100}
+{
+  "concept_code": "measure-region",
+  "count": 648
+}
 ]
 }
 ```
 
-Adding the ``_all`` keyword retrieves the list of annotation for the model. http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/_all/. In the results,
+Adding the ``_all`` keyword retrieves the list of annotation for the model. 
+
+http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_annotations/image-region/_all/. 
+
+In the results,
 annotations are grouped by the id ot the target element. Inn the example below, P0m11n1 and P0m11n2 are two such elements. The struture
 allows to easily find the annotations pertaining to a specific element.
 
