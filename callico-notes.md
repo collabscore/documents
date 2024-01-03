@@ -12,7 +12,7 @@ Le système semble intégré à IIIF.
 
 - La documentation https://doc.arkindex.org/
 - Le site de démo: https://demo.arkindex.org/
-- Documentation API: https://demo.arkindex.org/api/v1/openapi/?format=json
+- Documentation API: [https://demo.arkindex.org/api/v1/openapi/?format=json](https://demo.arkindex.org/api-docs/)
 - Le client ArkIndex - Python: https://pypi.org/project/arkindex-client/
 
 Une collection ("project") dédiée à CollabScore a été créée ici https://demo.arkindex.org/browse/bbc542e7-dfcf-45e1-b99c-3651c8934c37?top_level=true&folder=true. Pour le rejoindre, créer un compte https://demo.arkindex.org/user/register?next=/user/login et demander à Philippe.
