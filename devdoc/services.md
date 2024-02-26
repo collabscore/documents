@@ -1,7 +1,7 @@
 # CollabScore services
 
 CollabScore proposes a RESTful interface to communicate with the digital library. 
-All documents exchanged are JSON-encoded.  All services are rooted at http://neuma.huma-num.fr/rest
+All documents exchanged are JSON-encoded.  All services are rooted at https://neuma.huma-num.fr/rest
 
 The main objects to interact with are
 
@@ -25,8 +25,8 @@ separated by semicolons. ``R``is called the *local id*. For instance
 
 One can interact with a pscore either with a Web interface or with the Restful interface. Examples for the Web interface:
 
- - Collection CollabScore can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/corpus/all:collabscore:saintsaens-ref:C006_0/
- - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/opus/all:collabscore:tests:dmos_ex1/ in the sub-collection ``tests``.
+ - Collection CollabScore can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/corpus/all:collabscore:saintsaens-ref/
+ - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/opus/all:collabscore::saintsaens-ref:C006_0/ in the sub-collection ``tests``.
 
 For the REST interface, we replace ``home/corpus`` with ``rest/collections``. The id of the opus can be either given with the ':' separator, or with '/', as in a file system.
 
