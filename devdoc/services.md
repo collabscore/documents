@@ -29,13 +29,13 @@ separated by semicolons. ``R``is called the *local id*. For instance
 One can interact with a pscore either with a Web interface or with the Restful interface. Examples for the Web interface:
 
  - Collection CollabScore can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/corpus/all:collabscore:saintsaens-ref/
- - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/opus/all:collabscore:saintsaens-ref:C006_0/ in the sub-collection ``tests``.
+ - Pscore ``C006_0`` can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/opus/all:collabscore:saintsaens-ref:C006_0/ in the sub-collection ``tests``.
 
-For the REST interface, we replace ``home/corpus`` with ``rest/collections``. The id of the opus can be either given with the ':' separator, or with '/', as in a file system.
+For the REST interface, we replace ``home/corpus`` with ``rest/collections``. 
 
- - Collection CollabScore can be consulted at https://neuma.huma-num.fr/rest/collections/all:collabscore/, or http://neuma.huma-num.fr/rest/collections/all/collabscore/
+ - Collection CollabScore can be consulted at https://neuma.huma-num.fr/rest/collections/all:collabscore/
  - Its set of pscores is at https://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
- - A specific pscore such as ``C006_0``, in the sub-collection 'sainsaens-ref', is accessible either at: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/ or https://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/ 
+ - A specific pscore such as ``C006_0``, in the sub-collection 'sainsaens-ref', is accessible  at https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/
 
 In this document, we document the set of web services useful to CollabScore. 
 
