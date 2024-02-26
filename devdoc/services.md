@@ -75,7 +75,7 @@ One obtains a json with all the files and their URLs.
 "features": [],
 "sources": [
 {
-"ref": "gallica",
+"ref": "iiif",
 "description": "Lien Gallica",
 "source_type": "JPEG",
 "mime_type": "image/jpeg",
@@ -88,14 +88,7 @@ One obtains a json with all the files and their URLs.
 "source_type": "MEI",
 "mime_type": "application/xml",
 "url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/C006_0.mei"
-},
-{
-"ref": "dmos",
-"description": "Created via REST call on 2023-12-06",
-"source_type": "DMOS",
-"mime_type": "application/json",
-"url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/dmos.json"
-},
+}
 {
 "ref": "midi",
 "description": "MIDI file generated on 2023-12-21",
