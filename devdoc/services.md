@@ -68,8 +68,6 @@ A pscore is associated  to a set of *sources*, or digital documents encoding inf
 One obtains a json with all the files and their URLs.
  
 ```json
-
-```
 {
 "ref": "C006_0",
 "title": "[Dans les coins bleus] ",
@@ -107,6 +105,9 @@ One obtains a json with all the files and their URLs.
 }
 ]
 }
+```
+
+
 ### Pscore: sources
 
 A pscore is linked to *sources*, each source being a digital representation of a  pscore in a multimedia format: image, audio,
