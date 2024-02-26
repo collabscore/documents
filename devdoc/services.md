@@ -66,7 +66,7 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens
 
 A pscore is associated  to a set of *sources*, or digital documents encoding information about the pscore.
 One obtains a json with all the files and their URLs.
- 
+
 ```json
 {
 "ref": "C006_0",
@@ -74,34 +74,41 @@ One obtains a json with all the files and their URLs.
 "composer": "Saint-Saëns, Camille ",
 "features": [],
 "sources": [
-{
-"ref": "iiif",
-"description": "Lien Gallica",
-"source_type": "JPEG",
-"mime_type": "image/jpeg",
-"url": "https://gallica.bnf.fr/ark:/12148/bpt6k11620473",
-"images": []
-},
-{
-"ref": "ref_mei",
-"description": "Référence MEI",
-"source_type": "MEI",
-"mime_type": "application/xml",
-"url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/C006_0.mei"
-}
-{
-"ref": "midi",
-"description": "MIDI file generated on 2023-12-21",
-"source_type": "MIDI",
-"mime_type": "audio/midi",
-"url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/score.midi"
-}
+ {
+  "ref": "iiif",
+  "description": "Lien Gallica",
+  "source_type": "JPEG",
+  "mime_type": "image/jpeg",
+  "url": "https://gallica.bnf.fr/ark:/12148/bpt6k11620473",
+  "images": []
+  },
+  {
+  "ref": "mei",
+  "description": "MEI generated on ...",
+  "source_type": "MEI",
+  "mime_type": "application/xml",
+  "url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/C006_0.mei"
+  }
+  {
+  "ref": "midi",
+  "description": "MIDI file generated on 2023-12-21",
+  "source_type": "MIDI",
+  "mime_type": "audio/midi",
+  "url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/score.midi"
+  }
 ]
 }
 ```
 
+In the above example, we obtain 3 sources:
+  - ``iiif`` is a source supplied by an IIIF server, typically Gallica (BnF). It may come
+     with a list of *images* URLs (all the pages of the source)
+  - ``mei`` is a MEI encoding of the source content
+  - ``midi`` is a midi generated from the MEI
 
-### Pscore: sources
+Etc. There might be MusicXML sources, video or audio source, etc. 
+
+### Services on sources
 
 A pscore is linked to *sources*, each source being a digital representation of a  pscore in a multimedia format: image, audio,
 video, etc.
