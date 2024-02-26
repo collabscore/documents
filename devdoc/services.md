@@ -1,7 +1,10 @@
 # CollabScore services
 
 CollabScore proposes a RESTful interface to communicate with the digital library. 
-All documents exchanged are JSON-encoded.  All services are rooted at https://neuma.huma-num.fr/rest
+All documents exchanged are JSON-encoded.  
+  - All services are rooted at https://neuma.huma-num.fr/rest
+  - A Swagger interface with all services is available at http://neuma.huma-num.fr/schema/swagger-ui/
+  - A Redoc interface with all services is available at http://neuma.huma-num.fr/schema/redoc/
 
 The main objects to interact with are
 
@@ -26,16 +29,15 @@ separated by semicolons. ``R``is called the *local id*. For instance
 One can interact with a pscore either with a Web interface or with the Restful interface. Examples for the Web interface:
 
  - Collection CollabScore can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/corpus/all:collabscore:saintsaens-ref/
- - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/opus/all:collabscore::saintsaens-ref:C006_0/ in the sub-collection ``tests``.
+ - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at https://neuma.huma-num.fr/home/opus/all:collabscore:saintsaens-ref:C006_0/ in the sub-collection ``tests``.
 
 For the REST interface, we replace ``home/corpus`` with ``rest/collections``. The id of the opus can be either given with the ':' separator, or with '/', as in a file system.
 
- - Collection CollabScore can be consulted at http://neuma.huma-num.fr/rest/collections/all:collabscore/, or http://neuma.huma-num.fr/rest/collections/all/collabscore/
- - Its set of pscores is at http://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
- - A specific pscore such as ``dmos_ex1``, in the sub-collection 'tests', is accessible either at: http://neuma.huma-num.fr/rest/collections/all:collabscore:tests:dmos_ex1/ or http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/dmos_ex1/ 
+ - Collection CollabScore can be consulted at https://neuma.huma-num.fr/rest/collections/all:collabscore/, or http://neuma.huma-num.fr/rest/collections/all/collabscore/
+ - Its set of pscores is at https://neuma.huma-num.fr/rest/collections/all:collabscore/_opera/
+ - A specific pscore such as ``C006_0``, in the sub-collection 'sainsaens-ref', is accessible either at: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/ or https://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/ 
 
-In this document, we document the set of web services useful to CollabScore. A Swagger interface with all services is
-available at http://neuma.huma-num.fr/rest/swagger/.
+In this document, we document the set of web services useful to CollabScore. 
 
 ## Getting collections and pscores
 
