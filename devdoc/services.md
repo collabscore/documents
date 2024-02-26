@@ -47,45 +47,66 @@ Given a collection, you can retrieve the list of sub-collections with the ``_cor
 service. The sub-collections of CollabScore are obtained by calling the service:
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/_corpora/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore/_corpora/
 ```
-
+You should find a sub-collection with  ref ``saint-saens-ref``.  
 The list of pscores in a collection is obtained with the ``_opera`` service.
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/_opera/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref/_opera/
 ```
 
 ### Pscores: meta-data and score files
 
-The meta-description of a pscore is obtained from the pscore id:
+The description of a pscore is obtained from the pscore id:
 
 ```
-curl -X GET http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/
 ```
 
-A pscore is associated  to a MEI file which is the reference encoding of the pscore content. There might also be a MusicXML file.  One obtains a json with all the files and their URLs.
+A pscore is associated  to a set of *sources*, or digital documents encoding information about the pscore.
+One obtains a json with all the files and their URLs.
  
 ```json
-{
-"ref": "dmos_ex1",
-"title": "Test collabscore",
-"composer": null,
-"lyricist": null,
-"corpus": "all:collabscore:tests",
-"meta_fields": [],
-"sources": [],
-"files": {
- "score.xml": {
-    "url": "http://localhost:8000/media/corpora/all/collabscore/tests/dmos_ex1/score.xml"
-  },
-  "mei.xml": {
-  "url": "http://localhost:8000/media/corpora/all/collabscore/tests/dmos_ex1/mei.xml"
-  }
- }
-}
-```
 
+```
+{
+"ref": "C006_0",
+"title": "[Dans les coins bleus] ",
+"composer": "Saint-Saëns, Camille ",
+"features": [],
+"sources": [
+{
+"ref": "gallica",
+"description": "Lien Gallica",
+"source_type": "JPEG",
+"mime_type": "image/jpeg",
+"url": "https://gallica.bnf.fr/ark:/12148/bpt6k11620473",
+"images": []
+},
+{
+"ref": "ref_mei",
+"description": "Référence MEI",
+"source_type": "MEI",
+"mime_type": "application/xml",
+"url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/C006_0.mei"
+},
+{
+"ref": "dmos",
+"description": "Created via REST call on 2023-12-06",
+"source_type": "DMOS",
+"mime_type": "application/json",
+"url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/dmos.json"
+},
+{
+"ref": "midi",
+"description": "MIDI file generated on 2023-12-21",
+"source_type": "MIDI",
+"mime_type": "audio/midi",
+"url": "https://neuma.huma-num.fr/media/sources/all-collabscore-saintsaens-ref-C006_0/score.midi"
+}
+]
+}
 ### Pscore: sources
 
 A pscore is linked to *sources*, each source being a digital representation of a  pscore in a multimedia format: image, audio,
