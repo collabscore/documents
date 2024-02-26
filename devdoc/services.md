@@ -5,19 +5,27 @@ All documents exchanged are JSON-encoded.  All services are rooted at http://neu
 
 The main objects to interact with are
 
- - *Pivot scores*, or *pscore* in short: a MEI-encoded music score, linked to *sources* via *annotations*
+ - *Pivot scores*, or *pscore* in short: a piece of music, containing *sources*
+ - *Sources* : digital document that provide a representation of the pscore -- MEI, MusicXML, Images, MIDI, etc.
  - *Collections*: like directories in file systems ; a collection contains pscore and/or sub-collections.
+ - *Annotations*: they related fragments of sources that correspond to one another (for instance, measures)
+
+Annotations services are covered in https://github.com/collabscore/documents/blob/main/devdoc/annotations.md. The following focuses on collections, pscores and sources.
+
+## Identification
 
 Collections and pscores are uniquely identified with an *id* which takes the form ``Ci:Cj:...:R``.
-An id is built from the sequence of collection ids from the root (named ``all``) to the resource ``R``, 
-separated by semicolons. For instance 
+An (full) id is built from the sequence of collection ids from the root (named ``all``) to the resource ``R``, 
+separated by semicolons. ``R``is called the *local id*. For instance 
 
- - the id of the CollabScore collection  is ``all:collabscore``
- - the id of the basic sample file ``dmos_ex1`` pscore in CollabScore is ``all:collabscore:dmos_ex1``
+ - the full id of the CollabScore collection  is ``all:collabscore``, its local id is collabcore
+ - the full id of the Saint-Saëns reference collection  is ``all:collabscore:saintsaens-ref``
+ - the *local id of the pscore "Dans les coins bleus" is ``C006_0``, and its
+   full id   is ``all:collabscore:saintsaens-ref:C006_0``
 
 One can interact with a pscore either with a Web interface or with the Restful interface. Examples for the Web interface:
 
- - Collection CollabScore can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/corpus/all:collabscore/
+ - Collection CollabScore can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/corpus/all:collabscore:saintsaens-ref:C006_0/
  - Pscore ``dmos_ex1`` can be consulted (and edited for authorized users) at http://neuma.huma-num.fr/home/opus/all:collabscore:tests:dmos_ex1/ in the sub-collection ``tests``.
 
 For the REST interface, we replace ``home/corpus`` with ``rest/collections``. The id of the opus can be either given with the ':' separator, or with '/', as in a file system.
