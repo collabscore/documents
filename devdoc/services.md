@@ -142,7 +142,15 @@ In the following JSON representation, one notes two important fields
     "has_manifest": true
 }
 ```
-The manifest can be retrieved by adding the ``_manifest`` keyword at the
+
+The source file can be retrieved by adding the ``_file`` keyword at the
+end of the source URL.
+
+```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/iiif/_file/
+```
+
+The source manifest can be retrieved by adding the ``_manifest`` keyword at the
 end of the source URL.
 
 ```
