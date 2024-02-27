@@ -61,11 +61,13 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens
 
 ## Update services
 
-In order to use these services, you must supply a user authentification.
+In order to use these services, you must supply a user authentification ``login``
+and ``password``. With ``curl``, authentication is provided with the ``-u``
+option. 
 
 ### Adding a source
 
-To add a source, send a ``PUT`` request to the pscore. The content of the request is a JSON that describes the source. For instance:
+To add a source, send a ``PUT`` request to the pscore. The content of the request is a JSON that describes the source, excluding files. For instance:
 
 ```json
 {"ref":"dmos",
@@ -80,11 +82,11 @@ The 'source type' must belong to : JPEG, PDF, DMOS, MEI, MusicXML, MP3
 
 Assuming the above JSON object is stored in a ``source_rest.json`` file, the HTTP request is as follows (do not forget the 'Content-type' parameter):
 
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/
+```
+curl -X PUT "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
+```
 
-```
-curl -X PUT "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
-```
+Calling ``PUT``twice with the same source reference results in an error.
 
 ## Modifying a source
 
@@ -100,7 +102,7 @@ Same call, but adding the source ref to the URL, and using POST. There is no nee
 Example of calling the source update service:
 
 ```
-curl -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/dmos/"  -H 'Content-Type: application/json'   -d @source_rest.json
+curl -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/dmos/"  -H 'Content-Type: application/json'   -d @source_rest.json
 ```
 
 
