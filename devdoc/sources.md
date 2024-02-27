@@ -1,8 +1,10 @@
 # Source services
 
+See the introduction on CollabScore services in https://github.com/collabscore/documents/blob/main/devdoc/services.md
 
-
-y the list of sources, one can call the ``_sources`` services.
+Accessing sources requires a pscore identifier (see the above reference). In
+order to get the list of sources, one  calls the ``_sources`` services
+on this identifier.
 
 ```
 curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/
