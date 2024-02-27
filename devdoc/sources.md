@@ -88,7 +88,7 @@ curl -u login:password -X PUT "http://neuma.huma-num.fr/rest/collections/all/col
 
 Calling ``PUT``twice with the same source reference results in an error.
 
-## Modifying a source
+### Modifying a source
 
 Same call, but adding the source ref to the URL, and using POST. There is no need to use the ``ref`` field in tje JSON file. For instance:
 
@@ -104,15 +104,27 @@ Example of calling the source update service:
 ```
 curl -u login:password -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/dmos/"  -H 'Content-Type: application/json'   -d @source_rest.json
 ```
-## Uploading a source file
+### Uploading a source file
 
 A file can be attached to a source (useful if the file is not accessible via a URL). A multipart/form-data HTTP request has to be sent with the file to the ``/_sources/<source_ref>/_file/`` service. With Curl, this is done as follows (assuming the source_ref is 'dmos'):
 
 ```
- curl -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_sources/dmos/_file/"  -F 'dmos.json=@file.json'
+ curl -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/dmos/_file/"  -F 'dmos.json=@file.json'
 ```
 
 If the source does not exist, a generic one is created with a description that features the date of creation.
+
+
+### Deleting a source
+
+Send the ``DELETE`` HHTP request to the source. 
+
+```
+curl -u login:password -X DELETE "http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/dmos/"
+```
+No rollback ... behave with care.
+
+
 
 
 
