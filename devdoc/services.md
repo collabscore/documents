@@ -13,7 +13,9 @@ The main objects to interact with are
  - *Collections*: like directories in file systems ; a collection contains pscore and/or sub-collections.
  - *Annotations*: they related fragments of sources that correspond to one another (for instance, measures)
 
-Annotations services are covered in https://github.com/collabscore/documents/blob/main/devdoc/annotations.md. The following focuses on collections, pscores and sources.
+Services on sources are covered in https://github.com/collabscore/documents/blob/main/devdoc/sources.md
+
+Services on annotations are covered in https://github.com/collabscore/documents/blob/main/devdoc/annotations.md. The following focuses on collections and pscores.
 
 ## Identification
 
