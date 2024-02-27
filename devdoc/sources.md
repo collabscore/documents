@@ -2,6 +2,11 @@
 
 See the introduction on CollabScore services in https://github.com/collabscore/documents/blob/main/devdoc/services.md
 
+
+## Reading sources information
+
+The services in this do not require authentification.
+
 Accessing sources requires a pscore identifier (see the above reference). In
 order to get the list of sources, one  calls the ``_sources`` services
 on this identifier.
@@ -51,9 +56,13 @@ end of the source URL.
 curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/iiif/_manifest/
 ```
 
-## Adding a source
+## Update services
 
-To add a source, send a PUT request to the pscore. The content of the request is a JSON that describes the source. For instance:
+In order to use these services, you must supply a user authentification.
+
+### Adding a source
+
+To add a source, send a ``PUT`` request to the pscore. The content of the request is a JSON that describes the source. For instance:
 
 ```json
 {"ref":"dmos",
@@ -63,6 +72,7 @@ To add a source, send a PUT request to the pscore. The content of the request is
  }
 ```
 
+This creates a source with identified by the ``ref``field (``dmos`` in the above example).
 The 'source type' must belong to : JPEG, PDF, DMOS, MEI, MusicXML, MP3
 
 Assuming the above JSON object is stored in a ``source_rest.json`` file, the HTTP request is as follows (do not forget the 'Content-type' parameter):
