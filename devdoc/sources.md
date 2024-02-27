@@ -83,7 +83,7 @@ The 'source type' must belong to : JPEG, PDF, DMOS, MEI, MusicXML, MP3
 Assuming the above JSON object is stored in a ``source_rest.json`` file, the HTTP request is as follows (do not forget the 'Content-type' parameter):
 
 ```
-curl -X PUT "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
+curl -u login:password -X PUT "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/"  -H 'Content-Type: application/json'   -d @source_rest.json
 ```
 
 Calling ``PUT``twice with the same source reference results in an error.
@@ -102,10 +102,8 @@ Same call, but adding the source ref to the URL, and using POST. There is no nee
 Example of calling the source update service:
 
 ```
-curl -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/dmos/"  -H 'Content-Type: application/json'   -d @source_rest.json
+curl -u login:password -X POST "http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C006_0/_sources/dmos/"  -H 'Content-Type: application/json'   -d @source_rest.json
 ```
-
-
 ## Uploading a source file
 
 A file can be attached to a source (useful if the file is not accessible via a URL). A multipart/form-data HTTP request has to be sent with the file to the ``/_sources/<source_ref>/_file/`` service. With Curl, this is done as follows (assuming the source_ref is 'dmos'):
