@@ -24,9 +24,9 @@ curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens
 
 In the following JSON representation, one notes two important fields
 
- - the ``file_path``: if a source is associated to a file, then this field
+ - ``source_file``: if a source is associated to a file, then this field
    gives the path to the file on the Neuma server.
- - ``has _manifest``tells whether the source has a manifest (surprise!). The
+ - ``manifest``: the
     manifest is a JSON documents that describes the physical organization of the source
     in pages / systems / measures.
 
@@ -37,10 +37,13 @@ In the following JSON representation, one notes two important fields
     "source_type": "JPEG",
     "mime_type": "image/jpeg",
     "url": "https://gallica.bnf.fr/ark:/12148/bpt6k11620473",
-    "file_path": "/media/sources/all-collabscore-saintsaens-ref-C006_0/dmos.json",
-    "has_manifest": true
+    "source_file": "/media/sources/all-collabscore-saintsaens-ref-C006_0/dmos.json",
+    "manifest": "/media/sources/all-collabscore-saintsaens-ref-C006_0/manifest.json"
 }
 ```
+You can get  files directly by appending the Neuma URL and the file path. In special
+circumstances (Javascript calls with same origin policy), it is necessary to
+go through the following services.
 
 The source file can be retrieved by adding the ``_file`` keyword at the
 end of the source URL.
