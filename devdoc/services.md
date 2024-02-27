@@ -110,32 +110,43 @@ Etc. There might be MusicXML sources, video or audio source, etc.
 
 ### Services on sources
 
-A pscore is linked to *sources*, each source being a digital representation of a  pscore in a multimedia format: image, audio,
-video, etc.
-
-The list of sources of a pscore can be obtained with the ``_sources`` services.
+In order to obtain specifically the list of sources, one can call the ``_sources`` services.
 
 ```
-curl -X GET "http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent/_sources/"
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/
 ```
 
-The services returns a list of sources descriptions. For instance, the following document
-details two sources: an image (Gallica address) and a MEI that can be used as a reference to compare
-with the OMR output.
+One can further refine the search by adding the source reference. The following 
+call gets the ```iiif```  source.
+
+```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/iiif/
+```
+
+In the following JSON representation, one notes two important fields
+
+ - the ``file_path``: if a source is associated to a file, then this field
+   gives the path to the file on the Neuma server.
+ - ``has _manifest``tells whether the source has a manifest (surprise!). The
+    manifest is a JSON documents that describes the physical organization of the source
+    in pages / systems / measures.
 
 ```json
 {
-"ref": "vivelevent",
-"sources": [
-{
-"ref": "dmos",
-"description": "DMOS file",
-"source_type": "DMOS",
-"mime_type": "application/json",
-"url": "http://neuma.huma-num.fr/media/sources/all-collabscore-tests-vivelevent/dmos.json"
+    "ref": "iiif",
+    "description": "Lien Gallica",
+    "source_type": "JPEG",
+    "mime_type": "image/jpeg",
+    "url": "https://gallica.bnf.fr/ark:/12148/bpt6k11620473",
+    "file_path": "/media/sources/all-collabscore-saintsaens-ref-C006_0/dmos.json",
+    "has_manifest": true
 }
-]
-}
+```
+The manifest can be retrieved by adding the ``_manifest`` keyword at the
+end of the source URL.
+
+```
+curl -X GET http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/iiif/_manifest/
 ```
 
 ## Adding a source
