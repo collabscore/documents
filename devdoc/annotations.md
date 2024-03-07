@@ -300,8 +300,8 @@ allows to easily find the annotations pertaining to a specific element.
 
 The list of annotations can be restricted to a single concept: 
 
- - http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/measure-region/_all/ for regions covering all the staves of a measure
- - http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/mstaff-region/_all/ for regions covering a single staff of a measure
+ - http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/measure-region/ for regions covering all the staves of a measure
+ - http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/mstaff-region/ for regions covering a single staff of a measure
 
 ### Deleting annotations
 
