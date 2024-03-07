@@ -223,7 +223,7 @@ script, ``annot_utils.py``, relies on this module for testing and checking annot
 
 ## Annotation services
 
-REST services allow the retrieval, insertion and update of annotations. Examples are based on the following pscore: http://neuma.huma-num.fr/rest/collections/all/collabscore/tests/vivelevent. 
+REST services allow the retrieval, insertion and update of annotations. Examples are based on the following pscore: http://neuma.huma-num.fr/rest/all:collabscore:saintsaens-ref:C006_0/
 
 > In the case of PUT/POST/DELETE requests, the user credentials has to be provided. With ``curl``, this is done with the ``-u login:password`` option. In the following, the fictive ``collabscore:pwd`` user is assumed.
 
@@ -231,48 +231,52 @@ REST services allow the retrieval, insertion and update of annotations. Examples
 
 Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
 
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/_stats/
+http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/_stats/
 
 should look like:
 
 ```json
 {
-"total_annotations": 724,
-"count_per_model": [
-{
-"model_code": "image-region",
-"count": 648
-},
-{
-"model_code": "omr-error",
-"count": 76
-}
-]
+  "count": 386,
+  "details": [
+    {
+      "model": "omr-error",
+      "count": 80
+    },
+    {
+      "model": "image-region",
+      "count": 306
+    }
+  ]
 }
 ```
 
 Adding the code of an annotation model gives the statistics per annotation concept. Exemple for the model 'image-region':
 
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_stats/
+http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/_stats/
 
 Result:
 
 ```json
 {
-"annotation_model": "image-region",
-"total_annotations": 724,
-"count_per_concept": [
-{
-  "concept_code": "measure-region",
-  "count": 648
-}
-]
+  "model": "image-region",
+  "count": 386,
+  "details": [
+    {
+      "code": "mstaff-region",
+      "count": 153
+    },
+    {
+      "code": "measure-region",
+      "count": 153
+    }
+  ]
 }
 ```
 
 Adding the ``_all`` keyword retrieves the list of annotations for the model. 
 
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_all/
+http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/_all/
 
 In the results,
 annotations are grouped by the id ot the target element. In the example below, P0m11n1 and P0m11n2 are two such elements. The struture
@@ -296,33 +300,33 @@ allows to easily find the annotations pertaining to a specific element.
 
 The list of annotations can be restricted to a single concept: 
 
- - http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/measure-region/_all/ for regions covering all the staves of a measure
- - http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/mstaff-region/_all/ for regions covering a single staff of a measure
+ - http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/measure-region/_all/ for regions covering all the staves of a measure
+ - http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/mstaff-region/_all/ for regions covering a single staff of a measure
 
 ### Deleting annotations
 
 Deletion is obtained by sending a ``DELETE`` HTTP request, along with the user credentials.
 
 ```
-curl -u login:password -X DELETE  http://localhost:8000/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/image-region/_all/ 
+curl -u login:password -X DELETE  http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/_all/ 
 ```
 
 No ``rollback`` or confirmation mechanism. Be careful...
 
 ### Create, update and get a specific annotation
 
-All these services are rooted at http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/.
+All these services are rooted at http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/.
 
 #### Getting an annotation
 
-Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/1234/
+Simply give the notification id, for instance: http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/1234/
 
 #### Deleting an annotation
 
 Send to the above URL a ``DELETE``HTTP request, along with the user credentials. For instance: 
 
 ```
-curl -u collabscore:pwd -X DELETE http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/1234/
+curl -u collabscore:pwd -X DELETE http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/1234/
 ```
 
 #### Putting an annotation
@@ -332,12 +336,12 @@ document that complies to the model outlined above.
 With ``curl``, the syntax is
 
 ```
-curl -u login:password -X PUT  http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/ \
+curl -u login:password -X PUT  http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/ \
      -H "Content-Type: application/json" \
      -d @file.json 
 ```
 
-The JSON file represents an annotation, without the id (generated by Neuma), the creator (idem) . Example for a time frame annotation:
+The JSON file represents an annotation, without the id (generated by Neuma), the creator (idem). Example for a time frame annotation:
 
 ```json  
 {
@@ -371,8 +375,8 @@ The JSON file represents an annotation, without the id (generated by Neuma), the
 The service returns (if everything is OK) a JSON message featuring the new annotation id:
 
 ```json
-{"message":"New annotation created on all:collabscore:tests:vivelevent","annotation_id":11723}
+{"message":"New annotation created on all:collabscore:saintsaens-ref:C006_0","annotation_id":11723}
 ```
 
 The new annotation can be retrieved with:
-http://neuma.huma-num.fr/rest/collections/all/collabscore/saintsaens-ref/C452_0/_annotations/11723/
+http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/11723/
