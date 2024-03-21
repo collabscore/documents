@@ -26,8 +26,11 @@ Voir la doc pour les services de création / mise à jour
  - Résumé des annotations pour un modèle particulier (ici, image-region): https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/_stats/
  - Toutes les annotations pour un modèle: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/_all/
  - Annotations pour un modèle particulier:
- 
+
+     - les systèmes: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/system-region/
+     - les mesures sur système: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/mstaff-region/
     - les mesures sur portée: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/measure-region/
-    - les mesures sur système: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/mstaff-region/
-  
+    - les notes, silences et accords: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_annotations/image-region/note-region/
+
+
    
