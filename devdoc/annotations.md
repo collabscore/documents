@@ -48,7 +48,8 @@ models used by CollabScore:
 #### The image-region model
 
 This model is used to link a pscore (the MEI document) with regions of an image. It contains the following concepts:
-
+  
+  -  ``system-region``: the annotations refers to a system
   - ``measure-region``: the annotations refers to a measure, and the region covers all the staves
   - ``mstaff-region``: the annotations refers to a measure, and the region covers a single staff
   - ``note-region``: the annotations refers to a note or rest
