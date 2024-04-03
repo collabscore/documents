@@ -451,6 +451,7 @@ Duration = a fraction of a beat
   "title": "Schéma de la description d'une clef",
   "type": "object",
   "properties": {
+     "id": {"description": "Identifiant unique et pérenne", "type": "string"},
      "symbol": {"description": "Code du symbole", "$ref": "dmos_symbol.json"},
      "no_staff": {"description": "Numéro de portée", "type": "integer"},
      "height": {"description": "Hauteur de la clef sur la portée", "type": "integer"},
@@ -476,6 +477,7 @@ Duration = a fraction of a beat
   "title": "Schéma de la description d'une armure",
   "type": "object",
   "properties": {
+     "id": {"description": "Identifiant unique et pérenne", "type": "string"},
      "element": {"description": "dièse, bémol ou aucun", "type": "string"},
      "nb_naturals": {"description": "Nombre de bécarres", "type": "integer"},
      "nb_alterations": {"description": "Nombre d'altérations", "type": "integer"},
@@ -499,6 +501,7 @@ Duration = a fraction of a beat
   "title": "Schéma de la description d'une métrique",
   "type": "object",
   "properties": {
+     "id": {"description": "Identifiant unique et pérenne", "type": "string"},
      "element": {"description": "type du chiffrage", "type": "string"},
      "time": {"description": "Nb de temps", "type": "integer"},
      "unit": {"description": "Unité de temps", "type": "integer"},
