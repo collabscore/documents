@@ -358,11 +358,41 @@ the conversion system can infer the duration.
     "articulations_bottom": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
     "directions": {"description": "nuances et autres symboles", "type": "array", 
         "items": { "$ref": "dmos_symbol.json" }},
+    "syllable": {"description": "Syllabe chantée sur la note", "$ref": "dmos_syllable.json"},
+     "verses": {"description": "En cas de couplets, tableau de syllabes", 
+      				"type": "array",
+                	"items": {"$ref": "dmos_syllable.json"}
+     			},
     "other_objects": {"type": "array", "items": { "$ref": "dmos_symbol.json" }},
     "errors": {"type": "array", "items": { "$ref": "dmos_error.json" }}
   },
    "required": ["nb_heads", "heads"],
   "additionalProperties": false
+}
+```
+
+Lyrics are encoded as syllables, and embedded in an ``att_note`` object. Two cases:
+  - No verses: A single syllable is put in the ``syllable`` property
+  - Verses: an array of syllables is put in the ``verses`` property
+
+The syllable schema is given below. The ``text``  and ``pos_in_word``  
+properties are mandatory. The latter expresses the position of the syllable
+in the lyrics' word: either 'i'(nitial), 'm'(iddle) or 'e'(nd).
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "dmos_syllable.json",
+  "title": "Syllables",
+  "type": "object",
+  "properties": {
+     "text": {"description": "Text of the syllable", "type": "string"},
+     "pos_in_word": {"description": "Position of the syllable. Can be 'i', 'm', or 'e'", "type": "string"},
+     "placement": {"description": "Optional spec. of the placement. 'below' by default", "type": "string"}
+   },
+   "required": ["text", "pos_in_word"],
+  "additionalProperties": false
+
 }
 ```
 
