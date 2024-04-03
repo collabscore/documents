@@ -16,9 +16,9 @@ On spécifie les parties: instruments, abbréviations (granularité: Opus)
 On associe chaque portée (simple ou double) à l'une des parties (granularité : page)
 
 Opérations d'édition:
-  # specify_part (décrire une partie) 
-  # merge_staves (fusionner 2, voire 3 portées sur une même partie)
-  # assign_staff_to part 
+  - specify_part (décrire une partie) 
+  - merge_staves (fusionner 2, voire 3 portées sur une même partie)
+  - assign_staff_to part 
 
 ### Etape 2 - Contexte interprétation
 
@@ -38,7 +38,6 @@ La granularité est la page
 En supposant les parties bien identifiées et localisées sur les portées (étape 1), et 
 les éléments d'interprétation corrects (étape 2), on demande à l'utilisateur de corriger 
 les éléments locaux.
-
 
   - Durée, hauteur, altération des notes
   - Durée des silences
