@@ -20,21 +20,37 @@ Opérations d'édition:
   # merge_staves (fusionner 2, voire 3 portées sur une même partie)
   # assign_staff_to part 
 
-### Phase 2 - Contexte interprétation
+### Etape 2 - Contexte interprétation
 
-Granularité : page
+On demande à l'utilisateur de vérifier tous les éléments qui conditionnent l'interprétation 
+des notes. 
 
- - Armures 
- - Clef (en cas de niveau de confiance assez faible)
+Ces éléments sont
+
+ - Armures (en cas de niveau de confiance assez faible)
+ - Clefs (en cas de niveau de confiance assez faible)
  - Métrique (en cas de doute sur la durée de la mesure)
 
-Phase 3 - Locaux
+La granularité est la page
 
-Granularité page 
+### Etape 3 - éléments locaux
 
-  - Durée, hauteur, altération, 
+En supposant les parties bien identifiées et localisées sur les portées (étape 1), et 
+les éléments d'interprétation corrects (étape 2), on demande à l'utilisateur de corriger 
+les éléments locaux.
 
-Phase 4 - optionnelle 
 
-Lecture globale -> lyrics avec saisie en séquentiel comme 
-dans MuseScore
+  - Durée, hauteur, altération des notes
+  - Durée des silences
+  - Eventuellement ajout ou suppression d'éléments
+
+La granularité est la page 
+
+### Etape 4 (optionnelle) - les paroles
+
+À compléter. S'inspirer de la saisie séquentielle dans MuseScore.
+
+### Etape 5 (optionnelle) - vérification et validation
+
+À compléter.
+
