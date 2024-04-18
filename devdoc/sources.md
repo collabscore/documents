@@ -113,3 +113,10 @@ A file can be attached to a source (useful if the file is not accessible via a U
 ```
 
 If the source does not exist, a NOT FOUND message is returned.
+
+It is also possible to send a ZIP file, containing the JSON file. The command
+is the same, replacing 'dmos.json' with 'dmos.zip'. So it should look like:
+
+```
+ curl  -u login:password -X POST "http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:C006_0/_sources/iiif/_file/"  -F 'dmos.zip=@file.zip'
+```
