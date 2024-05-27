@@ -371,6 +371,8 @@ the conversion system can infer the duration.
 }
 ```
 
+An *articulation* is any directive associated to a note. The known articulations belong to a fixed vocabulary. They correspond to "Articulations", "Dynamics" and "Expressions" in Music21. Instead, a "direction" is a free text (corresponds to a TextExpression in Music21).
+
 Lyrics are encoded as syllables, and embedded in an ``att_note`` object. Two cases:
   - No verses: A single syllable is put in the ``syllable`` property
   - Verses: an array of syllables is put in the ``verses`` property
@@ -418,8 +420,6 @@ in the lyrics' word: either 'i'(nitial), 'm'(iddle) or 'e'(nd).
   "additionalProperties": false
 }
 ```
-
-> Question: what about lyrics ?
 
 ## Schéma des types de base
 
