@@ -41,7 +41,7 @@ that takes as parameter the target part and the above attributes. Its JSON descr
 	"params": {
 		"part": "Part2",
 		"values": {
-      "intrument": "Chant",
+                        "intrument": "Chant",
 			"name": "Ténor",
 			"abbreviation": "T."
 		}
@@ -60,9 +60,18 @@ values can be decoded.
 ## Services on operations
 
 The CollabScore server exchanges operations via REST services. 
-The serialization is based on JSON. 
+The serialization is based on JSON. An operation is always send/received
+to/from the ``iiif`` source of a Opus. In general, such a source
+is referred to by combining the Opus ref, the keyword ``_sources``
+and the source code (``iiif`` in our case). Here is an example:
 
-### Retrieving operations
+```
+all:collabscore:saintsaens-ref:C006_0/_sources/iiif/
+```
+
+The Opus ref can be replaced by its database id, e.g., 22468/_sources/iiif/. See the document on sources.
+
+### Retrieving editions
 
 Statistics on annotations are obtained with the ``_annotations`` keyword that serves as root for all annotation services. The result of
 
