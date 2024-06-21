@@ -18,7 +18,7 @@ generally speaking, and edition is an operation applied during the transcription
 of the JSON file to the XML file. This operation has a *name* and a list
 of *parameters*.
 
-##  Example of an operation
+##  Example of an edition
 
 A music score consists of *parts*, i.e., a set of instructions given to 
 a performer playing an instrument. In a score one may find a piano part, a
@@ -56,6 +56,25 @@ The names and types of the parameters changes from one operation to the other,
 but an operation has *always* a ``name``, from which the expected parameter 
 values can be decoded.
 
+## Range of editions
+
+An edition can have a *range* of measures. As measure is referred to
+by a triplet *(page_number, system_number, measure_number)*. In JSON,
+a range has therefore the following form:
+
+```json
+{
+	"from_page: 2,
+	"from_system: 2,
+	"from_measure: 1,
+	"to_page: 3,
+	"to_system: 99,
+	"to_measure: 99
+}
+```
+The above range goes from measure 1 of system 2 of page 2 to the
+last measure of the last system of page 3. Range can be specified
+for some editions.
 
 ## Services on editions
 
