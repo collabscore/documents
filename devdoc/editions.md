@@ -76,6 +76,18 @@ The above range goes from measure 1 of system 2 of page 2 to the
 last measure of the last system of page 3. Range can be specified
 for some editions.
 
+If a parameter is unspecified, the default value is 1 for ``from`` 
+values, and 99 for ``to`` values. The following range applies
+to all measures from measure 1 of the third system of page 2.
+
+
+```json
+{
+	"from_page: 2,
+	"from_system: 3
+}
+```
+
 ## Services on editions
 
 The CollabScore server exchanges operations via REST services. 
@@ -168,4 +180,36 @@ curl -u login:password -X DELETE
 http://neuma.huma-num.fr/rest/collections/22468/_sources/iiif/_editions
 ```
 
+## List of editions
 
+
+### Describe parts
+
+Defines metadata qualifying a part.
+See the first example of this document.
+
+### Assign staff to part
+
+Tells that a staff is allocated to a part in a given range. The
+parameters are
+
+  - The part id
+  - A staff number
+  - A range
+
+Example: the edition specified below tells that staff ``Staff1``
+is allocated to part ``P1``, from the second system of page 3.
+
+```json
+{
+	"name": "assign_staff_to_part",
+	"params": {
+		"part": "Part1",
+		"staff_number": 1
+		}
+	"range": {
+	    "from_page: 3,
+	     "from_system: 2
+         }
+}
+```
