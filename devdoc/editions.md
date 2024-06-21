@@ -206,10 +206,29 @@ is allocated to part ``P1``, from the second system of page 3.
 	"params": {
 		"part": "Part1",
 		"staff_number": 1
-		}
+		},
 	"range": {
 	    "from_page: 3,
 	     "from_system: 2
          }
+}
+```
+
+
+###  Merging parts
+
+Two distinct parts can be *merged* (typically, staves interpreted as dictinct
+parts, that actually correspond to a piano part). The parameter
+is an array of part's ids. 
+
+Example: the edition specified below merges parts ``p1``  and
+``p2`` in ``p1``. 
+
+```json
+{
+	"name": "merge_parts",
+	"params": {
+		"parts": ["p1", "p2"]
+		}
 }
 ```
