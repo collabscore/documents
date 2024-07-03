@@ -103,10 +103,10 @@ all:collabscore:saintsaens-ref:C006_0/_sources/iiif/
 The Opus ref can be replaced by its database id, e.g., 
 
 ```
-22468/_sources/iiif/. See the document on sources.
+22468/_sources/iiif/
 ```
 
-We use this URL for illustrating the services below. Editions can only be accessed by authorized users. The credentials must be given with each call.
+See the document on sources for explanations. We use this URL for illustrating the services below. Editions can only be accessed by authorized users. The credentials must be given with each call.
 
 ### Retrieving editions
 
