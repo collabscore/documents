@@ -124,7 +124,7 @@ The services returns an array of editions:
   {
 	"name": "describe_part",
 	"params": {
-		"part": "Part2",
+		"id": "Part2",
 		"values": {
                         "intrument": "Chant",
 			"name": "Ténor",
@@ -135,7 +135,7 @@ The services returns an array of editions:
   {
 	"name": "describe_part",
 	"params": {
-		"part": "Part1",
+		"id": "Part1",
 		"values": {
                         "intrument": "Piano",
 			"name": "Piano",
