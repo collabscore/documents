@@ -39,7 +39,7 @@ that takes as parameter the target part and the above attributes. Its JSON descr
 {
 	"name": "describe_part",
 	"params": {
-		"part": "Part2",
+		"id": "Part2",
 		"values": {
                         "intrument": "Chant",
 			"name": "Ténor",
