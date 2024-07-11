@@ -194,6 +194,8 @@ There might be a hierarchical grouping of staves in a system.  (piano, strings /
 point, a staff belongs to a "part", i.e., the sub-score assigned to a single performer. There might be one (usually), 2 or even 3 staves (organ), and the voices played by the performed can (in the most complex case) be distributed over all the staves of its part. **Thus**, I added the ``id_part`` to the staff descriptor to indicate
 the part a staff belongs to. As an inital approx., we can assume that staff = part.
 
+The region is the region of a staff in a system.
+
 The first bar is a segment that locates the left-most  vertical bar of the system.
 
 Schema ``dmos_staff_header``. 
@@ -205,15 +207,15 @@ Schema ``dmos_staff_header``.
   "type": "object",
     "properties": {
        "id_part": {"$type": "string" },
+       "name": {"$type": "string" },
        "no_staff": {"$type": "integer" },
-       "first_bar": {"$ref": "dmos_segment.json" }
+       "first_bar": {"$ref": "dmos_segment.json" },
+       "region": {"$ref": "dmos_region.json"}
    },
    "required": [ "id_part", "no_staff"],
   "additionalProperties": false
 }
 ```
-
-[Example of a system with three staves](http://collabscore.org/dmos/data/ex1/page1_s1.json)
 
 #### Measures
 
