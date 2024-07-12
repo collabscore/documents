@@ -51,8 +51,10 @@ This model is used to link a pscore (the MEI document) with regions of an image.
   
   -  ``system-region``: the annotations refers to a system
   - ``measure-region``: the annotations refers to a measure, and the region covers all the staves
-  - ``mstaff-region``: the annotations refers to a measure, and the region covers a single staff
+  - ``staff-region``: the annotations refers to a single staff
+  - ``mstaff-region``: the annotations refers to a measure, and the region covers all staves
   - ``note-region``: the annotations refers to a note or rest
+  - ``symbol-region``: the annotations refers to a symbol (clef, time or key signature)
  
 #### The time-frame model
 
