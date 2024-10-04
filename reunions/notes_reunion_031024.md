@@ -15,8 +15,30 @@ On pourra ausi ajouter une annotation pour signaler un problème non solvable
 Actuellement le changement d'un élément (clé) entraîne un réaffichage par Verovio qui rompt l'alignement aveccla partition -> mettre en place un recalcul qui tient compte de l'édition validée par
 l'utilisateur
 
-### Phase 3
+### Phase 3: objets musicaux
 
+**Correction des durées**. La voix la plus longue correspond à la métrique de la mesure. Sinon
+une erreur est remontée
 
-#
+  - erreur globale à la mesure, dans tous les cas
+  - erreur locale à l'objet musical si l'emplacement de l'erreur a pu être déterminé
+
+Actuellement certains objets peuvent être supprimés par notre processus pour restreindre l'ipact des erreurs. Il faut faire mieux, en tirant parti du fait que Verovio semble capable d'afficher autant d'objets que l'on veut indépendamment de la métrique.
+
+**Accords**: on peut zoomer sur les notes individuelles d'un accord pour modifier leurs propriétés. La modification de la durée s'applique à toutes les autres notes.
+
+**Triolets** (et autre nuplets): ils ne sont pas systématiquement explicitement indiqués. Essayer d'améliorer  l'inférence automatique en fonction des ligatures et de l'alignement sur les autres voix.
+
+Il faudra que l'interface permette la saisie d'une séquence d'objets (notes, silenes, accords) pour indiquer un nuplet.
+
+## Interface AlgoMus
+
+On peut visualiser la liste des sources audio et en sélectionner une.
+
+## Royaumont
+
+Les images de la Damoiselle élue doivent être triées en début de semaine prochaine
+On attend dans la Dropbox les images des scènes choisies de Pelléas, ansi que les extraits de vidéos, et d'un audio (piano seul)
+
+Organisation d'un workshop sur deux jours en mai ou juin: Royaumont nous proposera des dates.
 
