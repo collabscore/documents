@@ -38,8 +38,8 @@ We comply as much as possible to the annotation model of the W3C (https://www.w3
 ### Annotation of images
 
 In that case we associate an element of the pivot to the corresponding region on the image. Elements can be : systems, measures, measure/staves and notes/rests/chords.
-
 In order to obtain the regions for all the measures, one can call the following service: 
+
 https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/image-region/measure-region/
  
 ### Annotations of audio
@@ -48,6 +48,10 @@ These annotations associate an element of the pivot to a time frame in the audio
 
 https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/time-frame/measure-tframe/
 
+### Synchronization
+
+The same element from the pivot score (say, measure M12) appears both in the ``image-region`` annotation (which refers
+to a region) and the ``time-frame`` annotation (which refers to a time frame in the audio file).  To summarize, this lets us associate a region on the image and the time frame of the corresponding performance.
 
 
 
