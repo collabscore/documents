@@ -22,12 +22,14 @@ From now on, we will focus on REST services.
 
 ## Services
 
-A JSON representation of the Opus can be obtained at
-https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0
+All services are rooted at https://neuma.huma-num.fr/rest/collections. Some useful GET services: 
+ 
+  - Representation of an Opus: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0
+  - List of sources of an Opus: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/
+  - The MusicXML source: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/musicxml/
+  - The MusicXML file: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/musicxml/_file
 
-We can more precisely inspect the list of sources with the following service.
 
-https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/
 
 
 
