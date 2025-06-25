@@ -17,9 +17,21 @@ the synchronization of sources on a music melody by Saint-Saëns, "Aimons-nous".
 corpus, itself stored in the ``collabscore`` corpus. The local id of the piece in ``saintsaens-audio``
 is ``C055_0``.
 
-In the web interface of Neuma, the piece and its sources can be inspected at home/opus/all:collabscore:saintsaens-audio:C055_0/.
-However, from now on, we will focus on REST services.
+In the web interface of Neuma, the piece and its sources can be inspected at https://home/opus/all:collabscore:saintsaens-audio:C055_0/.
+From now on, we will focus on REST services.
 
 ## Services
 
-https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/iiif/_file/
+A JSON representation of the Opus can be obtained at
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0
+
+We can more precisely inspect the list of sources with the following service.
+
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/
+
+
+
+
+
+
+
