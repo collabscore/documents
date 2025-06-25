@@ -29,6 +29,26 @@ All services are rooted at https://neuma.huma-num.fr/rest/collections. Some usef
   - The MusicXML source: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/musicxml/
   - The MusicXML file: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/musicxml/_file
 
+## Linking sources with annotations
+
+Sources can be interlinked with annotations. The principle is to use the MusicXML source as a  *pivot score*. An annotation associates an *element* of the pivot score (a measure, a staff, a note) to a *fragment* of a source.
+The former is the *target* of the annotation, the latter the *body*.
+We comply as much as possible to the annotation model of the W3C (https://www.w3.org/TR/annotation-model/)
+
+### Annotation of images
+
+In that case we associate an element of the pivot to the corresponding region on the image. Elements can be : systems, measures, measure/staves and notes/rests/chords.
+
+In order to obtain the regions for all the measures, one can call the following service: 
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/image-region/measure-region/
+ 
+### Annotations of audio
+
+These annotations associate an element of the pivot to a time frame in the audio file. Exemple for *Aimons-nous*:
+
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/time-frame/measure-tframe/
+
+
 
 
 
