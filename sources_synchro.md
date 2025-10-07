@@ -43,6 +43,19 @@ We comply as much as possible to the annotation model of the W3C (https://www.w3
 
 In that case we associate an element of the pivot to the corresponding region on the image. Elements can be : systems, measures, measure/staves and notes/rests/chords.
 
+In order to obtain the regions for all the measures, one can call the following service: 
+
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/image-region/measure-region/
+ 
+### Annotations of audio
+
+These annotations associate an element of the pivot to a time frame in the audio file. Exemple for *Aimons-nous*:
+
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/time-frame/measure-tframe/
+
+Here is an example of an annotation that tells the *region* in the image source that corresponds to
+the first measure (``m1``).
+
 ```json
 "m1": [
     {
@@ -68,16 +81,6 @@ In that case we associate an element of the pivot to the corresponding region on
     }
   ],
 ```
-In order to obtain the regions for all the measures, one can call the following service: 
-
-https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/image-region/measure-region/
- 
-### Annotations of audio
-
-These annotations associate an element of the pivot to a time frame in the audio file. Exemple for *Aimons-nous*:
-
-https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/time-frame/measure-tframe/
-
 ### Synchronization
 
 The same element from the pivot score (say, measure M12) appears both in the ``image-region`` annotation (which refers
