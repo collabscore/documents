@@ -46,13 +46,8 @@ In that case we associate an element of the pivot to the corresponding region on
 In order to obtain the regions for all the measures, one can call the following service: 
 
 https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/image-region/measure-region/
+
  
-### Annotations of audio
-
-These annotations associate an element of the pivot to a time frame in the audio file. Exemple for *Aimons-nous*:
-
-https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/time-frame/measure-tframe/
-
 Here is an example of an annotation that tells the *region* in the image source that corresponds to
 the first measure (``m1``).
 
@@ -81,10 +76,44 @@ the first measure (``m1``).
     }
   ],
 ```
+
+### Annotations of audio
+
+These annotations associate an element of the pivot to a time frame in the audio file. Exemple for *Aimons-nous*:
+
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/time-frame/measure-tframe/
+
+Example for the same measure.
+
+```json
+"m1": [
+    {
+      "id": 3754548,
+      "body": {
+        "source": "https://openapi.bnf.fr/iiif/audio/v3/ark:/12148/bpt6k88448791/3.audio",
+        "selector": {
+          "type": "FragmentSelector",
+          "value": "t=0,4.852608",
+          "conformsTo": "https://www.w3.org/TR/media-frags/#naming-time"
+        }
+      },
+      "target": {
+        "source": "/media/corpora/all/collabscore/saintsaens-audio/C055_0/score.xml",
+        "selector": {
+          "type": "FragmentSelector",
+          "value": "m1",
+          "conformsTo": "http://tools.ietf.org/rfc/rfc3023"
+        }
+      },
+      "annotation_model": "time-frame",
+      "annotation_concept": "measure-tframe"
+    }
+```
 ### Synchronization
 
-The same element from the pivot score (say, measure M12) appears both in the ``image-region`` annotation (which refers
-to a region) and the ``time-frame`` annotation (which refers to a time frame in the audio file).  To summarize, this lets us associate a region on the image and the time frame of the corresponding performance.
+The same element from the pivot score (say, measure m1, m2, etc.) appears both in the ``image-region`` annotation (which refers
+to a region) and the ``time-frame`` annotation (which refers to a time frame in the audio file).  To summarize, this lets us associate a region on the image and the time frame of the corresponding performance. It is not 
+even necessary to access to the MusicXML or MEI file which only serves as a common reference.
 
 
 
