@@ -30,6 +30,8 @@ All services are rooted at https://neuma.huma-num.fr/rest/collections. Some usef
   - List of sources of an Opus: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/
   - The MusicXML source: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/musicxml/
   - The MusicXML file: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/musicxml/_file
+  - The image source: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/iiif
+ - The audio source: https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_sources/audio
 
 ## Linking sources with annotations
 
