@@ -10,6 +10,8 @@ called *sources*. Some sources represent the music score, either in MusicXML or 
 always be one such source). Others represent images of a score edition, performances, or event texts 
 related to the source.
 
+<img width="714" height="412" alt="partitionpivot" src="https://github.com/user-attachments/assets/ea13a2fc-831c-428d-8fae-0188d3d2848d" />
+
 An opus is identified by an absolute path in the tree Neuma of collections (called *corpus*). 
 In the following, we illustrate
 the synchronization of sources on a music melody by Saint-Saëns, "Aimons-nous". Its id is 
