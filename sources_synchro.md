@@ -3,7 +3,7 @@
 This documents explains the data organization and services that allows to synchronizes
 the *sources* of an *opus*.
 
-## Opus and sources
+## The data model: opus and sources
 
 An Opus in Neuma is a music work associated to digital representations of this work in various formats,
 called *sources*. Some sources represent the music score, either in MusicXML or MEI (there should
@@ -22,7 +22,7 @@ is ``C055_0``.
 In the web interface of Neuma, the piece and its sources can be inspected at https://home/opus/all:collabscore:saintsaens-audio:C055_0/.
 From now on, we will focus on REST services.
 
-## Services
+## Web Services to get an Opus and its sources
 
 All services are rooted at https://neuma.huma-num.fr/rest/collections. Some useful GET services: 
  
@@ -42,6 +42,32 @@ We comply as much as possible to the annotation model of the W3C (https://www.w3
 ### Annotation of images
 
 In that case we associate an element of the pivot to the corresponding region on the image. Elements can be : systems, measures, measure/staves and notes/rests/chords.
+
+```json
+"m1": [
+    {
+      "id": 3260193,
+      "body": {
+        "source": "https://gallica.bnf.fr/iiif/ark:/12148/bpt6k11620688/f2",
+        "selector": {
+          "type": "FragmentSelector",
+          "value": "((P1221,1589)(P2151,1589)(P1221,2266)(P2161,2266))",
+          "conformsTo": "http://www.w3.org/TR/SVG/"
+        }
+      },
+      "target": {
+        "source": "/media/sources/all-collabscore-saintsaens-audio-C055_0/score.mei",
+        "selector": {
+          "type": "FragmentSelector",
+          "value": "m1",
+          "conformsTo": "http://tools.ietf.org/rfc/rfc3023"
+        }
+      },
+      "annotation_model": "image-region",
+      "annotation_concept": "measure-region"
+    }
+  ],
+```
 In order to obtain the regions for all the measures, one can call the following service: 
 
 https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:C055_0/_annotations/image-region/measure-region/
