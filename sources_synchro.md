@@ -115,10 +115,42 @@ The same element from the pivot score (say, measure m1, m2, etc.) appears both i
 to a region) and the ``time-frame`` annotation (which refers to a time frame in the audio file).  To summarize, this lets us associate a region on the image and the time frame of the corresponding performance. It is not 
 even necessary to access to the MusicXML or MEI file which only serves as a common reference.
 
+# Howto: creating a synchro on Neuma
 
+## Opus and sources
+Assume an opus with an image source and an audio source. We take the 'Danse macabre' (DM) as an illustrating example. It must be registered as a Neuma opus, such as:
+https://neuma.huma-num.fr/home/opus/all:collabscore:saintsaens-audio:R171_3/
 
+Both sources need to be referred to by a IIIF manifest. There must be an image source (with ref iiif) and an audio source (with ref audio), and the URL field refers to the IIIF manifest.
 
+ - https://gallica.bnf.fr/iiif/ark:/12148/bpt6k1170198d/manifest.json
+ - https://openapi.bnf.fr/iiif/presentation/v3/ark:/12148/bpt6k8823171f/manifest.json
 
+## Annotations
+
+Next, we must create annotations for both the image and audio sources, referring 
+to the common opus pivot score.
+
+ - for images, annotations are created with the ORM process
+ - for audio, several solutions
+     -   we can use Audacity, place markers at the beginning of each measure and export the markets as a text file. This file must be then imported as the file of the audio source. it is processed at insertion time, converted in JSON, and temporal annotations are  created
+     -   we can probably align the audio and the score automatically, to be investigated
+
+Annotations can be retrieved as services:
+  - https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:R171_3/_annotations/image-region/measure-region/
+  - https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:R171_3/_annotations/time-frame/measure-tframe/
+
+## The combined manifest
+
+A combined IIIF manifest must then be produced. Digirati has created a helper website (https://bnf-prototype.netlify.app/) which supports the combined Manifest generation process. You can provide the different sources and then use the ‘Generate Manifest’ link to create the combined manifest, which you can then download and save. You can then store/host that Manifest somewhere appropriate, before passing the manifest URLs to the viewer(s).
+
+In Neuma, we crate a special source, 'sync', and the combined manifest is inserted there
+as the source file. It gets a URL, for instance
+https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:R171_3/_sources/sync/_file/
+
+Finaly we can pass this URL to the Theseus viewer: https://theseusviewer.org/?iiif-content=https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Asaintsaens-audio%3AR171_3/_sources/sync/_file/
+
+There is a link to the viewer in the list of sources of the Opus in Neuma
 
 
 
