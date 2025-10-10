@@ -150,7 +150,8 @@ https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:R171
 
 Finaly we can pass this URL to the Theseus viewer: https://theseusviewer.org/?iiif-content=https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Asaintsaens-audio%3AR171_3/_sources/sync/_file/
 
-There is a link to the viewer in the list of sources of the Opus in Neuma
+There is a link to the viewer in the list of sources of the Opus in Neuma. The code
+and the viewer and some explanations can be found at https://github.com/digirati-co-uk/bnf-prototype
 
 
 
