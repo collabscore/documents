@@ -136,6 +136,12 @@ to the common opus pivot score.
      -   we can use Audacity, place markers at the beginning of each measure and export the markets as a text file. This file must be then imported as the file of the audio source. it is processed at insertion time, converted in JSON, and temporal annotations are  created
      -   we can probably align the audio and the score automatically, to be investigated
 
+Uploading the TXT markers:
+
+```
+ curl  -u login:password -X POST "http://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-ref:R171_3/_sources/iiif/_file/"  -F 'labels.txt=@file.json'
+```
+
 Annotations can be retrieved as services:
   - https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:R171_3/_annotations/image-region/measure-region/
   - https://neuma.huma-num.fr/rest/collections/all:collabscore:saintsaens-audio:R171_3/_annotations/time-frame/measure-tframe/
