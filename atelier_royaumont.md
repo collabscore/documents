@@ -24,6 +24,4 @@
 
   - Bis
      - Montparnasse 3'
-### Les mélodies de Saint-Saëns qui seront interprétées
-
- - 
+  
