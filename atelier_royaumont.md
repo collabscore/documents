@@ -9,7 +9,7 @@
       - Rêverie 3' (https://neuma.huma-num.fr/home/opus/all:collabscore:atelier:C144_0/)
       - La cloche 4'
 
-  -Louis Aubert 
+  - Louis Aubert 
       - La mauvaise Prière 3' 
 
   - Camille Saint-Saëns
