@@ -5,15 +5,15 @@
 ### Le programme
 
   - Camille Saint-Saëns
-      - Le pas d'armes du Roi Jean 4'30
-      - Rêverie 3'
+      - Le pas d'armes du Roi Jean 4'30 (https://neuma.huma-num.fr/home/opus/all:collabscore:atelier:C094_0/)
+      - Rêverie 3' (https://neuma.huma-num.fr/home/opus/all:collabscore:atelier:C144_0/)
       - La cloche 4'
   -Louis Aubert 
       - La mauvaise Prière 3' 
 
   - Camille Saint-Saëns
-      - Tristesse 3'
-      - Au cimetière 4'
+      - Tristesse 3' (https://neuma.huma-num.fr/home/opus/all:collabscore:atelier:C130_0/)
+      - Au cimetière 4' (https://neuma.huma-num.fr/home/opus/all:collabscore:atelier:C045_0/)
 
   - Henri Février
      - La dernière chanson 3'
