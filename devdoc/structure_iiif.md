@@ -30,6 +30,54 @@ descriptives:
    - un *summary*, description plus ou moins longue de l'objet
    - une liste de *metadonnées*, par exemple le titre, l'auteur, la licence, etc.
  
+Les propriétés *label* et *summary* sont des chaînes de caractères selon le 
+format ci-dessus. Exemple:
 
+```JSON
+  "id": "http://neuma.huma-num.fr/all:collabscore:royaumont:pelleas_2_1",
+  "type": "Manifest",
+  "label": {
+    "fr": [
+      "Pelléas, Acte II, scène 1"
+    ]
+  },
+  "summary": {
+    "fr": [
+      "Texte de description de l'œuvre"
+    ]
+  },
+```
+Pour les métadonnées c'est plus compliqué: liste de paires (clé, valeur), 
+la clé et la valeur elles-mêmes étant des chaines IIIF.
 
+Exemple:
+
+```JSON
+"metadata": [
+    {
+      "label": {
+        "fr": [
+          "title"
+        ]
+      },
+      "value": {
+        "fr": [
+          "Pelléas, Acte II, scène 1"
+        ]
+      }
+    },
+    {
+      "label": {
+        "fr": [
+          "creator"
+        ]
+      },
+      "value": {
+        "fr": [
+          "Claude  Debussy (1868, 1918)"
+        ]
+      }
+    }
+  ]
+```
 
