@@ -1,14 +1,14 @@
 
-# Structure des manifestes IIIF
+# Structure des manifestes IIIF (V3)
 
 Un *manifeste* est un document JSON décrivant une source multimédia (image, audio, vidéo, texte...). En simplifiant, un manifeste est une séquence de *canevas*, eux-mêmes
 constitués d'une liste d'objets (images, autres). À tous les niveaux, les
 objets d'un manifeste peuvent faire l'objet d'annotations donnant des
 informations complémentaires ou des liens vers d'autres objets.
 
-## En V3
-
 La documentation complèe se trouve ici: https://iiif.io/api/presentation/3.0/
+
+## Les métadonnées et autres informations descriptives
 
 ### Les chaines de caractères
 
@@ -81,3 +81,70 @@ Exemple:
   ]
 ```
 
+## Structure des manifestes combinés audio/image
+
+Un manifeste combiné audio/image contient un unique canevas. Le manifeste 
+contient les champs ``label``, ``summary`` et ``metadata``, comme
+expliqué ci-dessus. Le canevas ne contient pas de données descriptives.
+
+Les objets du canevas sont
+  - un *item* correspondant au fichier audio ou vidéo, avec sa durée
+  - un *item* pour chaque image, l'URL indiquant la période d'affichage de l'image par rapport au fichier audio/vidéo
+
+Chaque *item* contient des propriétés ``label`` et ``summary``.
+
+Exemple d'*item* pour l'audio ou la vidéo (noter le type)
+
+```JSON
+           {
+              "id": "http://neuma.huma-num.fr/all:collabscore:royaumont:pelleas_2_1/video",
+              "type": "Annotation",
+              "label": {
+                "fr": [
+                  "Source audio/vidéo"
+                ]
+              },
+              "motivation": "painting",
+              "body": {
+                "id": "https://mediaserver.lecnam.net/downloads/file/v126b0e715b7fx9wxgc4/?url=media_1080_9iBked9mBA.mp4",
+                "type": "Video",
+                "duration": 466,
+                "format": "video/mpeg"
+              },
+              "target": "http://neuma.huma-num.fr/all:collabscore:royaumont:pelleas_2_1/canvas",
+              "summary": {
+                "fr": [
+                  "Source audio Royaumont"
+                ]
+              }
+            }
+```
+
+
+Exemple d'*item* pour les images (noter l'intervalle temporelle dans ``target``).
+
+```JSON
+          {
+              "id": "http://neuma.huma-num.fr/all:collabscore:royaumont:pelleas_2_1/img1",
+              "type": "Annotation",
+              "label": {
+                "fr": [
+                  "Page 1"
+                ]
+              },
+              "motivation": "painting",
+              "body": {
+                "id": "https://deptfod.cnam.fr/ImageS/iiif/2/pelleasa2s1%2F048/full/full/0/default.jpg",
+                "type": "Image",
+                "height": 3780,
+                "width": 2898,
+                "format": "image/jpeg"
+              },
+              "target": "http://neuma.huma-num.fr/all:collabscore:royaumont:pelleas_2_1/canvas#t=0,45.124717",
+              "summary": {
+                "fr": [
+                  "Source IIIF bibliothèque Royaumont"
+                ]
+              }
+            }
+```
