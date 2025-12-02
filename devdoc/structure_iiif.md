@@ -21,6 +21,37 @@ Les *chaines de caractères* ont une représentation un peu compliquée: c'est u
     ]
   }
 ```
+### Les images
+
+Les images sont représentées par des éléments de type ``Image``. Quand c'est possible
+elles correspondent à un service IIIF. Voici un exemple d'image sur le serveur IIIF du Cnam:
+```JSON
+"thumbnail": {
+      "id": "https://deptfod.cnam.fr/ImageS/iiif/2/imgs%2Fcimetiere/full/max/0/default.jpg",
+      "type": "Image",
+      "height": 1764,
+      "width": 3158,
+      "service": [
+        {
+          "id": "https://deptfod.cnam.fr/ImageS/iiif/2/imgs%2Fcimetiere",
+          "type": "ImageService3"
+        }
+      ],
+      "format": "image/jpeg"
+    }
+```
+On trouve donc:
+  - l'id: c'est une URL permettant d'accéder à une représentation de l'image (ici la représentation complète)
+  - la hauteur et la largeur
+  - le format
+  - et un sous-objet ``service``   qui indique que des services IIIF de transformation (conformes au protocole IIIF ImageService3) peuvent être demandés ; l'id est l'adresse du service.
+
+Quelques exemples de transformation d'image à partir du service
+   - rotation à 90° https://deptfod.cnam.fr/ImageS/iiif/2/imgs%2Fcimetiere/full/max/90/default.jpg
+   - extraction d'une région: https://deptfod.cnam.fr/ImageS/iiif/2/imgs%2Fcimetiere/35,25,1000,300/max/0/default.jpg
+   - taille réduite à 20%: https://deptfod.cnam.fr/ImageS/iiif/2/imgs%2Fcimetiere/full/pct:20/0/default.jpg
+
+
 
 ### Propriétés descriptives
 
